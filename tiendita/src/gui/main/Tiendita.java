@@ -5,36 +5,196 @@ public class Tiendita extends javax.swing.JFrame {
 
     public Tiendita() {
         initComponents();
+        setLocationRelativeTo(null);
+        imageIcon();
     }
+    
+    private void imageIcon() {
+
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jpMain = new javax.swing.JPanel();
+        jpMenu = new javax.swing.JPanel();
+        jpCliente = new javax.swing.JPanel();
+        lblIcon = new javax.swing.JLabel();
+        btnUser = new gui.styles.button.ButtonClass();
+        lblCorreo = new javax.swing.JLabel();
+        jpMenuButtons = new javax.swing.JPanel();
+        btnHogar = new gui.styles.button.ButtonClass();
+        btnProductos = new gui.styles.button.ButtonClass();
+        btnCategorias = new gui.styles.button.ButtonClass();
+        btnVenta = new gui.styles.button.ButtonClass();
+        btnCompra = new gui.styles.button.ButtonClass();
+        btnCliente = new gui.styles.button.ButtonClass();
+        btnProveedores = new gui.styles.button.ButtonClass();
+        jpMainChange = new javax.swing.JPanel();
+        jpDefault = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
+        jpMain.setLayout(new java.awt.BorderLayout());
+
+        jpMenu.setBackground(new java.awt.Color(30, 136, 229));
+
+        jpCliente.setBackground(new java.awt.Color(13, 71, 161));
+
+        lblIcon.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        lblIcon.setForeground(new java.awt.Color(255, 255, 255));
+        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon.setText("ICON");
+
+        btnUser.setBackground(new java.awt.Color(13, 71, 161));
+        btnUser.setText("Saul yS");
+        btnUser.setColorHover(new java.awt.Color(12, 67, 152));
+        btnUser.setColorNormal(new java.awt.Color(13, 71, 161));
+        btnUser.setFocusable(false);
+        btnUser.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+
+        lblCorreo.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCorreo.setText("saul.ytucayasi");
+        lblCorreo.setVerifyInputWhenFocusTarget(false);
+        lblCorreo.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout jpClienteLayout = new javax.swing.GroupLayout(jpCliente);
+        jpCliente.setLayout(jpClienteLayout);
+        jpClienteLayout.setHorizontalGroup(
+            jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpClienteLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+        jpClienteLayout.setVerticalGroup(
+            jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpClienteLayout.createSequentialGroup()
+                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
         );
+
+        jpMenuButtons.setBackground(new java.awt.Color(13, 71, 161));
+        jpMenuButtons.setLayout(new java.awt.GridLayout(10, 1));
+
+        btnHogar.setBackground(new java.awt.Color(11, 61, 140));
+        btnHogar.setText("Hogar");
+        btnHogar.setBorderPainted(false);
+        btnHogar.setColorHover(new java.awt.Color(12, 67, 152));
+        btnHogar.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnHogar.setFocusable(false);
+        btnHogar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnHogar);
+
+        btnProductos.setBackground(new java.awt.Color(11, 61, 140));
+        btnProductos.setText("Productos");
+        btnProductos.setBorderPainted(false);
+        btnProductos.setColorHover(new java.awt.Color(12, 67, 152));
+        btnProductos.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnProductos.setFocusable(false);
+        btnProductos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnProductos);
+
+        btnCategorias.setBackground(new java.awt.Color(11, 61, 140));
+        btnCategorias.setText("Categorias");
+        btnCategorias.setBorderPainted(false);
+        btnCategorias.setColorHover(new java.awt.Color(12, 67, 152));
+        btnCategorias.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnCategorias.setFocusable(false);
+        btnCategorias.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnCategorias);
+
+        btnVenta.setBackground(new java.awt.Color(11, 61, 140));
+        btnVenta.setText("Venta");
+        btnVenta.setBorderPainted(false);
+        btnVenta.setColorHover(new java.awt.Color(12, 67, 152));
+        btnVenta.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnVenta.setFocusable(false);
+        btnVenta.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnVenta);
+
+        btnCompra.setBackground(new java.awt.Color(11, 61, 140));
+        btnCompra.setText("Compra");
+        btnCompra.setBorderPainted(false);
+        btnCompra.setColorHover(new java.awt.Color(12, 67, 152));
+        btnCompra.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnCompra.setFocusable(false);
+        btnCompra.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnCompra);
+
+        btnCliente.setBackground(new java.awt.Color(11, 61, 140));
+        btnCliente.setText("Clientes");
+        btnCliente.setBorderPainted(false);
+        btnCliente.setColorHover(new java.awt.Color(12, 67, 152));
+        btnCliente.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnCliente.setFocusable(false);
+        btnCliente.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnCliente);
+
+        btnProveedores.setBackground(new java.awt.Color(11, 61, 140));
+        btnProveedores.setText("Proveedores");
+        btnProveedores.setBorderPainted(false);
+        btnProveedores.setColorHover(new java.awt.Color(12, 67, 152));
+        btnProveedores.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnProveedores.setFocusable(false);
+        btnProveedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jpMenuButtons.add(btnProveedores);
+
+        javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
+        jpMenu.setLayout(jpMenuLayout);
+        jpMenuLayout.setHorizontalGroup(
+            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMenuButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpMenuLayout.setVerticalGroup(
+            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpMenuLayout.createSequentialGroup()
+                .addComponent(jpCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jpMenuButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpMain.add(jpMenu, java.awt.BorderLayout.LINE_START);
+
+        jpMainChange.setLayout(new java.awt.CardLayout());
+
+        jpDefault.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jpDefaultLayout = new javax.swing.GroupLayout(jpDefault);
+        jpDefault.setLayout(jpDefaultLayout);
+        jpDefaultLayout.setHorizontalGroup(
+            jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 797, Short.MAX_VALUE)
+        );
+        jpDefaultLayout.setVerticalGroup(
+            jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
+        jpMainChange.add(jpDefault, "card2");
+
+        jpMain.add(jpMainChange, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -73,6 +233,21 @@ public class Tiendita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private gui.styles.button.ButtonClass btnCategorias;
+    private gui.styles.button.ButtonClass btnCliente;
+    private gui.styles.button.ButtonClass btnCompra;
+    private gui.styles.button.ButtonClass btnHogar;
+    private gui.styles.button.ButtonClass btnProductos;
+    private gui.styles.button.ButtonClass btnProveedores;
+    private gui.styles.button.ButtonClass btnUser;
+    private gui.styles.button.ButtonClass btnVenta;
+    private javax.swing.JPanel jpCliente;
+    private javax.swing.JPanel jpDefault;
+    private javax.swing.JPanel jpMain;
+    private javax.swing.JPanel jpMainChange;
+    private javax.swing.JPanel jpMenu;
+    private javax.swing.JPanel jpMenuButtons;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblIcon;
     // End of variables declaration//GEN-END:variables
 }

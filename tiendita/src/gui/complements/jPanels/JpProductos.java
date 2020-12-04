@@ -3,7 +3,6 @@ package gui.complements.jPanels;
 
 import gui.model.ProductoModel;
 import gui.styles.table.StyleTableHeader;
-import gui.styles.table.StyleTableRenderer;
 import javax.swing.ListSelectionModel;
 
 public class JpProductos extends javax.swing.JPanel {
@@ -12,11 +11,10 @@ public class JpProductos extends javax.swing.JPanel {
     
     public JpProductos() {
         initComponents();
-        //jScrollPane1.setOpaque(false);
-        //jScrollPane1.getViewport().setOpaque(false);
+        //jScrollPane2.setOpaque(false);
+        //jScrollPane2.getViewport().setOpaque(false);
         jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
-        jTable1.setDefaultRenderer(Object.class, new StyleTableRenderer());
         productoModel = new ProductoModel();
         paintTable(productoModel);
     }
@@ -24,7 +22,14 @@ public class JpProductos extends javax.swing.JPanel {
     private void paintTable(ProductoModel tableModel) {
         this.productoModel = tableModel;
         jTable1.setModel(tableModel);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        jTable1.getColumnModel().getColumn(1).setMaxWidth(200);
+        jTable1.getColumnModel().getColumn(2).setMaxWidth(500);
+        jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
+        jTable1.getColumnModel().getColumn(4).setMaxWidth(90);
+        jTable1.getColumnModel().getColumn(5).setMaxWidth(90);
+        jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
+        jTable1.getColumnModel().getColumn(7).setMaxWidth(150);
     }
     
     @SuppressWarnings("unchecked")
@@ -41,6 +46,7 @@ public class JpProductos extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -124,11 +130,8 @@ public class JpProductos extends javax.swing.JPanel {
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(null);
-
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -140,26 +143,26 @@ public class JpProductos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
-        jTable1.getAccessibleContext().setAccessibleName("");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
 
@@ -178,6 +181,7 @@ public class JpProductos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;

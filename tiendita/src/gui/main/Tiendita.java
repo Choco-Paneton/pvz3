@@ -3,22 +3,38 @@ package gui.main;
 
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import util.ChangePanel;
 
 public class Tiendita extends javax.swing.JFrame {
 
     public Tiendita() {
         initComponents();
+        ChangePanel change = new ChangePanel(jpMainChange, new JpHogar());
         setLocationRelativeTo(null);
-        imageIcon();
+        btnIcon.setIcon(imageIcon("/icons/android.png", btnIcon));
+        btnIcon.setPressedIcon(imageIconPressed("/icons/android.png", btnIcon, 3, 3));
     }
     
-    private void imageIcon() {
-
+    public Icon imageIcon(String url, JButton button) {
+          ImageIcon icono = new ImageIcon(getClass().getResource(url));
+          int ancho = button.getWidth();
+          int alto = button.getHeight();
+          ImageIcon icon = new ImageIcon(icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+          return icon;
     }
     
+    public Icon imageIconPressed(String url, JButton button, int alto, int ancho) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int width = button.getWidth() - ancho;
+        int height = button.getHeight() - alto;
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+        return icono;
+    }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,9 +42,9 @@ public class Tiendita extends javax.swing.JFrame {
         jpMain = new javax.swing.JPanel();
         jpMenu = new javax.swing.JPanel();
         jpCliente = new javax.swing.JPanel();
-        lblIcon = new javax.swing.JLabel();
         btnUser = new gui.styles.button.ButtonClass();
-        lblCorreo = new javax.swing.JLabel();
+        lblCorreo1 = new javax.swing.JLabel();
+        btnIcon = new gui.styles.button.ButtonClass();
         jpMenuButtons = new javax.swing.JPanel();
         btnHogar = new gui.styles.button.ButtonClass();
         btnProductos = new gui.styles.button.ButtonClass();
@@ -48,11 +64,6 @@ public class Tiendita extends javax.swing.JFrame {
 
         jpCliente.setBackground(new java.awt.Color(13, 71, 161));
 
-        lblIcon.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
-        lblIcon.setForeground(new java.awt.Color(255, 255, 255));
-        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIcon.setText("ICON");
-
         btnUser.setBackground(new java.awt.Color(13, 71, 161));
         btnUser.setText("Saul yS");
         btnUser.setColorHover(new java.awt.Color(12, 67, 152));
@@ -60,32 +71,45 @@ public class Tiendita extends javax.swing.JFrame {
         btnUser.setFocusable(false);
         btnUser.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
 
-        lblCorreo.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
-        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        lblCorreo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCorreo.setText("saul.ytucayasi");
-        lblCorreo.setVerifyInputWhenFocusTarget(false);
-        lblCorreo.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        lblCorreo1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        lblCorreo1.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCorreo1.setText("saul.ytucayasi");
+        lblCorreo1.setVerifyInputWhenFocusTarget(false);
+        lblCorreo1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        btnIcon.setBackground(new java.awt.Color(13, 71, 161));
+        btnIcon.setColorHover(new java.awt.Color(12, 67, 152));
+        btnIcon.setColorNormal(new java.awt.Color(13, 71, 161));
+        btnIcon.setColorPressed(new java.awt.Color(13, 71, 161));
+        btnIcon.setFocusable(false);
+        btnIcon.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIconActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpClienteLayout = new javax.swing.GroupLayout(jpCliente);
         jpCliente.setLayout(jpClienteLayout);
         jpClienteLayout.setHorizontalGroup(
             jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnUser, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+            .addComponent(lblCorreo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpClienteLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpClienteLayout.setVerticalGroup(
             jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpClienteLayout.createSequentialGroup()
-                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addContainerGap()
+                .addComponent(btnIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addComponent(lblCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jpMenuButtons.setBackground(new java.awt.Color(13, 71, 161));
@@ -189,7 +213,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpDefault.setLayout(jpDefaultLayout);
         jpDefaultLayout.setHorizontalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 816, Short.MAX_VALUE)
+            .addGap(0, 804, Short.MAX_VALUE)
         );
         jpDefaultLayout.setVerticalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,6 +245,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpProductos());
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIconActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -259,6 +287,7 @@ public class Tiendita extends javax.swing.JFrame {
     private gui.styles.button.ButtonClass btnCliente;
     private gui.styles.button.ButtonClass btnCompra;
     private gui.styles.button.ButtonClass btnHogar;
+    private gui.styles.button.ButtonClass btnIcon;
     private gui.styles.button.ButtonClass btnProductos;
     private gui.styles.button.ButtonClass btnProveedores;
     private gui.styles.button.ButtonClass btnUser;
@@ -269,7 +298,6 @@ public class Tiendita extends javax.swing.JFrame {
     private javax.swing.JPanel jpMainChange;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpMenuButtons;
-    private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblCorreo1;
     // End of variables declaration//GEN-END:variables
 }

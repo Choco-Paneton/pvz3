@@ -2,6 +2,7 @@
 package gui.main;
 
 import gui.complements.jPanels.JpHogar;
+import gui.complements.jPanels.JpProductos;
 import util.ChangePanel;
 
 public class Tiendita extends javax.swing.JFrame {
@@ -111,6 +112,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnProductos.setColorNormal(new java.awt.Color(11, 61, 140));
         btnProductos.setFocusable(false);
         btnProductos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnProductos);
 
         btnCategorias.setBackground(new java.awt.Color(11, 61, 140));
@@ -198,7 +204,7 @@ public class Tiendita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,6 +217,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnHogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHogarActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpHogar());
     }//GEN-LAST:event_btnHogarActionPerformed
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new JpProductos());
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

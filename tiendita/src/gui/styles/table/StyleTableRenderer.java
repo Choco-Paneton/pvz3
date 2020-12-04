@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class StyleTableRenderer extends DefaultTableCellRenderer{
-    
+
     private JCheckBox check = new JCheckBox();
     
     @Override
@@ -34,7 +34,7 @@ public class StyleTableRenderer extends DefaultTableCellRenderer{
             this.setText(""+(Integer)value);  
             this.setOpaque(true);
             this.setBackground( Color.white);
-            this.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+            this.setFont(new Font("Microsoft JhengHei UI", Font.PLAIN, 13));
             this.setForeground(new Color(40, 40, 40));
         }
         if (value instanceof Float) {
@@ -42,7 +42,7 @@ public class StyleTableRenderer extends DefaultTableCellRenderer{
             this.setText(""+(Float)value);  
             this.setOpaque(true);
             this.setBackground( Color.white);
-            this.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+            this.setFont(new Font("Microsoft JhengHei UI", Font.PLAIN, 13));
             this.setForeground(new Color(40, 40, 40));
         }
         if (value instanceof Boolean) {
@@ -55,7 +55,6 @@ public class StyleTableRenderer extends DefaultTableCellRenderer{
             {   
                 check = new JCheckBox();                                
                 check.setHorizontalAlignment( JLabel.CENTER );                
-                check.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 40, 40)));
                 check.setSelected(bol); 
                 return check;
             }             
@@ -65,7 +64,7 @@ public class StyleTableRenderer extends DefaultTableCellRenderer{
         
         if(selected){
             this.setBackground(new Color(30,136,229));
-            this.setForeground(Color.white);
+            this.setForeground(Color.WHITE);
         }
         return this;
     }

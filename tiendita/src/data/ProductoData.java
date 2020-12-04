@@ -20,7 +20,7 @@ public class ProductoData {
 
     public static int create(Producto p) {
         int rsId = 0;
-        String[] returns = {"id"};
+        String[] returns = {"id_producto"};
         String sql = "INSERT INTO producto(descripcion, nombre_producto, "
                 + "cantidad, status, igv, precio_unitario, precio_sub_total) "
                 + "VALUES(?,?,?,?,?,?,?)";

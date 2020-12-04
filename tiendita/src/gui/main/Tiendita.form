@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jpMain" alignment="0" max="32767" attributes="0"/>
+          <Component id="jpMain" alignment="0" pref="966" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -175,6 +175,9 @@
                       <Font name="Microsoft JhengHei UI" size="14" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHogarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="gui.styles.button.ButtonClass" name="btnProductos">
                   <Properties>
@@ -318,7 +321,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="797" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="816" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">

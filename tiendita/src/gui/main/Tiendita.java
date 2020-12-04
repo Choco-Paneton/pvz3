@@ -1,6 +1,9 @@
 
 package gui.main;
 
+import gui.complements.jPanels.JpHogar;
+import util.ChangePanel;
+
 public class Tiendita extends javax.swing.JFrame {
 
     public Tiendita() {
@@ -94,6 +97,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnHogar.setColorNormal(new java.awt.Color(11, 61, 140));
         btnHogar.setFocusable(false);
         btnHogar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnHogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHogarActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnHogar);
 
         btnProductos.setBackground(new java.awt.Color(11, 61, 140));
@@ -175,7 +183,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpDefault.setLayout(jpDefaultLayout);
         jpDefaultLayout.setHorizontalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 797, Short.MAX_VALUE)
+            .addGap(0, 816, Short.MAX_VALUE)
         );
         jpDefaultLayout.setVerticalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +198,7 @@ public class Tiendita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,6 +207,10 @@ public class Tiendita extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHogarActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new JpHogar());
+    }//GEN-LAST:event_btnHogarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

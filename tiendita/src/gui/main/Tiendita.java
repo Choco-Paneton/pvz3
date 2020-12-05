@@ -3,6 +3,7 @@ package gui.main;
 
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
+import gui.complements.jPanels.JpCategorias;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -150,6 +151,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnCategorias.setColorNormal(new java.awt.Color(11, 61, 140));
         btnCategorias.setFocusable(false);
         btnCategorias.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoriasActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnCategorias);
 
         btnVenta.setBackground(new java.awt.Color(11, 61, 140));
@@ -249,6 +255,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIconActionPerformed
+
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new JpCategorias());
+    }//GEN-LAST:event_btnCategoriasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

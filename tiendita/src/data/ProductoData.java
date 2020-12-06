@@ -27,7 +27,7 @@ public class ProductoData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
-            ps.setString(++i, p.getDescripcion());
+            ps.setString(++i, p.getDescription());
             ps.setString(++i, p.getNombre_producto());
             ps.setInt(++i, p.getCantidad());
             ps.setBoolean(++i, p.isStatus());
@@ -61,14 +61,14 @@ public class ProductoData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(++i, p.getDescripcion());
+            ps.setString(++i, p.getDescription());
             ps.setString(++i, p.getNombre_producto());
             ps.setInt(++i, p.getCantidad());
             ps.setBoolean(++i, p.isIgv());
             ps.setBoolean(++i, p.isIgv());
             ps.setFloat(++i, p.getPrecio_unitario());
             ps.setFloat(++i, p.getPrecio_sub_total());
-            ps.setInt(++i, p.getId_producto());
+            ps.setInt(++i, p.getId());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -120,8 +120,8 @@ public class ProductoData {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Producto p = new Producto();
-                p.setId_producto(rs.getInt("id_producto"));
-                p.setDescripcion(rs.getString("descripcion"));
+                p.setId(rs.getInt("id_producto"));
+                p.setDescription(rs.getString("descripcion"));
                 p.setNombre_producto(rs.getString("nombre_producto"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setStatus(rs.getBoolean("status"));
@@ -147,8 +147,8 @@ public class ProductoData {
             ps.setInt(++i, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setId_producto(rs.getInt("id_producto"));
-                p.setDescripcion(rs.getString("descripcion"));
+                p.setId(rs.getInt("id_producto"));
+                p.setDescription(rs.getString("descripcion"));
                 p.setNombre_producto(rs.getString("nombre_producto"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setStatus(rs.getBoolean("status"));

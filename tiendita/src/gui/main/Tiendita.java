@@ -151,6 +151,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnCategorias.setColorNormal(new java.awt.Color(11, 61, 140));
         btnCategorias.setFocusable(false);
         btnCategorias.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoriasActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnCategorias);
 
         btnVenta.setBackground(new java.awt.Color(11, 61, 140));
@@ -259,6 +264,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpClientes());
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
+
+    }//GEN-LAST:event_btnCategoriasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

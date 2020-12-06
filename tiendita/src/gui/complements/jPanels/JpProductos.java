@@ -92,7 +92,6 @@ public class JpProductos extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("icon");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jTextField1.setBorder(null);
 

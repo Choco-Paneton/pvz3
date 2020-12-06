@@ -1,28 +1,29 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.util.Date;
 
+/**
+ *
+ * @author Jhoselyn
+ */
 public class Venta {
 
-    private int id_venta;
-    private int id_proveedor;
+    private int id;
     private Date fecha_venta;
+    public int proveedor_id;
 
-    public int getId_venta() {
-        return id_venta;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setId_venta(int id_venta) {
-        this.id_venta = id_venta;
-    }
-
-    public int getId_proveedor() {
-        return id_proveedor;
-    }
-
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getFecha_venta() {
@@ -32,4 +33,13 @@ public class Venta {
     public void setFecha_venta(Date fecha_venta) {
         this.fecha_venta = fecha_venta;
     }
+
+    public int getProveedor_id() {
+        return proveedor_id;
+    }
+
+    public void setProveedor_id(int proveedor_id) {
+        this.proveedor_id = proveedor_id;
+    }
+
 }

@@ -15,7 +15,7 @@ public class Venta {
 
     private int id;
     private Date fecha_venta;
-    public int proveedor_id;
+    public int cliente_id;
 
     
     public int getId() {
@@ -34,12 +34,12 @@ public class Venta {
         this.fecha_venta = fecha_venta;
     }
 
-    public int getProveedor_id() {
-        return proveedor_id;
+    public int getCliente_id() {
+        return cliente_id;
     }
 
-    public void setProveedor_id(int proveedor_id) {
-        this.proveedor_id = proveedor_id;
+    public void setCliente_id(int cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
 }

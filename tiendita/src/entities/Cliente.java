@@ -1,28 +1,29 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
+/**
+ *
+ * @author Jhoselyn
+ */
 public class Cliente {
     
-    private int id_cliente;
-    private int id_persona;
+    private int id;
     private String ruc;
     private String telefono;
     private String email;
+    public int persona_id;
 
-    public int getId_cliente() {
-        return id_cliente;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
-    }
-
-    public int getId_persona() {
-        return id_persona;
-    }
-
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRuc() {
@@ -47,5 +48,14 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
-    } 
+    }
+
+    public int getPersona_id() {
+        return persona_id;
+    }
+
+    public void setPersona_id(int persona_id) {
+        this.persona_id = persona_id;
+    }
+    
 }

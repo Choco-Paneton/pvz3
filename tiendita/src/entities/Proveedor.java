@@ -1,28 +1,29 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
+/**
+ *
+ * @author Jhoselyn
+ */
 public class Proveedor {
     
-    private int id_proveedor;
-    private int id_persona;
+    private int id;
     private String ruc;
-    private String telefono;
     private String email;
+    private String telefono;
+    public int persona_id;
 
-    public int getId_proveedor() {
-        return id_proveedor;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-
-    public int getId_persona() {
-        return id_persona;
-    }
-
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRuc() {
@@ -33,6 +34,14 @@ public class Proveedor {
         this.ruc = ruc;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -41,11 +50,12 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public int getPersona_id() {
+        return persona_id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPersona_id(int persona_id) {
+        this.persona_id = persona_id;
     }
+    
 }

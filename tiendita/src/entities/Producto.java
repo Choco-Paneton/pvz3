@@ -1,23 +1,49 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
+/**
+ *
+ * @author Jhoselyn
+ */
 public class Producto {
     
-    private int id_producto;
+    private int id;
+    private String description;
+    private String nombre_producto;
     private int cantidad;
-    private float precio_unitario;
-    private float precio_sub_total;
     private boolean status;
     private boolean igv;
-    private String nombre_producto;
-    private String descripcion;
+    private float precio_unitario;
+    private float precio_sub_total;
+    public int categoria_id;
 
-    public int getId_producto() {
-        return id_producto;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
     }
 
     public int getCantidad() {
@@ -26,22 +52,6 @@ public class Producto {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public float getPrecio_unitario() {
-        return precio_unitario;
-    }
-
-    public void setPrecio_unitario(float precio_unitario) {
-        this.precio_unitario = precio_unitario;
-    }
-
-    public float getPrecio_sub_total() {
-        return precio_sub_total;
-    }
-
-    public void setPrecio_sub_total(float precio_sub_total) {
-        this.precio_sub_total = precio_sub_total;
     }
 
     public boolean isStatus() {
@@ -60,19 +70,28 @@ public class Producto {
         this.igv = igv;
     }
 
-    public String getNombre_producto() {
-        return nombre_producto;
+    public float getPrecio_unitario() {
+        return precio_unitario;
     }
 
-    public void setNombre_producto(String nombre_producto) {
-        this.nombre_producto = nombre_producto;
+    public void setPrecio_unitario(float precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public float getPrecio_sub_total() {
+        return precio_sub_total;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }  
+    public void setPrecio_sub_total(float precio_sub_total) {
+        this.precio_sub_total = precio_sub_total;
+    }
+
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+   
 }

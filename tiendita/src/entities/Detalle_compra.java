@@ -1,37 +1,30 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
+/**
+ *
+ * @author Jhoselyn
+ */
 public class Detalle_compra {
     
-    private int id_detalle_compra;
-    private int id_compra;
-    private int id_venta;
+    private int id;
     private int cantidad;
     private float precio_unitario;
     private float precio_total_producto;
+    public int compra_id;
+    public int producto_id;
 
-    public int getId_detalle_compra() {
-        return id_detalle_compra;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setId_detalle_compra(int id_detalle_compra) {
-        this.id_detalle_compra = id_detalle_compra;
-    }
-
-    public int getId_compra() {
-        return id_compra;
-    }
-
-    public void setId_compra(int id_compra) {
-        this.id_compra = id_compra;
-    }
-
-    public int getId_venta() {
-        return id_venta;
-    }
-
-    public void setId_venta(int id_venta) {
-        this.id_venta = id_venta;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCantidad() {
@@ -57,4 +50,21 @@ public class Detalle_compra {
     public void setPrecio_total_producto(float precio_total_producto) {
         this.precio_total_producto = precio_total_producto;
     }
+
+    public int getCompra_id() {
+        return compra_id;
+    }
+
+    public void setCompra_id(int compra_id) {
+        this.compra_id = compra_id;
+    }
+
+    public int getProducto_id() {
+        return producto_id;
+    }
+
+    public void setProducto_id(int producto_id) {
+        this.producto_id = producto_id;
+    }
+  
 }

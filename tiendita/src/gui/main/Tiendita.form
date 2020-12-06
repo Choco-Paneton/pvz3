@@ -288,6 +288,9 @@
                       <Font name="Microsoft JhengHei UI" size="14" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClienteActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="gui.styles.button.ButtonClass" name="btnProveedores">
                   <Properties>

@@ -11,8 +11,8 @@ public class JpProductos extends javax.swing.JPanel {
     
     public JpProductos() {
         initComponents();
-        //jScrollPane2.setOpaque(false);
-        //jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
         jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
         productoModel = new ProductoModel();
@@ -83,6 +83,7 @@ public class JpProductos extends javax.swing.JPanel {
         buttonClass1.setBackground(new java.awt.Color(13, 71, 161));
         buttonClass1.setText("Agregar");
         buttonClass1.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass1.setFocusable(false);
         buttonClass1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClass1.setVerifyInputWhenFocusTarget(false);
 

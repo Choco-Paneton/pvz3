@@ -44,7 +44,13 @@ public class VentaData {
                     rsId = rs.getInt(1);
                 }
                 rs.close();
+                
+            /*try {
+                    d.setFecha(sdf.parse(rs.getString("fecha")));
+                } catch (Exception e) {
+                }*/
             }
+            
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
         }
@@ -77,6 +83,12 @@ public class VentaData {
             ps = cn.prepareStatement(sql);
             ps.setInt(1, id);
             comit = ps.executeUpdate();
+            
+            /*try {
+                    d.setFecha(sdf.parse(rs.getString("fecha")));
+                } catch (Exception e) {
+                }*/
+            
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             // System.err.println("NO del " + ex.toString());

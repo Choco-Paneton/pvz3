@@ -12,6 +12,7 @@ package entities;
 public class Detalle_venta {
     
     private int id;
+    private int cantidad;
     private float precio_unitario;
     private float precio_total_producto;
     public int producto_id;
@@ -19,6 +20,14 @@ public class Detalle_venta {
     
     public int getId() {
         return id;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public void setId(int id) {

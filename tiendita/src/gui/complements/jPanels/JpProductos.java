@@ -1,9 +1,14 @@
 
 package gui.complements.jPanels;
 
+import gui.complements.jDialogs.JdNuevoProducto;
+import gui.main.Tiendita;
 import gui.model.ProductoModel;
 import gui.styles.table.StyleTableHeader;
+import java.awt.Frame;
+import java.awt.Window;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 public class JpProductos extends javax.swing.JPanel {
     
@@ -14,7 +19,7 @@ public class JpProductos extends javax.swing.JPanel {
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
         jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
+        //jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
         productoModel = new ProductoModel();
         paintTable(productoModel);
     }
@@ -86,6 +91,11 @@ public class JpProductos extends javax.swing.JPanel {
         buttonClass1.setFocusable(false);
         buttonClass1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClass1.setVerifyInputWhenFocusTarget(false);
+        buttonClass1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(51, 102, 255));
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -143,6 +153,7 @@ public class JpProductos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setRowHeight(25);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -170,6 +181,17 @@ public class JpProductos extends javax.swing.JPanel {
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
+        JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts); 
+        Frame parentFrame = null; 
+        if (parentWindow instanceof Tiendita) { 
+            parentFrame = (Tiendita)parentWindow; 
+        } 
+        JdNuevoProducto jdNewProduct = new JdNuevoProducto(parentFrame, true); 
+        jdNewProduct.setVisible(true);
+    }//GEN-LAST:event_buttonClass1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

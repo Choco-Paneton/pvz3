@@ -1,6 +1,8 @@
 
 package gui.main;
 
+import gui.complements.jPanels.JpCategoria;
+import gui.complements.jPanels.JpCategorias;
 import gui.complements.jPanels.JpClientes;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;

@@ -3,20 +3,14 @@ package gui.complements.jDialogs;
 
 import data.ProductoData;
 import entities.Producto;
-import gui.complements.jPanels.JpProductos;
-import gui.main.Tiendita;
 import gui.model.CategoriaModel;
 import gui.model.ProductoModel;
 import java.awt.Component;
-import java.awt.Frame;
-import java.awt.Window;
 import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 
 public class JdCategoria extends javax.swing.JDialog {
     

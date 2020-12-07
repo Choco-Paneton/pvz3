@@ -77,4 +77,8 @@ public class ProductoModel extends AbstractTableModel {
     public int getColumnCount() {
         return columns.length;
     }
+    public Object getRow(int row) {
+        this.fireTableRowsUpdated(row, row);
+        return list.get(row);
+    }
 }

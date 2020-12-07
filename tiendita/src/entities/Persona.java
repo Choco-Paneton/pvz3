@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entities;
 
-/**
- *
- * @author Jhoselyn
- */
 public class Persona {
     
     private int id;
@@ -16,11 +8,12 @@ public class Persona {
     private String apellido_paterno;
     private String apellido_materno;
     private String dni;
+    private String sexo;
 
     
     public int getId() {
         return id;
-    }
+    } 
 
     public void setId(int id) {
         this.id = id;
@@ -56,6 +49,14 @@ public class Persona {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
 }

@@ -105,15 +105,11 @@ public class ProductoData {
             sql = "SELECT * FROM Producto ORDER BY id";
         } else {
             sql = "SELECT * FROM Producto WHERE (id LIKE'" + filter + 
-                    "%' OR " + "descripcion LIKE'" + filter + 
                     "%' OR " + "nombre_producto LIKE'" + filter + 
                     "%' OR " + "cantidad LIKE'" + filter + 
-                    "%' OR " + "status LIKE'" + filter + 
-                    "%' OR " + "igv LIKE'" + filter + 
                     "%' OR " + "precio_unitario LIKE'" + filter + 
-                    "%' OR " + "precio_sub_total LIKE'" + filter + 
                     "%') "
-                    + "ORDER BY id_producto";
+                    + "ORDER BY id";
         }
         try {
             Statement st = cn.createStatement();

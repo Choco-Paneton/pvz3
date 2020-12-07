@@ -1,12 +1,70 @@
 
 package gui.complements.jDialogs;
 
-public class JdCategoria extends javax.swing.JDialog {
+import data.ProductoData;
+import entities.Producto;
+import gui.complements.jPanels.JpProductos;
+import gui.main.Tiendita;
+import gui.model.CategoriaModel;
+import gui.model.ProductoModel;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.Window;
+import java.awt.event.KeyEvent;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
+public class JdCategoria extends javax.swing.JDialog {
+    
+    ProductoModel productoModel = new ProductoModel();
+    private CategoriaModel categoriaModel;
+    JDialog op;
+    private Producto p;
+    
     public JdCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        categoriaModel = new CategoriaModel();
+        paintTable(categoriaModel); 
+        tableEnterSolve();
+        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
+    private void getOptionPane() {
+        if (op != null) {
+            return;
+        }
+        Component pdr = this.getParent();
+        while (pdr.getParent() != null) {
+            if (pdr instanceof JDialog) {
+                op = (JDialog) pdr;
+                break;
+            }
+            pdr = pdr.getParent();
+        }
+    }
+    
+    private void paintForm() {
+        getOptionPane();
+        if (jTable1.getSelectedRow() != -1) {
+            Producto filaEncontrada = (Producto) productoModel.getRow(jTable1.getSelectedRow());
+            p = ProductoData.getByPId(filaEncontrada.getId());
+        }
+    }
+
+    private void tableEnterSolve() {
+        KeyStroke enter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+        jTable1.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(enter, "Solve");
+    }
+    
+    private void paintTable(CategoriaModel tableModel) {
+        this.categoriaModel = tableModel;
+        jTable1.setModel(tableModel);   
     }
 
     /**
@@ -79,19 +137,18 @@ public class JdCategoria extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(225, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -111,6 +168,16 @@ public class JdCategoria extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -148,6 +215,21 @@ public class JdCategoria extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
+            paintForm();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        
+        if (evt.VK_ENTER == evt.getKeyCode() && jTable1.getSelectedRow() != -1) {
+            paintForm();
+        }
+    }//GEN-LAST:event_jTable1KeyReleased
+    
+    
     /**
      * @param args the command line arguments
      */

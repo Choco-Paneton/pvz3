@@ -90,6 +90,11 @@ public class JpProductos extends javax.swing.JPanel {
         buttonClass1.setFocusable(false);
         buttonClass1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClass1.setVerifyInputWhenFocusTarget(false);
+        buttonClass1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(51, 102, 255));
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -132,7 +137,7 @@ public class JpProductos extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 2, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
@@ -168,7 +173,7 @@ public class JpProductos extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -75,5 +75,26 @@ public class ProveedorData {
         return comit;
     }
     
+    public static int delete(int id)  throws Exception{
+        int comit = 0;
+        String sql = "DELETE FROM proveedor WHERE id = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            comit = ps.executeUpdate();
+            
+            /*try {
+                    d.setFecha(sdf.parse(rs.getString("fecha")));
+                } catch (Exception e) {
+                }*/
+            
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "delete", ex);
+            // System.err.println("NO del " + ex.toString());
+            throw new Exception("Persona_id:" + ex.getMessage());
+        }
+        return comit;
+    }
+    
 
 }

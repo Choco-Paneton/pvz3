@@ -24,14 +24,14 @@ public class VentaData {
     
     static SimpleDateFormat sdf = new SimpleDateFormat(SQLiteConfig.DEFAULT_DATE_STRING_FORMAT);
     
-    static Date dateNow = new Date();
-    static String currentTime = sdf.format(dateNow);
+    static Date dateNowSale = new Date();
+    static String currentTime = sdf.format(dateNowSale);
     
     public static int create(Venta v) {
         int rsId = 0;
         String[] returns = {"id"};
-        String sql = "INSERT INTO venta(fecha_venta, cliente_id, "
-                + ") "
+        String sql = "INSERT INTO venta(fecha_venta, cliente_id)"
+                + " "
                 + "VALUES(?,?)";
         int i = 0;
         try {

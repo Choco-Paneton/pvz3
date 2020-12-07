@@ -1,23 +1,31 @@
 
 package gui.complements.jDialogs;
 
+import data.CategoriaData;
 import data.ProductoData;
+import entities.Categoria;
 import entities.Producto;
+import gui.complements.jPanels.JpProductos;
+import gui.main.Tiendita;
 import gui.model.CategoriaModel;
 import gui.model.ProductoModel;
 import java.awt.Component;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 public class JdCategoria extends javax.swing.JDialog {
     
     ProductoModel productoModel = new ProductoModel();
+    
     private CategoriaModel categoriaModel;
     JDialog op;
-    private Producto p;
+    private Categoria c;
     
     public JdCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -30,25 +38,23 @@ public class JdCategoria extends javax.swing.JDialog {
     }
     
     private void getOptionPane() {
-        if (op != null) {
-            return;
-        }
-        Component pdr = this.getParent();
-        while (pdr.getParent() != null) {
-            if (pdr instanceof JDialog) {
-                op = (JDialog) pdr;
-                break;
-            }
-            pdr = pdr.getParent();
-        }
+        this.dispose();
     }
     
     private void paintForm() {
-        getOptionPane();
         if (jTable1.getSelectedRow() != -1) {
-            Producto filaEncontrada = (Producto) productoModel.getRow(jTable1.getSelectedRow());
-            p = ProductoData.getByPId(filaEncontrada.getId());
+            Categoria filaEncontrada = (Categoria) categoriaModel.getRow(jTable1.getSelectedRow());
+            c = CategoriaData.getByPId(filaEncontrada.getId());
         }
+        getOptionPane();
+    }
+    
+    public int getCategoriaId() {
+        return c.getId();
+    }
+    
+    public String getCategoriaNombre() {
+        return c.getNombre_categoria();
     }
 
     private void tableEnterSolve() {
@@ -223,6 +229,16 @@ public class JdCategoria extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jTable1KeyReleased
     
+    public Frame getParent() {
+       JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts); 
+        Frame parentFrame = null; 
+        if (parentWindow instanceof Tiendita) { 
+            parentFrame = (Tiendita)parentWindow; 
+            return parentFrame;
+        }  
+        return null;
+    }
     
     /**
      * @param args the command line arguments

@@ -1,17 +1,28 @@
 
 package gui.complements.jDialogs;
 
+import data.CategoriaData;
 import data.ProductoData;
 import entities.Producto;
+import gui.complements.jPanels.JpProductos;
+import gui.main.Tiendita;
+import gui.model.CategoriaModel;
+import gui.model.ProductoModel;
+import java.awt.Frame;
+import java.awt.Window;
+import javax.swing.SwingUtilities;
+import util.ChangePanel;
 import util.TextPrompt;
 
 public class JdNuevoProducto extends javax.swing.JDialog {
-
+    
+    JdCategoria jdCategoria = new JdCategoria(getParent(), true);
     public JdNuevoProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         placeHolder();
+        
     }
     
     private void placeHolder() {
@@ -49,9 +60,9 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         jCheckBox2 = new javax.swing.JCheckBox();
         buttonClass2 = new gui.styles.button.ButtonClass();
         buttonClass3 = new gui.styles.button.ButtonClass();
-        buttonClass4 = new gui.styles.button.ButtonClass();
         jTextField5 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
+        buttonClass4 = new gui.styles.button.ButtonClass();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -143,6 +154,14 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         buttonClass3.setFocusable(false);
         buttonClass3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
 
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField5.setBorder(null);
+
+        jSeparator5.setBackground(new java.awt.Color(51, 51, 51));
+
         buttonClass4.setBackground(new java.awt.Color(30, 136, 229));
         buttonClass4.setText("Elige categoria");
         buttonClass4.setColorHover(new java.awt.Color(27, 122, 206));
@@ -154,13 +173,6 @@ public class JdNuevoProducto extends javax.swing.JDialog {
                 buttonClass4ActionPerformed(evt);
             }
         });
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField5.setBorder(null);
-
-        jSeparator5.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -179,9 +191,17 @@ public class JdNuevoProducto extends javax.swing.JDialog {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField5)
-                            .addComponent(buttonClass4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(buttonClass4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,15 +210,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                             .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(71, 71, 71))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(71, 71, 71))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,9 +239,9 @@ public class JdNuevoProducto extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox2)))
-                .addGap(28, 28, 28)
+                .addGap(34, 34, 34)
                 .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,27 +286,48 @@ public class JdNuevoProducto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void setTexty() {
 
+        jTextField5.setText(jdCategoria.getCategoriaNombre());
+    }
+    
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
         Producto p = new Producto();
-        
+        JpProductos jpProductos = new JpProductos();
+        //ProductoModel model = new ProductoModel();
         p.setNombre_producto(jTextField1.getText());
         p.setDescription(jTextField2.getText());
         p.setCantidad(Integer.parseInt(jTextField3.getText()));
         p.setPrecio_unitario(Float.parseFloat(jTextField4.getText()));
+        p.setCategoria_id(1);
         p.setStatus(false);
         p.setIgv(true);
-        
         ProductoData.create(p);
+        jpProductos.paintTable(jpProductos.productoModel);
+        this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
-
+    
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
+        JdCategoria jdCategoria = new JdCategoria(getParent(), true); 
+        jdCategoria.setVisible(true);
     }//GEN-LAST:event_buttonClass4ActionPerformed
-
+    
+    public Frame getParent() {
+       JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts); 
+        Frame parentFrame = null; 
+        if (parentWindow instanceof Tiendita) { 
+            parentFrame = (Tiendita)parentWindow; 
+            return parentFrame;
+        }  
+        return null;
+    }
+    
     /**
      * @param args the command line arguments
      */

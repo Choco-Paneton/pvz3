@@ -22,8 +22,9 @@ public class ProductoData {
         int rsId = 0;
         String[] returns = {"id"};
         String sql = "INSERT INTO Producto(descripcion, nombre_producto, "
-                + "cantidad, status, igv, precio_unitario, precio_sub_total) "
-                + "VALUES(?,?,?,?,?,?)";
+                + "cantidad, status, igv, precio_unitario, precio_sub_total, "
+                + "categoria_id) "
+                + "VALUES(?,?,?,?,?,?,?,?)";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
@@ -34,6 +35,7 @@ public class ProductoData {
             ps.setBoolean(++i, p.isIgv());
             ps.setFloat(++i, p.getPrecio_unitario());
             ps.setFloat(++i, p.getPrecio_sub_total());
+            ps.setInt(++i, p.getCategoria_id());
             rsId = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {

@@ -121,4 +121,24 @@ public class CategoriaData {
         }
         return p;
     }
+    
+    public static Categoria getNombreById(int id) {
+        
+        Categoria p = new Categoria();
+
+        String sql = "SELECT * FROM Categoria WHERE id = ? ";
+        int i = 0;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(++i, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p.setId(rs.getInt("id"));
+                p.setNombre_categoria(rs.getString("nombre_categoria"));
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPId", ex);
+        }
+        return p;
+    }
 }

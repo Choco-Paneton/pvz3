@@ -85,7 +85,7 @@ public class CategoriaData {
             sql = "SELECT * FROM Categoria ORDER BY id";
         } else {
             sql = "SELECT * FROM Categoria WHERE (id LIKE'" + filter + 
-                    "%') " + "ORDER BY id";
+                    "%' OR nombre_categoria LIKE '" + filter + "%') " + "ORDER BY id";
         }
         try {
             Statement st = cn.createStatement();
@@ -103,6 +103,26 @@ public class CategoriaData {
     }
 
     public static Categoria getByPId(int id) {
+        
+        Categoria p = new Categoria();
+
+        String sql = "SELECT * FROM Categoria WHERE id = ? ";
+        int i = 0;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(++i, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p.setId(rs.getInt("id"));
+                p.setNombre_categoria(rs.getString("nombre_categoria"));
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPId", ex);
+        }
+        return p;
+    }
+    
+    public static Categoria getNombreById(int id) {
         
         Categoria p = new Categoria();
 

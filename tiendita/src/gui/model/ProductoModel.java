@@ -40,7 +40,7 @@ public class ProductoModel extends AbstractTableModel {
                 }
                 return "no";
             case 5:
-                if (p.isStatus()) {
+                if (p.isIgv()) {
                     return "si";
                 }
                 return "no";

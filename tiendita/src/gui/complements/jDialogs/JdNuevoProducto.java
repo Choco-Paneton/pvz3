@@ -1,28 +1,35 @@
 
 package gui.complements.jDialogs;
 
-import data.CategoriaData;
 import data.ProductoData;
+import entities.Categoria;
 import entities.Producto;
 import gui.complements.jPanels.JpProductos;
 import gui.main.Tiendita;
-import gui.model.CategoriaModel;
-import gui.model.ProductoModel;
 import java.awt.Frame;
 import java.awt.Window;
 import javax.swing.SwingUtilities;
-import util.ChangePanel;
 import util.TextPrompt;
 
 public class JdNuevoProducto extends javax.swing.JDialog {
     
-    JdCategoria jdCategoria = new JdCategoria(getParent(), true);
+    JdCategoria jdCategoria = new JdCategoria(getParent(), false);
+    
+    private static Categoria categoria;
+    
     public JdNuevoProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         placeHolder();
-        
+    }
+    
+    public static void setCategoria(Categoria categoria) {
+        JdNuevoProducto.categoria = categoria;
+    }
+    
+    public static Categoria getCategoria() {
+        return categoria;
     }
     
     private void placeHolder() {
@@ -154,7 +161,6 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         buttonClass3.setFocusable(false);
         buttonClass3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
 
-        jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -287,24 +293,16 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setTexty() {
-
-        jTextField5.setText(jdCategoria.getCategoriaNombre());
-    }
-    
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
         Producto p = new Producto();
-        JpProductos jpProductos = new JpProductos();
-        //ProductoModel model = new ProductoModel();
         p.setNombre_producto(jTextField1.getText());
         p.setDescription(jTextField2.getText());
         p.setCantidad(Integer.parseInt(jTextField3.getText()));
         p.setPrecio_unitario(Float.parseFloat(jTextField4.getText()));
-        p.setCategoria_id(1);
+        p.setCategoria_id(getCategoria().getId());
         p.setStatus(false);
         p.setIgv(true);
         ProductoData.create(p);
-        jpProductos.paintTable(jpProductos.productoModel);
         this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
     
@@ -391,6 +389,6 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    public static javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

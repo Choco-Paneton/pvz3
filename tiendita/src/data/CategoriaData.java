@@ -85,7 +85,7 @@ public class CategoriaData {
             sql = "SELECT * FROM Categoria ORDER BY id";
         } else {
             sql = "SELECT * FROM Categoria WHERE (id LIKE'" + filter + 
-                    "%') " + "ORDER BY id";
+                    "%' OR nombre_categoria LIKE '" + filter + "%') " + "ORDER BY id";
         }
         try {
             Statement st = cn.createStatement();

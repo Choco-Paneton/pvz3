@@ -165,9 +165,9 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
                                 .addComponent(jLabel3))
-                            .addComponent(buttonClass1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPasswordField1))))
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(buttonClass1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(81, Short.MAX_VALUE))
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -234,9 +234,9 @@ public class Login extends javax.swing.JFrame {
         String pass = new String(arrayC);
 
         if (jTextField2.getText().equals("choco") && pass.equals("1234")) {
-            this.setVisible(false);
             Tiendita tiendita = new Tiendita();
             tiendita.setVisible(true);
+            this.setVisible(false);
         } else {
             jLabel4.setBackground(new Color(255,51,51));
         }

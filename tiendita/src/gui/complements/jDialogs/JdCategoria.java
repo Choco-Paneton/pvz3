@@ -36,25 +36,19 @@ public class JdCategoria extends javax.swing.JDialog {
         tableEnterSolve();
         jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    
-    private void getOptionPane() {
-        this.dispose();
-    }
-    
+        
     private void paintForm() {
         if (jTable1.getSelectedRow() != -1) {
             Categoria filaEncontrada = (Categoria) categoriaModel.getRow(jTable1.getSelectedRow());
             c = CategoriaData.getByPId(filaEncontrada.getId());
+            JdNuevoProducto.setCategoria(c);
+            JdNuevoProducto.jTextField5.setText(c.getNombre_categoria());
         }
-        getOptionPane();
+        this.setVisible(false);
     }
     
-    public int getCategoriaId() {
-        return c.getId();
-    }
-    
-    public String getCategoriaNombre() {
-        return c.getNombre_categoria();
+    public Categoria getCategoria() {
+        return c;
     }
 
     private void tableEnterSolve() {

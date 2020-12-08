@@ -67,6 +67,7 @@ public class JpCategoria extends javax.swing.JPanel {
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setFocusTraversalPolicyProvider(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -93,7 +94,6 @@ public class JpCategoria extends javax.swing.JPanel {
         buttonClass1.setFocusable(false);
         buttonClass1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
         jTextField1.setBorder(null);
 

@@ -4,7 +4,7 @@ package gui.main;
 public class Main {
     
     public static void main(String[] args) {
-        Tiendita tiendita = new Tiendita();
+        Login tiendita = new Login();
         tiendita.setVisible(true);
     } 
 }

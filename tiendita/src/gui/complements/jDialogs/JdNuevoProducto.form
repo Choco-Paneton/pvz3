@@ -318,6 +318,7 @@
                           <Color blue="33" green="33" red="33" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Status"/>
+                        <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jCheckBox2">
@@ -332,6 +333,7 @@
                           <Color blue="33" green="33" red="33" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Igv"/>
+                        <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
@@ -372,6 +374,9 @@
                           <Font name="Microsoft JhengHei UI" size="16" style="1"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass3ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField5">
                       <Properties>

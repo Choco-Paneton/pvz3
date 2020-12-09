@@ -1,14 +1,19 @@
 
 package gui.complements.jPanels;
 
+import data.LoginData;
+import entities.Logine;
 import gui.main.Login;
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JOptionPane;
 import util.ChangePanel;
 import util.TextPrompt;
 
 public class JpLoginCrear extends javax.swing.JPanel {
-
+    
+    LoginData loginData = new LoginData();
+    
     public JpLoginCrear() {
         initComponents();
         placeHolder();
@@ -71,7 +76,7 @@ public class JpLoginCrear extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,6 +116,11 @@ public class JpLoginCrear extends javax.swing.JPanel {
         buttonClass2.setColorNormal(new java.awt.Color(11, 65, 148));
         buttonClass2.setFocusable(false);
         buttonClass2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
@@ -147,6 +157,11 @@ public class JpLoginCrear extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel5)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
@@ -159,14 +174,9 @@ public class JpLoginCrear extends javax.swing.JPanel {
                             .addComponent(jSeparator8)
                             .addComponent(jSeparator9)
                             .addComponent(jSeparator10)
-                            .addComponent(buttonClass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
-                .addContainerGap(72, Short.MAX_VALUE))
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonClass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(74, Short.MAX_VALUE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +207,7 @@ public class JpLoginCrear extends javax.swing.JPanel {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -215,7 +225,7 @@ public class JpLoginCrear extends javax.swing.JPanel {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGap(0, 522, Short.MAX_VALUE)
         );
 
         jPanel9.add(jPanel8, java.awt.BorderLayout.LINE_START);
@@ -230,14 +240,13 @@ public class JpLoginCrear extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        
+
         if (!jTextField5.getText().equals("") || !jTextField6.getText().equals("") || !jTextField7.getText().equals("") || !jTextField8.getText().equals("")) {
-            //int index = JOptionPane.showConfirmDialog(this, "¿Seguro deseas salir? \n estas en proceso", "Salir", 1);
             String [] botones = {"SI", "NO"};
             int index = JOptionPane.showOptionDialog(this, "¿Seguro deseas salir? \n estas en proceso", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botones, botones[0]);
             if (index == 0) {
@@ -256,6 +265,41 @@ public class JpLoginCrear extends javax.swing.JPanel {
         jLabel6.setFont(new Font(jLabel6.getFont().getFamily(), Font.BOLD, 14));
     }//GEN-LAST:event_jLabel6MouseExited
 
+    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
+        Logine log = new Logine();
+        
+        char[] arrayC = jPasswordField2.getPassword();
+        String pass = new String(arrayC);
+        
+        if (!jTextField5.getText().equals("") &&
+                !jTextField6.getText().equals("") &&
+                !jTextField7.getText().equals("") && 
+                !jTextField8.getText().equals("") &&
+                !pass.equals("")
+                ){
+            log.setNombre(jTextField5.getText());
+            log.setApellido_paterno(jTextField6.getText());
+            log.setApellido_materno(jTextField7.getText());
+            log.setUsuario(jTextField8.getText());
+            log.setPassword(pass);
+        
+            if (log != null) {
+                JOptionPane.showMessageDialog(this, "Se creó correctamente la cuenta, GRACIAS");
+                loginData.create(log);
+                ChangePanel changePanel = new ChangePanel(jPanel1, new Login().jPanel5);
+            }
+        } else if (jTextField8.equals("")){
+            jLabel7.setBackground(new Color(255,51,51));
+        } else if (pass.equals("")){
+            jLabel7.setBackground(new Color(255,51,51));
+        } else if (jTextField7.equals("")) {
+            jLabel7.setBackground(new Color(255,51,51));
+        } else if (jTextField6.equals("")) {
+            jLabel7.setBackground(new Color(255,51,51));
+        } else {
+            jLabel7.setBackground(new Color(255,51,51));
+        }
+    }//GEN-LAST:event_buttonClass2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private gui.styles.button.ButtonClass buttonClass2;

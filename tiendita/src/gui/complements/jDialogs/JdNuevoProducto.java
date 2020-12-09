@@ -132,11 +132,13 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         jCheckBox1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox1.setText("Status");
+        jCheckBox1.setFocusable(false);
 
         jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox2.setText("Igv");
+        jCheckBox2.setFocusable(false);
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox2ActionPerformed(evt);
@@ -160,6 +162,11 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         buttonClass3.setColorNormal(new java.awt.Color(244, 67, 54));
         buttonClass3.setFocusable(false);
         buttonClass3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
+        buttonClass3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass3ActionPerformed(evt);
+            }
+        });
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
@@ -314,6 +321,10 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         JdCategoria jdCategoria = new JdCategoria(getParent(), true); 
         jdCategoria.setVisible(true);
     }//GEN-LAST:event_buttonClass4ActionPerformed
+
+    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_buttonClass3ActionPerformed
     
     public Frame getParent() {
        JpProductos jpProducts = new JpProductos();

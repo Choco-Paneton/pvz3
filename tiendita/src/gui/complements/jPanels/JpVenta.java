@@ -1,7 +1,6 @@
 
 package gui.complements.jPanels;
 
-<<<<<<< HEAD
 import data.ClienteData;
 import entities.Cliente;
 import gui.complements.jDialogs.JdNuevoProducto;
@@ -23,10 +22,6 @@ public class JpVenta extends javax.swing.JPanel {
     public DefaultComboBoxModel clientesComboModel;
     public List<Cliente> clientes;
     
-=======
-public class JpVenta extends javax.swing.JPanel {
-
->>>>>>> a260a21c9c0a4a2f8b65ca06e22f40245f5a80a9
     public JpVenta() {
         initComponents();
         
@@ -62,7 +57,6 @@ public class JpVenta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -247,7 +241,7 @@ public class JpVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -262,21 +256,4 @@ public class JpVenta extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-=======
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
->>>>>>> a260a21c9c0a4a2f8b65ca06e22f40245f5a80a9
-    // End of variables declaration//GEN-END:variables
 }

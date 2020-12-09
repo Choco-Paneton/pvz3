@@ -9,21 +9,23 @@ package entities;
  *
  * @author Jhoselyn
  */
-public class Cliente {
+public class Cliente extends Persona {
     
-    private int id;
+    private int idc;
     private String ruc;
     private String telefono;
     private String email;
     public int persona_id;
-
     
-    public int getId() {
-        return id;
+    public Cliente() {
+    }
+    
+    public int getIdc() {
+        return idc;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdc(int idc) {
+        this.idc = idc;
     }
 
     public String getRuc() {

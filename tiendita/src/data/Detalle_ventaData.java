@@ -136,5 +136,52 @@ public class Detalle_ventaData {
         }
         return ls;
     }
+    
+    public static Detalle_venta getById(int id){
+        Detalle_venta vd = new Detalle_venta();
+        String sql = "SELECT * FROM detalle_venta WHERE id = ? ";
+        int i = 0;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(++i, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                vd.setId(rs.getInt("id"));
+                vd.setCantidad(rs.getInt("cantidad"));
+                vd.setPrecio_unitario(rs.getFloat("precio_unitario"));
+                vd.setPrecio_total_producto(rs.getFloat("precio_total_producto"));
+                vd.setProducto_id(rs.getInt("producto_id"));
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "list", ex);
+        }
+        return vd;
+    }
+    
+    public static List<Detalle_venta> listByVenta(int idv){
+        List<Detalle_venta> lvd = new ArrayList();
+        String sql = "";
+        
+        sql = "SELECT * FROM detalle_venta "
+                + "WHERE venta_id = " + idv + " ORDER BY id";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Detalle_venta d = new Detalle_venta();
+                d.setId(rs.getInt("id"));
+                d.setCantidad(rs.getInt("cantidad"));
+                d.setPrecio_unitario(rs.getFloat("precio_unitario"));
+                d.setPrecio_total_producto(rs.getFloat("precio_total_producto"));
+
+                d.setProducto_id(rs.getInt("producto_id"));
+                lvd.add(d);
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "list", ex);
+        }
+        
+        return lvd;
+    }
 
 }

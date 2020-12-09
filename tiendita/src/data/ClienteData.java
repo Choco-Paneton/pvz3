@@ -80,6 +80,13 @@ public class ClienteData {
         }
         return comit;
     }
+    
+    public static List<Cliente> listCombo(String f){
+        List<Cliente> listCliente = new ArrayList();
+        listCliente.add(new Cliente());
+        listCliente.addAll(list(f));
+        return listCliente;
+    }
 
     public static List<Cliente> list(String filter) {
         String filtert = null;
@@ -94,9 +101,9 @@ public class ClienteData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM clientes ORDER BY id";
+            sql = "SELECT * FROM cliente ORDER BY id";
         } else {
-            sql = "SELECT * FROM clientes WHERE (id LIKE'" + filter + "%' OR "
+            sql = "SELECT * FROM cliente WHERE (id LIKE'" + filter + "%' OR "
                     + "nombres LIKE'" + filter + "%' OR info_adic LIKE'" + filter + "%' OR "
                     + "id LIKE'" + filter + "%') "
                     + "ORDER BY nombres";

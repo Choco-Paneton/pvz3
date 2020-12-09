@@ -43,8 +43,11 @@ public class ProductoData {
                 }
                 rs.close();
             }
+            //ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
+        } finally{
+            //Coon_sqlite.closeSQLite(cn);
         }
         return rsId;
     }
@@ -75,6 +78,8 @@ public class ProductoData {
             ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -86,9 +91,12 @@ public class ProductoData {
             ps = cn.prepareStatement(sql);
             ps.setInt(1, id);
             comit = ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             throw new Exception("Detalle:" + ex.getMessage());
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -132,6 +140,8 @@ public class ProductoData {
             rs.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
+        } finally {
+            //Coon_sqlite.closeSQLite(cn);
         }
         return ls;
     }
@@ -159,6 +169,8 @@ public class ProductoData {
             ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return p;
     }

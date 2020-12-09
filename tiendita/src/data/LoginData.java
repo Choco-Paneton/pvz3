@@ -39,8 +39,11 @@ public class LoginData {
                 }
                 rs.close();
             }
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return rsId;
     }
@@ -64,8 +67,11 @@ public class LoginData {
             ps.setString(++i, p.getPassword());
             ps.setInt(++i, p.getId());
             comit = ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -77,9 +83,12 @@ public class LoginData {
             ps = cn.prepareStatement(sql);
             ps.setInt(1, id);
             comit = ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             throw new Exception("Detalle:" + ex.getMessage());
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -121,8 +130,11 @@ public class LoginData {
                 
                 ls.add(p);
             }
+            st.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return ls;
     }
@@ -140,8 +152,11 @@ public class LoginData {
                     return true;
                 }
             }
+            rs.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return false;
     }
@@ -164,8 +179,11 @@ public class LoginData {
                 p.setUsuario(rs.getString("usuario"));
                 p.setPassword(rs.getString("password"));
             }
+            rs.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return p;
     }

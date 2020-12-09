@@ -35,6 +35,8 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return rsId;
     }
@@ -52,6 +54,8 @@ public class CategoriaData {
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -66,6 +70,8 @@ public class CategoriaData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             throw new Exception("Detalle:" + ex.getMessage());
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -98,6 +104,8 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
+        } finally {
+            //Coon_sqlite.closeSQLite(cn);
         }
         return ls;
     }
@@ -118,6 +126,8 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
+        } finally {
+            //Coon_sqlite.closeSQLite(cn);
         }
         return p;
     }
@@ -138,6 +148,8 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
         }
         return p;
     }

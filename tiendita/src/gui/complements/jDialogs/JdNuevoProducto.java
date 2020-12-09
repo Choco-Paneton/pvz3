@@ -168,6 +168,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
             }
         });
 
+        jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);

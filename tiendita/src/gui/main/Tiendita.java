@@ -1,15 +1,20 @@
 
 package gui.main;
 
+import gui.complements.jDialogs.JdAsojito;
+import gui.complements.jDialogs.JdNuevoProducto;
 import gui.complements.jPanels.JpCategorias;
 import gui.complements.jPanels.JpClientes;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
 import gui.complements.jPanels.JpVenta;
+import java.awt.Frame;
 import java.awt.Image;
+import java.awt.Window;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import util.ChangePanel;
 
 public class Tiendita extends javax.swing.JFrame {
@@ -68,16 +73,20 @@ public class Tiendita extends javax.swing.JFrame {
         jpCliente.setBackground(new java.awt.Color(13, 71, 161));
 
         btnUser.setBackground(new java.awt.Color(13, 71, 161));
-        btnUser.setText("Saul yS");
+        btnUser.setText("Asojito");
         btnUser.setColorHover(new java.awt.Color(12, 67, 152));
         btnUser.setColorNormal(new java.awt.Color(13, 71, 161));
         btnUser.setFocusable(false);
         btnUser.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUserActionPerformed(evt);
+            }
+        });
 
         lblCorreo1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
         lblCorreo1.setForeground(new java.awt.Color(255, 255, 255));
         lblCorreo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCorreo1.setText("saul.ytucayasi");
         lblCorreo1.setVerifyInputWhenFocusTarget(false);
         lblCorreo1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
@@ -280,6 +289,17 @@ public class Tiendita extends javax.swing.JFrame {
         ChangePanel change = new ChangePanel(jpMainChange, new JpVenta());
     }//GEN-LAST:event_btnVentaActionPerformed
 
+    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+        JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdAsojito jdNewProduct = new JdAsojito(parentFrame, true);
+        jdNewProduct.setVisible(true);
+    }//GEN-LAST:event_btnUserActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -328,6 +348,6 @@ public class Tiendita extends javax.swing.JFrame {
     private javax.swing.JPanel jpMainChange;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpMenuButtons;
-    private javax.swing.JLabel lblCorreo1;
+    public static javax.swing.JLabel lblCorreo1;
     // End of variables declaration//GEN-END:variables
 }

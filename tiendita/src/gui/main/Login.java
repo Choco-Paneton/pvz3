@@ -277,6 +277,7 @@ public class Login extends javax.swing.JFrame {
             Tiendita tiendita = new Tiendita();
             tiendita.setVisible(true);
             this.setVisible(false);
+            Tiendita.lblCorreo1.setText(log.getUsuario());
         } else {
             jLabel4.setBackground(new Color(255,51,51));
         }

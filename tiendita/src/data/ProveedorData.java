@@ -95,6 +95,4 @@ public class ProveedorData {
         }
         return comit;
     }
-    
-
 }

@@ -72,6 +72,7 @@ public class ProductoData {
             ps.setFloat(++i, p.getPrecio_sub_total());
             ps.setInt(++i, p.getId());
             comit = ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
         }
@@ -128,6 +129,7 @@ public class ProductoData {
                 p.setPrecio_sub_total(rs.getFloat("precio_sub_total"));
                 ls.add(p);
             }
+            rs.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
         }
@@ -154,6 +156,7 @@ public class ProductoData {
                 p.setPrecio_unitario(rs.getFloat("precio_unitario"));
                 p.setPrecio_sub_total(rs.getFloat("precio_sub_total"));
             }
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
         }

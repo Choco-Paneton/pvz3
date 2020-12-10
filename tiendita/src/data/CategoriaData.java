@@ -15,9 +15,9 @@ public class CategoriaData {
 
     static Connection cn = Coon_sqlite.connectSQLite();
     static PreparedStatement ps;
-    static ErrorLogger log = new ErrorLogger(ProductoData.class.getName());
+    static ErrorLogger log = new ErrorLogger(CategoriaData.class.getName());
 
-    public static int create(Categoria p) {
+    public static int create(Categoria c) {
         int rsId = 0;
         String[] returns = {"id"};
         String sql = "INSERT INTO Categoria(nombre_categoria) "
@@ -25,7 +25,7 @@ public class CategoriaData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
-            ps.setString(++i, p.getNombre_categoria());
+            ps.setString(++i, c.getNombre_categoria());
             rsId = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
@@ -41,7 +41,7 @@ public class CategoriaData {
         return rsId;
     }
 
-    public static int update(Categoria p) {
+    public static int update(Categoria c) {
         int comit = 0;
         String sql = "UPDATE Categoria SET "
                 + "nombre_categoria = ? "
@@ -49,8 +49,8 @@ public class CategoriaData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(++i, p.getNombre_categoria());
-            ps.setInt(++i, p.getId());
+            ps.setString(++i, c.getNombre_categoria());
+            ps.setInt(++i, c.getId());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -97,10 +97,10 @@ public class CategoriaData {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Categoria p = new Categoria();
-                p.setId(rs.getInt("id"));
-                p.setNombre_categoria(rs.getString("nombre_categoria"));
-                ls.add(p);
+                Categoria c = new Categoria();
+                c.setId(rs.getInt("id"));
+                c.setNombre_categoria(rs.getString("nombre_categoria"));
+                ls.add(c);
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
@@ -112,7 +112,7 @@ public class CategoriaData {
 
     public static Categoria getByPId(int id) {
         
-        Categoria p = new Categoria();
+        Categoria c = new Categoria();
 
         String sql = "SELECT * FROM Categoria WHERE id = ? ";
         int i = 0;
@@ -121,20 +121,20 @@ public class CategoriaData {
             ps.setInt(++i, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setId(rs.getInt("id"));
-                p.setNombre_categoria(rs.getString("nombre_categoria"));
+                c.setId(rs.getInt("id"));
+                c.setNombre_categoria(rs.getString("nombre_categoria"));
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
         } finally {
             //Coon_sqlite.closeSQLite(cn);
         }
-        return p;
+        return c;
     }
     
     public static Categoria getNombreById(int id) {
         
-        Categoria p = new Categoria();
+        Categoria c = new Categoria();
 
         String sql = "SELECT * FROM Categoria WHERE id = ? ";
         int i = 0;
@@ -143,14 +143,14 @@ public class CategoriaData {
             ps.setInt(++i, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setId(rs.getInt("id"));
-                p.setNombre_categoria(rs.getString("nombre_categoria"));
+                c.setId(rs.getInt("id"));
+                c.setNombre_categoria(rs.getString("nombre_categoria"));
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
         } finally {
             Coon_sqlite.closeSQLite(cn);
         }
-        return p;
+        return c;
     }
 }

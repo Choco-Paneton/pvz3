@@ -2,7 +2,6 @@
 package gui.model;
 
 import data.CategoriaData;
-import data.ProductoData;
 import entities.Categoria;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class CategoriaModel extends AbstractTableModel {
     public CategoriaModel() {
         list = CategoriaData.list("");
     }
-
     public CategoriaModel(String filter) {
 
         list = CategoriaData.list(filter);

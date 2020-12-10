@@ -12,12 +12,12 @@ import java.util.logging.Level;
 import util.ErrorLogger;
 
 public class CategoriaData {
-
-    static Connection cn = Coon_sqlite.connectSQLite();
-    static PreparedStatement ps;
+    
     static ErrorLogger log = new ErrorLogger(CategoriaData.class.getName());
 
     public static int create(Categoria c) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int rsId = 0;
         String[] returns = {"id"};
         String sql = "INSERT INTO Categoria(nombre_categoria) "
@@ -42,6 +42,8 @@ public class CategoriaData {
     }
 
     public static int update(Categoria c) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "UPDATE Categoria SET "
                 + "nombre_categoria = ? "
@@ -61,6 +63,8 @@ public class CategoriaData {
     }
 
     public static int delete(int id) throws Exception {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "DELETE FROM Categoria WHERE id = ? ";
         try {
@@ -77,6 +81,8 @@ public class CategoriaData {
     }
 
     public static List<Categoria> list(String filter) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         String filtert = null;
         if (filter == null) {
             filtert = "";
@@ -111,6 +117,8 @@ public class CategoriaData {
     }
 
     public static Categoria getByPId(int id) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         
         Categoria c = new Categoria();
 
@@ -133,6 +141,8 @@ public class CategoriaData {
     }
     
     public static Categoria getNombreById(int id) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         
         Categoria c = new Categoria();
 

@@ -104,7 +104,6 @@ public class Detalle_ventaData {
         } else {
             filtert = filter;
         }
-        System.out.println("list.filtert:" + filtert);
 
         List<Detalle_venta> ls = new ArrayList();
 

@@ -14,11 +14,16 @@ import util.ErrorLogger;
 
 public class LoginData {
 
-    static Connection cn = Coon_sqlite.connectSQLite();
-    static PreparedStatement ps;
+    //static Connection cn = Coon_sqlite.connectSQLite();
+    //static PreparedStatement ps;
+    
     static ErrorLogger log = new ErrorLogger(ProductoData.class.getName());
 
     public static int create(Logine p) {
+        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
+        
         int rsId = 0;
         String[] returns = {"id"};
         String sql = "INSERT INTO login(nombre, apellido_paterno, "
@@ -49,6 +54,8 @@ public class LoginData {
     }
 
     public static int update(Logine p) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "UPDATE login SET "
                 + "nombre=?, "
@@ -77,6 +84,8 @@ public class LoginData {
     }
 
     public static int delete(int id) throws Exception {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "DELETE FROM login WHERE id = ? ";
         try {
@@ -94,6 +103,8 @@ public class LoginData {
     }
 
     public static List<Logine> list(String filter) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         String filtert = null;
         if (filter == null) {
             filtert = "";
@@ -140,6 +151,8 @@ public class LoginData {
     }
     
     public static boolean list(Logine l) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         
         String sql = "SELECT usuario, password FROM login";
         try {
@@ -162,6 +175,8 @@ public class LoginData {
     }
  
     public static Logine getByPId(int id) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         
         Logine p = new Logine();
 

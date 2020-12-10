@@ -1,8 +1,15 @@
 
 package gui.complements.jPanels;
 
+import gui.complements.jDialogs.JdNuevoCategoria;
+import gui.complements.jDialogs.JdEliminarCategoria;
+import gui.main.Tiendita;
 import gui.model.CategoriaModel;
+import gui.styles.table.StyleTableHeader;
+import java.awt.Frame;
+import java.awt.Window;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 public class JpCategorias extends javax.swing.JPanel {
     
@@ -32,10 +39,12 @@ public class JpCategorias extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        buttonClass1 = new gui.styles.button.ButtonClass();
+        buttonEliminar = new gui.styles.button.ButtonClass();
         jLabel2 = new javax.swing.JLabel();
         buscarField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        buttonClass2 = new gui.styles.button.ButtonClass();
+        buttonModificar = new gui.styles.button.ButtonClass();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -49,7 +58,7 @@ public class JpCategorias extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Productos");
+        jLabel1.setText("Categorias");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -71,15 +80,15 @@ public class JpCategorias extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonClass1.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass1.setText("Agregar");
-        buttonClass1.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass1.setFocusable(false);
-        buttonClass1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass1.setVerifyInputWhenFocusTarget(false);
-        buttonClass1.addActionListener(new java.awt.event.ActionListener() {
+        buttonEliminar.setBackground(new java.awt.Color(13, 71, 161));
+        buttonEliminar.setText("Eliminar");
+        buttonEliminar.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonEliminar.setFocusable(false);
+        buttonEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonEliminar.setVerifyInputWhenFocusTarget(false);
+        buttonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass1ActionPerformed(evt);
+                buttonEliminarActionPerformed(evt);
             }
         });
 
@@ -88,7 +97,6 @@ public class JpCategorias extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("icon");
 
-        buscarField.setBackground(new java.awt.Color(255, 255, 255));
         buscarField.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         buscarField.setForeground(new java.awt.Color(51, 51, 51));
         buscarField.setBorder(null);
@@ -103,6 +111,30 @@ public class JpCategorias extends javax.swing.JPanel {
             }
         });
 
+        buttonClass2.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass2.setText("Agregar");
+        buttonClass2.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass2.setFocusable(false);
+        buttonClass2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass2.setVerifyInputWhenFocusTarget(false);
+        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass2ActionPerformed(evt);
+            }
+        });
+
+        buttonModificar.setBackground(new java.awt.Color(13, 71, 161));
+        buttonModificar.setText("Modificar");
+        buttonModificar.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonModificar.setFocusable(false);
+        buttonModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonModificar.setVerifyInputWhenFocusTarget(false);
+        buttonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -114,26 +146,29 @@ public class JpCategorias extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator1)
                     .addComponent(buscarField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_START);
@@ -162,14 +197,14 @@ public class JpCategorias extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -191,14 +226,38 @@ public class JpCategorias extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buscarFieldActionPerformed
 
-    private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-        
-    }//GEN-LAST:event_buttonClass1ActionPerformed
+    private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
+        JpCategorias jpCategorys = new JpCategorias();
+        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdEliminarCategoria jpNewCategorys = new JdEliminarCategoria(parentFrame, true);
+        jpNewCategorys.setVisible(true);
+    }//GEN-LAST:event_buttonEliminarActionPerformed
+
+    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
+        JpCategorias jpCategorys = new JpCategorias();
+        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdNuevoCategoria jpNewCategorys = new JdNuevoCategoria(parentFrame, true);
+        jpNewCategorys.setVisible(true);
+    }//GEN-LAST:event_buttonClass2ActionPerformed
+
+    private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
-    private gui.styles.button.ButtonClass buttonClass1;
+    private gui.styles.button.ButtonClass buttonClass2;
+    private gui.styles.button.ButtonClass buttonEliminar;
+    private gui.styles.button.ButtonClass buttonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

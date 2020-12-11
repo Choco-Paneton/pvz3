@@ -19,12 +19,14 @@ import util.ChangePanel;
 
 public class Tiendita extends javax.swing.JFrame {
 
-    public Tiendita() {
+    public Tiendita() {     
+        Login login = new Login();
         initComponents();
         ChangePanel change = new ChangePanel(jpMainChange, new JpHogar());
         setLocationRelativeTo(null);
         btnIcon.setIcon(imageIcon("/icons/android.png", btnIcon));
         btnIcon.setPressedIcon(imageIconPressed("/icons/android.png", btnIcon, 3, 3));
+        login.setVisible(false);
     }
     
     public Icon imageIcon(String url, JButton button) {

@@ -17,6 +17,7 @@ public class JdEliminarCategoria extends javax.swing.JDialog {
     public JdEliminarCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

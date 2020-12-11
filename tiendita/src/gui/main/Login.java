@@ -10,7 +10,8 @@ import util.ChangePanel;
 import util.TextPrompt;
 
 public class Login extends javax.swing.JFrame {
-
+    
+    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -50,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel5.setLayout(new java.awt.CardLayout());
 
@@ -264,7 +265,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-        
+        Main main = new Main();
         char[] arrayC = jPasswordField1.getPassword();
         String pass = new String(arrayC);
         
@@ -276,8 +277,9 @@ public class Login extends javax.swing.JFrame {
         if (b) {
             Tiendita tiendita = new Tiendita();
             tiendita.setVisible(true);
-            this.setVisible(false);
             Tiendita.lblCorreo1.setText(log.getUsuario());
+            dispose();
+            
         } else {
             jLabel4.setBackground(new Color(255,51,51));
         }

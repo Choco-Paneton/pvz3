@@ -267,7 +267,6 @@ public class Login extends javax.swing.JFrame {
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
         char[] arrayC = jPasswordField1.getPassword();
         String pass = new String(arrayC);
-        
         Logine log = new Logine();
         log.setUsuario(jTextField2.getText());
         log.setPassword(pass);

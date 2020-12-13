@@ -188,11 +188,10 @@ public class LoginData {
         PreparedStatement ps;
         
         Logine d = new Logine();
-        String sql = "SELECT * FROM login WHERE usuario = ? and password = ? ";
+        String sql = "SELECT * FROM login WHERE usuario = ? ";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, l.getUsuario());
-            ps.setString(2, l.getPassword());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 d.setId(rs.getInt("id"));

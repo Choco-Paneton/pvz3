@@ -1,6 +1,9 @@
 
 package entities;
 
+import java.nio.charset.StandardCharsets;
+import util.EncryptorAesGcmPassword;
+
 public class Logine {
     
     private int id;
@@ -9,7 +12,18 @@ public class Logine {
     private String apellido_materno;
     private String usuario;
     private String password;
-
+    
+    public void encriptarPass() throws Exception
+    {
+        this.password=EncryptorAesGcmPassword.encrypt(this.password.getBytes(StandardCharsets.UTF_8), "");
+    }
+    
+    public void desencriptarPass() throws Exception
+    {          
+        String desEncrypted  = EncryptorAesGcmPassword.decrypt(this.password, "");
+        this.password=desEncrypted;
+    }
+    
     public int getId() {
         return id;
     }

@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.ErrorLogger;
 
 public class LoginData {
@@ -31,6 +32,12 @@ public class LoginData {
                 + "VALUES(?,?,?,?,?)";
         int i = 0;
         try {
+            p.encriptarPass();
+        } catch (Exception ex) {
+            Logger.getLogger(LoginData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, p.getNombre());
             ps.setString(++i, p.getApellido_paterno());
@@ -161,6 +168,7 @@ public class LoginData {
             while (rs.next()) {
                 String nombre = rs.getString("usuario");
                 String pass = rs.getString("password");
+                
                 if (nombre.equals(l.getUsuario()) && pass.equals(l.getPassword())) {
                     return true;
                 }
@@ -173,7 +181,41 @@ public class LoginData {
         }
         return false;
     }
- 
+    
+    public static Logine getByUsernameAndPin(Logine l) {
+        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
+        
+        Logine d = new Logine();
+        String sql = "SELECT * FROM login WHERE usuario = ? and password = ? ";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, l.getUsuario());
+            ps.setString(2, l.getPassword());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                d.setId(rs.getInt("id"));
+                d.setNombre(rs.getString("nombre"));
+                d.setApellido_paterno(rs.getString("apellido_paterno"));
+                d.setApellido_materno(rs.getString("apellido_materno"));
+                d.setUsuario(rs.getString("usuario"));
+                d.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPin", ex);
+        }
+        try {
+            d.desencriptarPass();
+        } catch (Exception ex2) {
+            log.log(Level.SEVERE, "create", ex2);
+        }
+
+        if (l.getPassword().equals(d.getPassword())) {
+            return d;
+        }
+        return null;
+    }
     public static Logine getByPId(int id) {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;

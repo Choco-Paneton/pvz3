@@ -265,21 +265,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-        Main main = new Main();
         char[] arrayC = jPasswordField1.getPassword();
         String pass = new String(arrayC);
         
         Logine log = new Logine();
         log.setUsuario(jTextField2.getText());
         log.setPassword(pass);
-        boolean b = LoginData.list(log);
         
-        if (b) {
+        Logine d = LoginData.getByUsernameAndPin(log);
+        if (d != null) {
             Tiendita tiendita = new Tiendita();
             tiendita.setVisible(true);
             Tiendita.lblCorreo1.setText(log.getUsuario());
             dispose();
-            
         } else {
             jLabel4.setBackground(new Color(255,51,51));
         }

@@ -4,11 +4,11 @@ package gui.main;
 import gui.complements.jDialogs.JdAsojito;
 import gui.complements.jDialogs.JdNuevoProducto;
 import gui.complements.jPanels.JpCategorias;
-import gui.complements.jPanels.JpVentas;
 import gui.complements.jPanels.JpClientes;
+import gui.complements.jPanels.JpCompra;
+import gui.complements.jPanels.JpCompraNuevo;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
-
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Window;
@@ -193,6 +193,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnCompra.setColorNormal(new java.awt.Color(11, 61, 140));
         btnCompra.setFocusable(false);
         btnCompra.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnCompra);
 
         btnCliente.setBackground(new java.awt.Color(11, 61, 140));
@@ -289,7 +294,7 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-      ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
+      
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
@@ -302,6 +307,10 @@ public class Tiendita extends javax.swing.JFrame {
         JdAsojito jdNewProduct = new JdAsojito(parentFrame, true);
         jdNewProduct.setVisible(true);
     }//GEN-LAST:event_btnUserActionPerformed
+
+    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new JpCompra());
+    }//GEN-LAST:event_btnCompraActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

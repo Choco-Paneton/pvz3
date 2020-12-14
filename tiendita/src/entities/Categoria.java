@@ -21,5 +21,6 @@ public class Categoria {
     public void setNombre_categoria(String nombre_categoria) {
         this.nombre_categoria = nombre_categoria;
     }
+    ////hgthghgh
   
 }

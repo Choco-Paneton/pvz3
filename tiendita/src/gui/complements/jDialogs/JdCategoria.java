@@ -40,7 +40,7 @@ public class JdCategoria extends javax.swing.JDialog {
     private void paintForm() {
         if (jTable1.getSelectedRow() != -1) {
             Categoria filaEncontrada = (Categoria) categoriaModel.getRow(jTable1.getSelectedRow());
-            c = CategoriaData.getByPId(filaEncontrada.getId());
+            c = CategoriaData.getByPId(filaEncontrada.getId_categoria());
             JdNuevoProducto.setCategoria(c);
             JdNuevoProducto.jTextField5.setText(c.getNombre_categoria());
         }

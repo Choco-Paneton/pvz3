@@ -28,9 +28,9 @@ public class CompraData {
     static String currentTime = sdf.format(dateNowBuy);
     
     public static int create(Compra o) {
-        int rsId = 0;
-        String[] returns = {"id"};
-        String sql = "INSERT INTO venta(fecha_venta, cliente_id)"
+        int rsId_compra = 0;
+        String[] returns = {"id_compra"};
+        String sql = "INSERT INTO Compra (fecha_venta, cliente_id)"
                 + " "
                 + "VALUES(?,?)";
         int i = 0;
@@ -38,10 +38,10 @@ public class CompraData {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, currentTime);
             ps.setInt(++i, o.getProveedor_id());
-            rsId = ps.executeUpdate();
+            rsId_compra = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_compra = rs.getInt(1);
                 }
                 rs.close();
                 
@@ -54,21 +54,21 @@ public class CompraData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
         }
-        return rsId;
+        return rsId_compra;
     }
     
     public static int update(Compra o) {
         int comit = 0;
-        String sql = "UPDATE compra SET "
+        String sql = "UPDATE Compra SET "
                 + "fecha_compra=?, "
                 + "proveedor_id=? "
-                + "WHERE id=?";
+                + "WHERE id_compra=?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(++i, sdf.format(o.getFecha_compra()));
             ps.setInt(++i, o.getProveedor_id());
-            ps.setInt(++i, o.getId());
+            ps.setInt(++i, o.getId_compra());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -77,12 +77,12 @@ public class CompraData {
     }
     
     
-    public static int delete(int id)  throws Exception{
+    public static int delete(int id_compra)  throws Exception{
         int comit = 0;
-        String sql = "DELETE FROM compra WHERE id = ?";
+        String sql = "DELETE FROM compra WHERE id_compra= ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_compra);
             comit = ps.executeUpdate();
             
             /*try {
@@ -93,7 +93,7 @@ public class CompraData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             // System.err.println("NO del " + ex.toString());
-            throw new Exception("Proveedor_id:" + ex.getMessage());
+            throw new Exception("Producto_id:" + ex.getMessage());
         }
         return comit;
         
@@ -129,14 +129,14 @@ public class CompraData {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Compra v = new Compra();
-                v.setId(rs.getInt("id"));
-                v.setFecha_compra(rs.getDate("fecha_venta"));
+                Compra o = new Compra();
+                o.setId_compra(rs.getInt("id_compra"));
+                o.setFecha_compra(rs.getDate("fecha_venta"));
                 /*try {
                     d.setFecha(sdf.parse(rs.getString("fecha")));
                 } catch (Exception e) {
                 }*/
-                listVenta.add(v);
+                listVenta.add(o);
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
@@ -144,18 +144,18 @@ public class CompraData {
         return listVenta;
     }
     
-    public static Compra getById(int id) {
-        Compra v = new Compra();
+    public static Compra getById(int id_compra) {
+        Compra o = new Compra();
         int i = 0;
-        String sql = "SELECT * FROM venta WHERE id = ? ";
+        String sql = "SELECT * FROM venta WHERE id_compra= ? ";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_compra);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                v.setId(rs.getInt("id"));
-                v.setFecha_compra(rs.getDate("fecha_compra"));
-                v.setProveedor_id(rs.getInt("proveedor_id"));
+                o.setId_compra(rs.getInt("id_compra"));
+                o.setFecha_compra(rs.getDate("fecha_compra"));
+                o.setProveedor_id(rs.getInt("proveedor_id"));
                 /*try {
                     d.setFecha(sdf.parse(rs.getString("fecha")));
                 } catch (Exception e) {
@@ -164,7 +164,7 @@ public class CompraData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
         }
-        return v;
+        return o;
     }
 
 }

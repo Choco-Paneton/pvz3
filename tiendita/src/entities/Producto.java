@@ -3,8 +3,8 @@ package entities;
 
 public class Producto {
     
-    private int id;
-    private String description;
+    private int id_producto;
+    private String descripcion;
     private String nombre_producto;
     private int cantidad;
     private boolean status;
@@ -13,22 +13,22 @@ public class Producto {
     private float precio_sub_total;
     public int categoria_id;
 
-    
-    public int getId() {
-        return id;
+    public int getId_producto() {
+        return id_producto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
+
 
     public String getNombre_producto() {
         return nombre_producto;

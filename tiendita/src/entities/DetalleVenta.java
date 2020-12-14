@@ -9,22 +9,21 @@ package entities;
  *
  * @author Jhoselyn
  */
-public class Detalle_compra {
+public class DetalleVenta {
     
-    private int id;
+    private int id_detallevetna;
     private int cantidad;
     private float precio_unitario;
     private float precio_total_producto;
-    public int compra_id;
+    private int venta_id;
     public int producto_id;
 
-    
-    public int getId() {
-        return id;
+    public int getId_detallevetna() {
+        return id_detallevetna;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_detallevetna(int id_detallevetna) {
+        this.id_detallevetna = id_detallevetna;
     }
 
     public int getCantidad() {
@@ -51,12 +50,12 @@ public class Detalle_compra {
         this.precio_total_producto = precio_total_producto;
     }
 
-    public int getCompra_id() {
-        return compra_id;
+    public int getVenta_id() {
+        return venta_id;
     }
 
-    public void setCompra_id(int compra_id) {
-        this.compra_id = compra_id;
+    public void setVenta_id(int venta_id) {
+        this.venta_id = venta_id;
     }
 
     public int getProducto_id() {
@@ -66,5 +65,9 @@ public class Detalle_compra {
     public void setProducto_id(int producto_id) {
         this.producto_id = producto_id;
     }
-  
+
+    public void setId_detalleventa(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }

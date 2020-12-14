@@ -3,20 +3,19 @@ package entities;
 
 public class Persona {
     
-    private int id;
+    private int id_persona;
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
     private String dni;
     private String sexo;
 
-    
-    public int getId() {
-        return id;
-    } 
+    public int getId_persona() {
+        return id_persona;
+    }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
     public String getNombre() {

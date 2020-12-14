@@ -3,16 +3,15 @@ package entities;
 
 public class Categoria {
     
-    private int id;
+    private int id_categoria;
     private String nombre_categoria;
 
-    
-    public int getId() {
-        return id;
+    public int getId_categoria() {
+        return id_categoria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public String getNombre_categoria() {

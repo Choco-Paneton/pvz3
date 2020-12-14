@@ -1,7 +1,7 @@
 
 package data;
 
-import entities.Detalle_compra;
+import entities.DetalleCompra;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,17 +16,17 @@ import java.util.Date;
 import java.util.logging.Level;
 import org.sqlite.SQLiteConfig;
 
-public class Detalle_compraData {
+public class DetalleCompraData {
     
     static Connection cn = Coon_sqlite.connectSQLite();
     static PreparedStatement ps;
-    static ErrorLogger log = new ErrorLogger(Detalle_compraData.class.getName());
+    static ErrorLogger log = new ErrorLogger(DetalleCompraData.class.getName());
     
-    public static int create(Detalle_compra d){
+    public static int create(DetalleCompra d){
         
-        int rsId = 0;
-        String[] returns = {"id"};
-        String sql = "INSERT INTO detalle_compra(cantidad, precio_unitario, precio_total_producto, compra_id, producto_id)"
+        int rsId_detallecompra = 0;
+        String[] returns = {"id_detallecompra"};
+        String sql = "INSERT INTO DetalleCompra(cantidad, precio_unitario, precio_total_producto, compra_id, producto_id)"
                 + " "
                 + "VALUES(?,?,?,?,?)";
         int i = 0;
@@ -38,10 +38,10 @@ public class Detalle_compraData {
             
             ps.setInt(++i, d.getCompra_id());
             ps.setInt(++i, d.getProducto_id());
-            rsId = ps.executeUpdate();
+            rsId_detallecompra = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_detallecompra = rs.getInt(1);
                 }
                 rs.close();
             }
@@ -49,19 +49,19 @@ public class Detalle_compraData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
         }
-        return rsId;
+        return rsId_detallecompra;
     }
     
     
-    public static int update(Detalle_compra d) {
+    public static int update(DetalleCompra d) {
         int comit = 0;
-        String sql = "UPDATE detalle_compra SET "
+        String sql = "UPDATE DetalleCompra SET "
                 + "cantidad=?, "
                 + "precio_unitario=?, "
                 + "precio_total_producto=?, "
                 + "compra_id=?, "
                 + "producto_id=? "
-                + "WHERE id=?";
+                + "WHERE id_detallecompra=?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
@@ -79,12 +79,12 @@ public class Detalle_compraData {
         return comit;
     }
      
-    public static int delete(int id)  throws Exception{
+    public static int delete(int id_detallecompra)  throws Exception{
         int comit = 0;
-        String sql = "DELETE FROM detalle_compra WHERE id = ?";
+        String sql = "DELETE FROM DetalleCompra WHERE id_detallecompra= ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_detallecompra);
             comit = ps.executeUpdate();
             
             /*try {
@@ -100,7 +100,7 @@ public class Detalle_compraData {
         return comit;
     }
      
-    public static List<Detalle_compra> list(String filter) {
+    public static List<DetalleCompra> list(String filter) {
         String filtert = null;
         if (filter == null) {
             filtert = "";
@@ -109,23 +109,23 @@ public class Detalle_compraData {
         }
         System.out.println("list.filtert:" + filtert);
 
-        List<Detalle_compra> ls = new ArrayList();
+        List<DetalleCompra> ls = new ArrayList();
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM detalle_compra ORDER BY id";
+            sql = "SELECT * FROM DetalleCompra ORDER BY id_detallecompra";
         } else {
-            sql = "SELECT * FROM detalle_compra WHERE (id LIKE'" + filter + "%' OR "
+            sql = "SELECT * FROM detalle_compra WHERE (id_detallecompra LIKE'" + filter + "%' OR "
                     + "cantidad LIKE'" + filter + "%' OR "
-                    + "id LIKE'" + filter + "%') "
-                    + "ORDER BY id";
+                    + "id_detallecompra LIKE'" + filter + "%') "
+                    + "ORDER BY id_detallecompra";
         }
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Detalle_compra d = new Detalle_compra();
-                d.setId(rs.getInt("id"));
+                DetalleCompra d = new DetalleCompra();
+                d.setId_detallecompra(rs.getInt("id_detallecompra"));
                 d.setCantidad(rs.getInt("cantidad"));
                 d.setPrecio_unitario(rs.getFloat("precio_unitario"));
                 d.setPrecio_total_producto(rs.getFloat("precio_total_producto"));
@@ -140,16 +140,16 @@ public class Detalle_compraData {
         return ls;
     }
      
-    public static Detalle_compra getById(int id) {
-        Detalle_compra d = new Detalle_compra();
+    public static DetalleCompra getById(int id_detallecompra) {
+        DetalleCompra d = new DetalleCompra();
         int i = 0;
-        String sql = "SELECT * FROM detalle_compra WHERE id = ? ";
+        String sql = "SELECT * FROM detalle_compra WHERE id_detallecompra= ? ";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_detallecompra);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                d.setId(rs.getInt("id"));
+                d.setId_detallecompra(rs.getInt("id_detallecompra"));
                 d.setCantidad(rs.getInt("cantidad"));
                 d.setPrecio_unitario(rs.getFloat("precio_unitario"));
                 d.setPrecio_total_producto(rs.getFloat("precio_total_producto"));

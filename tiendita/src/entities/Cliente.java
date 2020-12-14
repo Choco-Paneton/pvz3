@@ -11,21 +11,18 @@ package entities;
  */
 public class Cliente extends Persona {
     
-    private int idc;
+    private int id_cliente;
     private String ruc;
     private String telefono;
     private String email;
     public int persona_id;
-    
-    public Cliente() {
-    }
-    
-    public int getIdc() {
-        return idc;
+
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public void setIdc(int idc) {
-        this.idc = idc;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public String getRuc() {
@@ -61,3 +58,4 @@ public class Cliente extends Persona {
     }
     
 }
+

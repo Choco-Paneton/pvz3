@@ -31,7 +31,7 @@ public class ProductoModel extends AbstractTableModel {
             case 1:
                 return p.getNombre_producto();
             case 2:
-                return p.getDescription();
+                return p.getDescripcion();
             case 3:
                 return p.getCantidad();
             case 4:

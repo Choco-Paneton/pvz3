@@ -18,18 +18,18 @@ public class CategoriaData {
     public static int create(Categoria c) {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
-        int rsId = 0;
-        String[] returns = {"id"};
+        int rsId_categoria = 0;
+        String[] returns = {"id_categoria"};
         String sql = "INSERT INTO Categoria(nombre_categoria) "
                 + "VALUES(?)";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, c.getNombre_categoria());
-            rsId = ps.executeUpdate();
+            rsId_categoria = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_categoria = rs.getInt(1);
                 }
                 rs.close();
             }
@@ -38,7 +38,7 @@ public class CategoriaData {
         } finally {
             Coon_sqlite.closeSQLite(cn);
         }
-        return rsId;
+        return rsId_categoria;
     }
 
     public static int update(Categoria c) {
@@ -47,12 +47,12 @@ public class CategoriaData {
         int comit = 0;
         String sql = "UPDATE Categoria SET "
                 + "nombre_categoria = ? "
-                + "WHERE id = ? ";
+                + "WHERE id_categoria = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(++i, c.getNombre_categoria());
-            ps.setInt(++i, c.getId());
+            ps.setInt(++i, c.getId_categoria());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -62,14 +62,14 @@ public class CategoriaData {
         return comit;
     }
 
-    public static int delete(int id) throws Exception {
+    public static int delete(int id_categoria) throws Exception {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
         int comit = 0;
-        String sql = "DELETE FROM Categoria WHERE id = ? ";
+        String sql = "DELETE FROM Categoria WHERE id_categoria = ? ";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_categoria);
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
@@ -94,17 +94,17 @@ public class CategoriaData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM Categoria ORDER BY id";
+            sql = "SELECT * FROM Categoria ORDER BY id_categoria";
         } else {
-            sql = "SELECT * FROM Categoria WHERE (id LIKE'" + filter + 
-                    "%' OR nombre_categoria LIKE '" + filter + "%') " + "ORDER BY id";
+            sql = "SELECT * FROM Categoria WHERE (id_categoria LIKE'" + filter + 
+                    "%' OR nombre_categoria LIKE '" + filter + "%') " + "ORDER BY id_categoria";
         }
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Categoria c = new Categoria();
-                c.setId(rs.getInt("id"));
+                c.setId_categoria(rs.getInt("id_categoria"));
                 c.setNombre_categoria(rs.getString("nombre_categoria"));
                 ls.add(c);
             }
@@ -116,20 +116,20 @@ public class CategoriaData {
         return ls;
     }
 
-    public static Categoria getByPId(int id) {
+    public static Categoria getByPId(int id_categoria) {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
         
         Categoria c = new Categoria();
 
-        String sql = "SELECT * FROM Categoria WHERE id = ? ";
+        String sql = "SELECT * FROM Categoria WHERE id_categoria = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_categoria);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c.setId(rs.getInt("id"));
+                c.setId_categoria(rs.getInt("id_categoria"));
                 c.setNombre_categoria(rs.getString("nombre_categoria"));
             }
         } catch (SQLException ex) {
@@ -140,7 +140,7 @@ public class CategoriaData {
         return c;
     }
     
-    public static Categoria getNombreById(int id) {
+    public static Categoria getNombreById(int id_categoria) {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
         
@@ -150,10 +150,10 @@ public class CategoriaData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_categoria);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c.setId(rs.getInt("id"));
+                c.setId_categoria(rs.getInt("id_categoria"));
                 c.setNombre_categoria(rs.getString("nombre_categoria"));
             }
         } catch (SQLException ex) {

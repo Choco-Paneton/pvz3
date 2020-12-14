@@ -19,8 +19,8 @@ public class ProductoData {
     static ErrorLogger log = new ErrorLogger(ProductoData.class.getName());
 
     public static int create(Producto p) {
-        int rsId = 0;
-        String[] returns = {"id"};
+        int rsId_producto = 0;
+        String[] returns = {"id_producto"};
         String sql = "INSERT INTO Producto(descripcion, nombre_producto, "
                 + "cantidad, status, igv, precio_unitario, precio_sub_total, "
                 + "categoria_id) "
@@ -28,7 +28,7 @@ public class ProductoData {
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
-            ps.setString(++i, p.getDescription());
+            ps.setString(++i, p.getDescripcion());
             ps.setString(++i, p.getNombre_producto());
             ps.setInt(++i, p.getCantidad());
             ps.setBoolean(++i, p.isStatus());
@@ -36,10 +36,10 @@ public class ProductoData {
             ps.setFloat(++i, p.getPrecio_unitario());
             ps.setFloat(++i, p.getPrecio_sub_total());
             ps.setInt(++i, p.getCategoria_id());
-            rsId = ps.executeUpdate();
+            rsId_producto = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_producto = rs.getInt(1);
                 }
                 rs.close();
             }
@@ -49,7 +49,7 @@ public class ProductoData {
         } finally{
             //Coon_sqlite.closeSQLite(cn);
         }
-        return rsId;
+        return rsId_producto;
     }
 
     public static int update(Producto p) {
@@ -62,18 +62,18 @@ public class ProductoData {
                 + "igv=?, "
                 + "precio_unitario=?, "
                 + "precio_sub_total=? "
-                + "WHERE id=?";
+                + "WHERE id_producto=?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(++i, p.getDescription());
+            ps.setString(++i, p.getDescripcion());
             ps.setString(++i, p.getNombre_producto());
             ps.setInt(++i, p.getCantidad());
             ps.setBoolean(++i, p.isStatus());
             ps.setBoolean(++i, p.isIgv());
             ps.setFloat(++i, p.getPrecio_unitario());
             ps.setFloat(++i, p.getPrecio_sub_total());
-            ps.setInt(++i, p.getId());
+            
             comit = ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -84,12 +84,12 @@ public class ProductoData {
         return comit;
     }
 
-    public static int delete(int id) throws Exception {
+    public static int delete(int id_producto) throws Exception {
         int comit = 0;
-        String sql = "DELETE FROM Producto WHERE id = ? ";
+        String sql = "DELETE FROM Producto WHERE id_producto = ? ";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_producto);
             comit = ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -113,22 +113,22 @@ public class ProductoData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM Producto ORDER BY id";
+            sql = "SELECT * FROM Producto ORDER BY id_producto";
         } else {
-            sql = "SELECT * FROM Producto WHERE (id LIKE'" + filter + 
+            sql = "SELECT * FROM Producto WHERE (id_producto LIKE'" + filter + 
                     "%' OR " + "nombre_producto LIKE'" + filter + 
                     "%' OR " + "cantidad LIKE'" + filter + 
                     "%' OR " + "precio_unitario LIKE'" + filter + 
                     "%') "
-                    + "ORDER BY id";
+                    + "ORDER BY id_producto";
         }
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Producto p = new Producto();
-                p.setId(rs.getInt("id"));
-                p.setDescription(rs.getString("descripcion"));
+                p.setId_producto(rs.getInt("id_producto"));
+                p.setDescripcion(rs.getString("descripcion"));
                 p.setNombre_producto(rs.getString("nombre_producto"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setStatus(rs.getBoolean("status"));
@@ -146,19 +146,19 @@ public class ProductoData {
         return ls;
     }
 
-    public static Producto getByPId(int id) {
+    public static Producto getByPId(int id_producto) {
         
         Producto p = new Producto();
 
-        String sql = "SELECT * FROM Producto WHERE id = ? ";
+        String sql = "SELECT * FROM Producto WHERE id_producto = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_producto);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setId(rs.getInt("id"));
-                p.setDescription(rs.getString("descripcion"));
+                p.setId_producto(rs.getInt("id_producto"));
+                p.setDescripcion(rs.getString("descripcion"));
                 p.setNombre_producto(rs.getString("nombre_producto"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setStatus(rs.getBoolean("status"));

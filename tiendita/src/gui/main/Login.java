@@ -267,11 +267,11 @@ public class Login extends javax.swing.JFrame {
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
         char[] arrayC = jPasswordField1.getPassword();
         String pass = new String(arrayC);
-        Logine log = new Logine();
+        entities.Logine log = new entities.Logine();
         log.setUsuario(jTextField2.getText());
         log.setPassword(pass);
         
-        Logine d = LoginData.getByUsernameAndPin(log);
+        entities.Logine d = LoginData.getByUsernameAndPin(log);
         if (d != null) {
             Tiendita tiendita = new Tiendita();
             tiendita.setVisible(true);
@@ -348,4 +348,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -9,17 +9,21 @@ package entities;
  *
  * @author Jhoselyn
  */
-public class Detalle_venta {
+public class DetalleCompra {
     
-    private int id;
+   private int id_detallecompra;
     private int cantidad;
     private float precio_unitario;
     private float precio_total_producto;
+    public int compra_id;
     public int producto_id;
 
-    
-    public int getId() {
-        return id;
+    public int getId_detallecompra() {
+        return id_detallecompra;
+    }
+
+    public void setId_detallecompra(int id_detallecompra) {
+        this.id_detallecompra = id_detallecompra;
     }
 
     public int getCantidad() {
@@ -28,10 +32,6 @@ public class Detalle_venta {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public float getPrecio_unitario() {
@@ -50,6 +50,14 @@ public class Detalle_venta {
         this.precio_total_producto = precio_total_producto;
     }
 
+    public int getCompra_id() {
+        return compra_id;
+    }
+
+    public void setCompra_id(int compra_id) {
+        this.compra_id = compra_id;
+    }
+
     public int getProducto_id() {
         return producto_id;
     }
@@ -57,5 +65,6 @@ public class Detalle_venta {
     public void setProducto_id(int producto_id) {
         this.producto_id = producto_id;
     }
-   
+  
 }
+

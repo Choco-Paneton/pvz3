@@ -28,9 +28,9 @@ public class VentaData {
     static String currentTime = sdf.format(dateNowSale);
     
     public static int create(Venta v) {
-        int rsId = 0;
-        String[] returns = {"id"};
-        String sql = "INSERT INTO venta(fecha_venta, cliente_id)"
+        int rsId_venta = 0;
+        String[] returns = {"id_venta"};
+        String sql = "INSERT INTO Venta(fecha_venta, cliente_id)"
                 + " "
                 + "VALUES(?,?)";
         int i = 0;
@@ -38,10 +38,10 @@ public class VentaData {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, currentTime);
             ps.setInt(++i, v.getCliente_id());
-            rsId = ps.executeUpdate();
+            rsId_venta = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_venta = rs.getInt(1);
                 }
                 rs.close();
                 
@@ -54,21 +54,21 @@ public class VentaData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
         }
-        return rsId;
+        return rsId_venta;
     }
     
     public static int update(Venta v) {
         int comit = 0;
-        String sql = "UPDATE venta SET "
+        String sql = "UPDATE Venta SET "
                 + "fecha_venta=?, "
                 + "cliente_id=? "
-                + "WHERE id=?";
+                + "WHERE id_venta=?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(++i, sdf.format(v.getFecha_venta()));
             ps.setInt(++i, v.getCliente_id());
-            ps.setInt(++i, v.getId());
+            ps.setInt(++i, v.getId_venta());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -76,12 +76,12 @@ public class VentaData {
         return comit;
     }
     
-    public static int delete(int id)  throws Exception{
+    public static int delete(int id_venta)  throws Exception{
         int comit = 0;
-        String sql = "DELETE FROM venta WHERE id = ?";
+        String sql = "DELETE FROM Venta WHERE id_venta = ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_venta);
             comit = ps.executeUpdate();
             
             /*try {
@@ -128,7 +128,7 @@ public class VentaData {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Venta v = new Venta();
-                v.setId(rs.getInt("id"));
+                v.setId_venta(rs.getInt("id_venta"));
                 v.setFecha_venta(rs.getDate("fecha_venta"));
                 /*try {
                     d.setFecha(sdf.parse(rs.getString("fecha")));
@@ -142,16 +142,16 @@ public class VentaData {
         return listVenta;
     }
     
-    public static Venta getById(int id) {
+    public static Venta getById(int id_venta) {
         Venta v = new Venta();
         int i = 0;
-        String sql = "SELECT * FROM venta WHERE id = ? ";
+        String sql = "SELECT * FROM Venta WHERE id_venta = ? ";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_venta);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                v.setId(rs.getInt("id"));
+                v.setId_venta(rs.getInt("id_venta"));
                 v.setFecha_venta(rs.getDate("fecha_venta"));
                 v.setCliente_id(rs.getInt("cliente_id"));
                 /*try {

@@ -13,17 +13,16 @@ import java.util.Date;
  */
 public class Compra {
     
-    private int id;
+    private int id_compra;
     private Date fecha_compra;
     public int proveedor_id;
 
-    
-    public int getId() {
-        return id;
+    public int getId_compra() {
+        return id_compra;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_compra(int id_compra) {
+        this.id_compra = id_compra;
     }
 
     public Date getFecha_compra() {

@@ -304,10 +304,10 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
         Producto p = new Producto();
         p.setNombre_producto(jTextField1.getText());
-        p.setDescription(jTextField2.getText());
+        p.setDescripcion(jTextField2.getText());
         p.setCantidad(Integer.parseInt(jTextField3.getText()));
         p.setPrecio_unitario(Float.parseFloat(jTextField4.getText()));
-        p.setCategoria_id(getCategoria().getId());
+        p.setCategoria_id(getCategoria().getId_categoria());
         p.setStatus(false);
         p.setIgv(true);
         ProductoData.create(p);

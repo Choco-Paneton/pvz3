@@ -20,20 +20,21 @@ public class ClienteData {
     static ErrorLogger log = new ErrorLogger(ClienteData.class.getName());
 
     public static int create(Cliente d) {
-        int rsId = 0;
-        String[] returns = {"id"};
-        String sql = "INSERT INTO clientes(nombres, info_adic) "
-                + "VALUES(?,?)";
+        int rsId_cliente = 0;
+        String[] returns = {"id_cliente"};
+        String sql = "INSERT INTO clientes(ruc, telefono, email, persona_id) "
+                + "VALUES(?,?,?,?)";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, d.getRuc());
             ps.setString(++i, d.getTelefono());
             ps.setString(++i, d.getEmail());
-            rsId = ps.executeUpdate();// 0 no o 1 si commit
+            ps.setInt(++i, d.getPersona_id());
+            rsId_cliente = ps.executeUpdate();// 0 no o 1 si commit
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1); // select tk, max(id)  from clientes
+                    rsId_cliente = rs.getInt(1); // select tk, max(id)  from clientes
                     //System.out.println("rs.getInt(rsId): " + rsId);
                 }
                 rs.close();
@@ -42,23 +43,27 @@ public class ClienteData {
             //System.err.println("create:" + ex.toString());
             ErrorLogger.log(Level.SEVERE, "create", ex);
         }
-        return rsId;
+        return rsId_cliente;
     }
 
     public static int update(Cliente d) {
-        System.out.println("actualizar d.getId(): " + d.getId());
+        //System.out.println("actualizar d.getId_cliente(): " + d.getId_cliente());
         int comit = 0;
-        String sql = "UPDATE clientes SET "
-                + "nombres=?, "
-                + "info_adic=? "
-                + "WHERE id=?";
+        String sql = "UPDATE Cliente SET "
+                + "ruc=?, "
+                + "telefono=? "
+                + "email=? "
+                + "persona_id=? "
+                + "WHERE id_cliente=?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(++i, d.getRuc());
             ps.setString(++i, d.getTelefono());
             ps.setString(++i, d.getEmail());
-            ps.setInt(++i, d.getId());
+            ps.setInt(++i, d.getPersona_id());
+            ps.setInt(++i, d.getId_cliente());
+           
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             ErrorLogger.log(Level.SEVERE, "update", ex);
@@ -66,25 +71,25 @@ public class ClienteData {
         return comit;
     }
 
-    public static int delete(int id) throws Exception {
+    public static int delete(int id_cliente) throws Exception {
         int comit = 0;
-        String sql = "DELETE FROM clientes WHERE id = ?";
+        String sql = "DELETE FROM Cliente WHERE id_cliente = ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_cliente);
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             ErrorLogger.log(Level.SEVERE, "delete", ex);
             // System.err.println("NO del " + ex.toString());
-            throw new Exception("Detalle:" + ex.getMessage());
+            throw new Exception("Persona_id:" + ex.getMessage());
         }
         return comit;
     }
     
-    public static List<Cliente> listCombo(String f){
+    public static List<Cliente> listCombo(String filter){
         List<Cliente> listCliente = new ArrayList();
         listCliente.add(new Cliente());
-        listCliente.addAll(list(f));
+        listCliente.addAll(list(filter));
         return listCliente;
     }
 
@@ -101,22 +106,23 @@ public class ClienteData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM cliente ORDER BY id";
+            sql = "SELECT * FROM Cliente ORDER BY id_cliente";
         } else {
-            sql = "SELECT * FROM cliente WHERE (id LIKE'" + filter + "%' OR "
+            sql = "SELECT * FROM Cliente WHERE (id_cliente LIKE'" + filter + "%' OR "
                     + "nombres LIKE'" + filter + "%' OR info_adic LIKE'" + filter + "%' OR "
-                    + "id LIKE'" + filter + "%') "
-                    + "ORDER BY nombres";
+                    + "id_cliente LIKE'" + filter + "%') "
+                    + "ORDER BY id_cliente";
         }
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Cliente d = new Cliente();
-                d.setId(rs.getInt("id"));
+                d.setId_cliente(rs.getInt("id_cliente"));
                 d.setRuc(rs.getString("ruc"));
                 d.setTelefono(rs.getString("telefono"));
-                d.setEmail(rs.getString(""));
+                d.setEmail(rs.getString("email"));
+                d.setPersona_id(rs.getInt("persona_id"));
                 ls.add(d);
             }
         } catch (SQLException ex) {
@@ -125,19 +131,21 @@ public class ClienteData {
         return ls;
     }
 
-    public static Cliente getByPId(int id) {
+    public static Cliente getByPId(int id_cliente) {
         Cliente d = new Cliente();
 
-        String sql = "SELECT * FROM clientes WHERE id = ? ";
+        String sql = "SELECT * FROM clientes WHERE id_cliente = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_cliente);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                d.setId(rs.getInt("id"));
-                d.setRuc(rs.getString("nombres"));
-                d.setTelefono(rs.getString("info_adic"));
+                d.setId_cliente(rs.getInt("id_cliente"));
+                d.setRuc(rs.getString("ruc"));
+                d.setTelefono(rs.getString("telefono"));
+                d.setEmail(rs.getString("email"));
+                d.setPersona_id(rs.getInt("persona_id"));
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);

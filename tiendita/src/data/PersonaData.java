@@ -19,10 +19,10 @@ public class PersonaData {
     static ErrorLogger log = new ErrorLogger(ClienteData.class.getName());
 
     public static int create(Persona d) {
-        int rsId = 0;
-        String[] returns = {"id"};
+        int rsId_persona = 0;
+        String[] returns = {"id_persona"};
         String sql = "INSERT INTO Persona(nombre, apellido_materno, apellido_paterno, dni, sexo) "
-                + "VALUES(?, ?, ?, ?, ?)";
+                + "VALUES(?,?,?,?,?)";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
@@ -31,17 +31,17 @@ public class PersonaData {
             ps.setString(++i, d.getApellido_materno());
             ps.setString(++i, d.getDni());
             ps.setString(++i, d.getSexo());
-            rsId = ps.executeUpdate();
+            rsId_persona  = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    rsId = rs.getInt(1);
+                    rsId_persona  = rs.getInt(1);
                 }
                 rs.close();
             }
         } catch (SQLException ex) {
             ErrorLogger.log(Level.SEVERE, "create", ex);
         }
-        return rsId;
+        return rsId_persona;
     }
 
     public static int update(Persona d) {
@@ -52,7 +52,7 @@ public class PersonaData {
                 + "apellido_paterno=?"
                 + "dni=?"
                 + "sexo=?"
-                + "WHERE id=?";
+                + "WHERE id_persona =?";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class PersonaData {
             ps.setString(++i, d.getApellido_materno());
             ps.setString(++i, d.getDni());
             ps.setString(++i, d.getSexo());
-            ps.setInt(++i, d.getId());
+            ps.setInt(++i, d.getId_persona ());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             ErrorLogger.log(Level.SEVERE, "update", ex);
@@ -69,12 +69,12 @@ public class PersonaData {
         return comit;
     }
 
-    public static int delete(int id) throws Exception {
+    public static int delete(int id_persona ) throws Exception {
         int comit = 0;
-        String sql = "DELETE FROM Persona WHERE id = ?";
+        String sql = "DELETE FROM Persona WHERE id_persona  = ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id_persona );
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             ErrorLogger.log(Level.SEVERE, "delete", ex);
@@ -96,9 +96,9 @@ public class PersonaData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM Persona ORDER BY id";
+            sql = "SELECT * FROM Persona ORDER BY id_persona ";
         } else {
-            sql = "SELECT * FROM Persona WHERE (id LIKE'" + filter + "%' OR "
+            sql = "SELECT * FROM Persona WHERE (id_persona  LIKE'" + filter + "%' OR "
                     + "nombre LIKE'" + filter + "%' OR apellidos_materno'" + filter + "%' OR apellidos_paterno'" + filter + "%' OR dni'"
                     + "id LIKE'" + filter + "%') "
                     + "ORDER BY nombre";
@@ -108,7 +108,7 @@ public class PersonaData {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Persona d = new Persona();
-                d.setId(rs.getInt("id"));
+                d.setId_persona (rs.getInt("id_persona "));
                 d.setNombre(rs.getString("nombre"));
                 d.setApellido_materno(rs.getString("apellido_materno"));
                 d.setApellido_paterno(rs.getString("apellido_paterno"));
@@ -122,17 +122,17 @@ public class PersonaData {
         return ls;
     }
 
-    public static Persona getByPId(int id) {
+    public static Persona getByPId(int id_persona ) {
         Persona d = new Persona();
 
-        String sql = "SELECT * FROM Persona WHERE id = ? ";
+        String sql = "SELECT * FROM Persona WHERE id_persona = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(++i, id);
+            ps.setInt(++i, id_persona );
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                d.setId(rs.getInt("id"));
+                d.setId_persona (rs.getInt("id_persona"));
                 d.setNombre(rs.getString("nombre"));
                 d.setApellido_paterno(rs.getString("apellido_materno"));
                 d.setApellido_materno(rs.getString("apellido_paterno"));

@@ -259,9 +259,9 @@ public class JpCompra extends javax.swing.JPanel {
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
         
         if (jDateChooser1.getDate().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese la fecha inicial");
+            
         } else if (jDateChooser2.getDate().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese la fecha final");
+            
         } else {
             CompraModel tableModel = new CompraModel("", jDateChooser1.getDate(), jDateChooser2.getDate());
             paintTable(tableModel);

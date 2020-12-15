@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui.complements.jPanels;
 
-/**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
+import data.CountData;
+
 public class JpHogar extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JpHogar
-     */
     public JpHogar() {
         initComponents();
+        NCategorias.setText(CountData.getNCategoria() + "");
+        NClientes.setText(CountData.getNCliente()+ "");
+        NCompra.setText(CountData.getNCompra()+ "");
+        NProductos.setText(CountData.getNProducto()+ "");
+        NProveedores.setText(CountData.getNProveedor()+ "");
+        NVenta.setText(CountData.getNVenta()+ "");
     }
 
     /**
@@ -33,27 +30,27 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        NProductos = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        NCategorias = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        NVenta = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        NCompra = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        NProveedores = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
+        NClientes = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
 
@@ -90,11 +87,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(241, 196, 15));
         jPanel5.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("0");
-        jPanel5.add(jLabel2);
+        NProductos.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NProductos.setForeground(new java.awt.Color(255, 255, 255));
+        NProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NProductos.setText("0");
+        jPanel5.add(NProductos);
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,11 +110,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(39, 174, 97));
         jPanel6.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("0");
-        jPanel6.add(jLabel5);
+        NCategorias.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NCategorias.setForeground(new java.awt.Color(255, 255, 255));
+        NCategorias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NCategorias.setText("0");
+        jPanel6.add(NCategorias);
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,11 +133,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(41, 127, 184));
         jPanel7.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel8.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("0");
-        jPanel7.add(jLabel8);
+        NVenta.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NVenta.setForeground(new java.awt.Color(255, 255, 255));
+        NVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NVenta.setText("0");
+        jPanel7.add(NVenta);
 
         jLabel9.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,11 +156,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(232, 76, 61));
         jPanel8.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel11.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("0");
-        jPanel8.add(jLabel11);
+        NCompra.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NCompra.setForeground(new java.awt.Color(255, 255, 255));
+        NCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NCompra.setText("0");
+        jPanel8.add(NCompra);
 
         jLabel12.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,11 +179,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(141, 68, 173));
         jPanel9.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel14.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("0");
-        jPanel9.add(jLabel14);
+        NProveedores.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NProveedores.setForeground(new java.awt.Color(255, 255, 255));
+        NProveedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NProveedores.setText("0");
+        jPanel9.add(NProveedores);
 
         jLabel15.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,11 +202,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(45, 62, 80));
         jPanel10.setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel17.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("0");
-        jPanel10.add(jLabel17);
+        NClientes.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NClientes.setForeground(new java.awt.Color(255, 255, 255));
+        NClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NClientes.setText("0");
+        jPanel10.add(NClientes);
 
         jLabel18.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,24 +246,24 @@ public class JpHogar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NCategorias;
+    private javax.swing.JLabel NClientes;
+    private javax.swing.JLabel NCompra;
+    private javax.swing.JLabel NProductos;
+    private javax.swing.JLabel NProveedores;
+    private javax.swing.JLabel NVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

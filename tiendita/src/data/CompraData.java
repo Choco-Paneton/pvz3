@@ -2,6 +2,7 @@
 package data;
 
 import entities.Compra;
+import entities.Producto;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -99,49 +100,61 @@ public class CompraData {
         
     }
     
-    public static List<Compra> list(String filter) {
+    public static List<Compra> list(String filter, Date fi, Date ff) {
+        
         String filtert = null;
         if (filter == null) {
             filtert = "";
         } else {
             filtert = filter;
         }
-        
-        List<Compra> listVenta = new ArrayList();
-        String sql = "";
-        if (filtert.equals("")) {
-            sql = "SELECT o.*, r.ruc, p.nombre, p.apellido_paterno, p.apellido_materno FROM COMPRA as o"
-                   + "INNER JOIN Proveedor as r On r.id = o.proveedor_id "
-                   + "INNER JOIN Persona as p On p.id = r.persona_id "
-                   + "ORDER BY p.nombre ";
+                
+        String fechati = null;
+        if (fi == null) {
+            fechati = currentTime;
         } else {
-            sql = "SELECT o.*, r.ruc, p.nombre, p.apellido_paterno, p.apellido_materno FROM VENTA as "
-                   + "INNER JOIN Proveedor as r On r.id = o.proveedor_id "
-                   + "INNER JOIN Persona as p On p.id = r.persona_id "
-                   + "where (r.ruc LIKE'" + filter + "%' OR "
-                   + " p.nombre LIKE'" + filter + "%' OR "
-                   + " p.apellido_paterno LIKE'" + filter + "%' OR "
-                   + " p.apellido_materno LIKE'" + filter + "%') "
-                   + "ORDER BY p.nombre ";
-     
+            fechati = sdf.format(fi);
+        }
+        
+        String fechat = null;
+        if (ff == null) {
+            fechat = currentTime;
+        } else {
+            fechat = sdf.format(ff);
+        }
+        
+        List<Compra> ls = new ArrayList();
+        String sql = "";
+        
+        if (filtert.equals("")) {
+             sql = "SELECT * FROM Compra "
+                    + " WHERE strftime('%Y-%m-%d', fecha_compra) >= strftime('%Y-%m-%d', '" + fechati + "') "
+                    + " AND strftime('%Y-%m-%d', fecha_compra) <= strftime('%Y-%m-%d', '" + fechat + "') "
+                    + "ORDER BY fecha_compra";
+        } else {
+            sql = "SELECT * FROM Compra WHERE (id_compra LIKE '" + filtert + "%')"
+                    + " AND strftime('%Y-%m-%d', fecha_compra) >= strftime('%Y-%m-%d', '" + fechati + "') "
+                    + " AND strftime('%Y-%m-%d', fecha_compra) <= strftime('%Y-%m-%d', '" + fechat + "') "
+                    + "ORDER BY fecha_compra";
         }
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Compra o = new Compra();
-                o.setId_compra(rs.getInt("id_compra"));
-                o.setFecha_compra(rs.getDate("fecha_venta"));
-                /*try {
-                    d.setFecha(sdf.parse(rs.getString("fecha")));
+                Compra d = new Compra();
+                d.setId_compra(rs.getInt("id_compra"));
+                d.setProveedor_id(rs.getInt("proveedor_id"));
+                try {
+                    d.setFecha_compra(sdf.parse(rs.getString("fecha_compra")));
                 } catch (Exception e) {
-                }*/
-                listVenta.add(o);
+                    
+                }
+                ls.add(d);
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
         }
-        return listVenta;
+        return ls;
     }
     
     public static Compra getById(int id_compra) {

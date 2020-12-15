@@ -1,6 +1,7 @@
 
 package gui.main;
 
+import gui.complements.jDialogs.JdAcess;
 import gui.complements.jDialogs.JdAsojito;
 import gui.complements.jDialogs.JdNuevoProducto;
 import gui.complements.jPanels.JpCategorias;
@@ -221,6 +222,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnProveedores.setColorNormal(new java.awt.Color(11, 61, 140));
         btnProveedores.setFocusable(false);
         btnProveedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnProveedores);
 
         javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
@@ -311,6 +317,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpCompra());
     }//GEN-LAST:event_btnCompraActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        
+    }//GEN-LAST:event_btnProveedoresActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

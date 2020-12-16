@@ -88,7 +88,7 @@ public class ClienteData {
     
     public static List<Cliente> listCombo(String filter){
         List<Cliente> listCliente = new ArrayList();
-        listCliente.add(new Cliente());
+        listCliente.add(new Cliente("Seleccione..."));
         listCliente.addAll(list(filter));
         return listCliente;
     }
@@ -106,9 +106,10 @@ public class ClienteData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM Cliente ORDER BY id_cliente";
+            sql = "SELECT * FROM Cliente as c INNER JOIN Persona as p ON p.id_persona = c.persona_id ORDER BY id_cliente";
         } else {
-            sql = "SELECT * FROM Cliente WHERE (id_cliente LIKE'" + filter + "%' OR "
+            sql = "SELECT * FROM Cliente as c INNER JOIN Persona as p ON p.id_persona = c.persona_id "
+                    + "WHERE (id_cliente LIKE'" + filter + "%' OR "
                     + "nombres LIKE'" + filter + "%' OR info_adic LIKE'" + filter + "%' OR "
                     + "id_cliente LIKE'" + filter + "%') "
                     + "ORDER BY id_cliente";
@@ -118,6 +119,13 @@ public class ClienteData {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Cliente d = new Cliente();
+                
+                d.setNombre(rs.getString("nombre"));
+                d.setApellido_materno(rs.getString("apellido_materno"));
+                d.setApellido_paterno(rs.getString("apellido_paterno"));
+                d.setDni(rs.getString("dni"));
+                d.setSexo(rs.getString("sexo"));
+                
                 d.setId_cliente(rs.getInt("id_cliente"));
                 d.setRuc(rs.getString("ruc"));
                 d.setTelefono(rs.getString("telefono"));

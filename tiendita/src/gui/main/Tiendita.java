@@ -9,6 +9,7 @@ import gui.complements.jPanels.JpCompra;
 import gui.complements.jPanels.JpCompraNuevo;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
+import gui.complements.jPanels.JpVentas;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Window;
@@ -294,7 +295,7 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-      
+      ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed

@@ -163,7 +163,7 @@ public class DetalleVentaData {
         List<DetalleVenta> lvd = new ArrayList();
         String sql = "";
         
-        sql = "SELECT * FROM detalle_venta "
+        sql = "SELECT * FROM detalleventa "
                 + "WHERE venta_id = " + id_detalleventa + " ORDER BY id_detalleventa";
         try {
             Statement st = cn.createStatement();

@@ -6,24 +6,61 @@
 package gui.complements.jPanels;
 
 
+import data.ClienteData;
+import data.VentaData;
+import entities.Cliente;
+import entities.Venta;
 import gui.complements.jDialogs.JdAgregarProductosVenta;
 import gui.main.Tiendita;
 import gui.model.DetalleVentaModel;
 import java.awt.Frame;
 import java.awt.Window;
+import java.awt.event.ItemEvent;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author Jhoselyn
  */
 public class JpVentas extends javax.swing.JPanel {
+    private DefaultComboBoxModel clientesComboxModel;
+    private  List<Cliente> clientes;
+    
+    DetalleVentaModel dvmodel;
+    
+    private Cliente clienteSelected;
+    private Venta ventaSelected;
+    
+    public  Cliente getClienteSelected() {
+        return clienteSelected;
+    }
+    
+    public  Venta getVentaSelected() {
+        return ventaSelected;
+    }
 
     /**
      * Creates new form JpVentas
      */
     public JpVentas() {
         initComponents();
+        clientes = ClienteData.listCombo("");
+        clientesComboxModel  = new DefaultComboBoxModel(clientes.toArray());
+        jComboBox1.setModel(clientesComboxModel);
+           
+        dvmodel = new DetalleVentaModel();
+        jTable1.setModel(dvmodel);
+        jTable1.setEnabled(false);
+        paintTable(dvmodel);
+    }
+    
+    public  void paintTable(DetalleVentaModel tableModel){
+        this.dvmodel = tableModel;
+        jTable1.setModel(dvmodel);
+        jTable1.getColumnModel().getColumn(0);
+        jTable1.getColumnModel().getColumn(1);
     }
 
     /**
@@ -41,8 +78,9 @@ public class JpVentas extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        buttonClass2 = new gui.styles.button.ButtonClass();
+        buttonClassAgregar = new gui.styles.button.ButtonClass();
         jLabel2 = new javax.swing.JLabel();
+        buttonClassVenta = new gui.styles.button.ButtonClass();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -74,31 +112,53 @@ public class JpVentas extends javax.swing.JPanel {
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        buttonClass2.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass2.setText("Agregar");
-        buttonClass2.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass2.setFocusable(false);
-        buttonClass2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass2.setVerifyInputWhenFocusTarget(false);
-        buttonClass2.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonClassAgregar.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClassAgregar.setText("Agregar");
+        buttonClassAgregar.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClassAgregar.setFocusable(false);
+        buttonClassAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClassAgregar.setVerifyInputWhenFocusTarget(false);
+        buttonClassAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonClass2MouseClicked(evt);
+                buttonClassAgregarMouseClicked(evt);
             }
         });
-        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+        buttonClassAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass2ActionPerformed(evt);
+                buttonClassAgregarActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Clientes");
+        jLabel2.setText("Cliente");
+
+        buttonClassVenta.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClassVenta.setText("Iniciar Venta");
+        buttonClassVenta.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClassVenta.setFocusable(false);
+        buttonClassVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClassVenta.setVerifyInputWhenFocusTarget(false);
+        buttonClassVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonClassVentaMouseClicked(evt);
+            }
+        });
+        buttonClassVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClassVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -113,20 +173,30 @@ public class JpVentas extends javax.swing.JPanel {
                         .addGap(57, 57, 57)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addComponent(buttonClassAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(694, Short.MAX_VALUE)
+                    .addComponent(buttonClassVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonClassAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(31, Short.MAX_VALUE)
+                    .addComponent(buttonClassVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -194,12 +264,13 @@ public class JpVentas extends javax.swing.JPanel {
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonClass2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass2MouseClicked
+    private void buttonClassAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClassAgregarMouseClicked
         JpCategorias jpCategorys = new JpCategorias();
        
-    }//GEN-LAST:event_buttonClass2MouseClicked
+    }//GEN-LAST:event_buttonClassAgregarMouseClicked
 
-    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
+    private void buttonClassAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClassAgregarActionPerformed
+       // TODO add your handling code here:
        JpVentas jpCategorys = new JpVentas();
         Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
         Frame parentFrame = null;
@@ -207,16 +278,60 @@ public class JpVentas extends javax.swing.JPanel {
             parentFrame = (Tiendita)parentWindow;
         }
         JdAgregarProductosVenta jpNewCategorys = new JdAgregarProductosVenta(parentFrame, true);
-        jpNewCategorys.setVisible(true); // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass2ActionPerformed
+        jpNewCategorys.setVisible(true);
+    }//GEN-LAST:event_buttonClassAgregarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED){
+            clienteSelected = (Cliente) jComboBox1.getSelectedItem();
+            int id = clienteSelected.getId_cliente();
+            if (id == 0){
+                clienteSelected = null;
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void buttonClassVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClassVentaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonClassVentaMouseClicked
+
+    private void buttonClassVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClassVentaActionPerformed
+        // TODO add your handling code here:
+        if(clienteSelected != null) {
+            System.out.println("yes");
+            System.out.println(clienteSelected.getId_cliente());
+            if (ventaSelected != null){
+                System.out.println("venta Exists");
+            } else {
+                ventaSelected = null;
+                Venta v = new Venta();
+                v.setCliente_id(clienteSelected.getId_cliente());
+                int vid = VentaData.create(v);
+
+                if (vid > 0) {
+                    ventaSelected = VentaData.getById(vid);
+                    System.out.println("create venta");
+                    System.out.println(ventaSelected.getId_venta());
+                    paintTable(new DetalleVentaModel(ventaSelected));
+                } else {
+                    System.out.println("fail venta");
+                }
+            }
+        } else {
+            System.out.println("no");
+            
+        }
+    }//GEN-LAST:event_buttonClassVentaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private gui.styles.button.ButtonClass buttonClass2;
+    private gui.styles.button.ButtonClass buttonClassAgregar;
+    private gui.styles.button.ButtonClass buttonClassVenta;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

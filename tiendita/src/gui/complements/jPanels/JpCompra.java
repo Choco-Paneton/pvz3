@@ -1,14 +1,37 @@
 
 package gui.complements.jPanels;
 
+import gui.model.CompraModel;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import util.ChangePanel;
+import util.Config;
 
 public class JpCompra extends javax.swing.JPanel {
-
+    
+    CompraModel compraModel;
+    static SimpleDateFormat dfIGU = new SimpleDateFormat(Config.DEFAULT_DATE_STRING_FORMAT_PE);
+    
     public JpCompra() {
         initComponents();
+        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        jDateChooser1.setDate(new Date());
+        System.out.println(jDateChooser1.getCalendar().DATE);
+        jDateChooser2.setDate(new Date());
+        CompraModel tableModel = new CompraModel("",jDateChooser1.getDate(), jDateChooser2.getDate());
+        paintTable(tableModel);
     }
-
+    
+    private void paintTable(CompraModel tableModel) {
+        this.compraModel = tableModel;
+        jTable1.setModel(tableModel);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,7 +257,15 @@ public class JpCompra extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1MouseClicked
 
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-
+        
+        if (jDateChooser1.getDate().equals("")) {
+            
+        } else if (jDateChooser2.getDate().equals("")) {
+            
+        } else {
+            CompraModel tableModel = new CompraModel("", jDateChooser1.getDate(), jDateChooser2.getDate());
+            paintTable(tableModel);
+        }
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed

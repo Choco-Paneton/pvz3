@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui.complements.jPanels;
 
 import gui.complements.jDialogs.JdNuevoProveedor;
@@ -14,10 +10,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import util.ChangePanel;
 
-/**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
 public class JpProveedor extends javax.swing.JPanel {
 
     public ProveedorModel categoriaModel;
@@ -398,22 +390,21 @@ public class JpProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass7ActionPerformed
 
-    private void buttonClass7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass7MouseClicked
-        // TODO add your handling code here:
-        JpCategorias jpCategorys = new JpCategorias();
-        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
+        JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts);
         Frame parentFrame = null;
         if (parentWindow instanceof Tiendita) {
             parentFrame = (Tiendita)parentWindow;
         }
-        JdNuevoProveedor jpNewjpProvider = new JdNuevoProveedor(parentFrame, true);
-        jpNewjpProvider.setVisible(true);
+        JdNuevoProveedor jdNewProduct = new JdNuevoProveedor(parentFrame, false);
+        jdNewProduct.setVisible(true);
+    }//GEN-LAST:event_buttonClass7ActionPerformed
+
+    private void buttonClass7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass7MouseClicked
+
     }//GEN-LAST:event_buttonClass7MouseClicked
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;

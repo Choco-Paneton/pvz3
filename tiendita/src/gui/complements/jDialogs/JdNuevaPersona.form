@@ -301,7 +301,7 @@
                 </Component>
                 <Component class="gui.styles.button.ButtonClass" name="buttonClass3">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Regresar"/>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
                     <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="3f" red="e7" type="rgb"/>
                     </Property>

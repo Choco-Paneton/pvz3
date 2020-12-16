@@ -3,12 +3,23 @@ package gui.complements.jDialogs;
 
 import data.PersonaData;
 import entities.Persona;
+import util.TextPrompt;
 
 public class JdNuevaPersona extends javax.swing.JDialog {
 
     public JdNuevaPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(this);
+        placeHolder();
+    }
+    
+    private void placeHolder() {
+        TextPrompt textRuc = new TextPrompt("Nombre", jTextField1);
+        TextPrompt textEmail = new TextPrompt("Apellido paterno", jTextField2);
+        TextPrompt textTelefono = new TextPrompt("Apellido materno", jTextField3);
+        TextPrompt textPoo = new TextPrompt("Dni", jTextField4);
+        TextPrompt textr = new TextPrompt("Sexo", jTextField5);
     }
 
     /**
@@ -113,7 +124,7 @@ public class JdNuevaPersona extends javax.swing.JDialog {
         jCheckBox2.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox2.setText("Varón");
 
-        buttonClass3.setText("Regresar");
+        buttonClass3.setText("Cancelar");
         buttonClass3.setColorHover(new java.awt.Color(231, 63, 51));
         buttonClass3.setColorNormal(new java.awt.Color(244, 67, 54));
         buttonClass3.setFocusable(false);
@@ -225,19 +236,23 @@ public class JdNuevaPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        
+        this.dispose();
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
         Persona p = new Persona();
 
         p.setNombre(jTextField1.getText());
-        p.setApellido_paterno(jTextField1.getText());
-        p.setApellido_materno(jTextField1.getText());
-        p.setDni(jTextField1.getText());
-        p.setSexo(jTextField1.getText());
-
-        PersonaData.create(p);
+        p.setApellido_paterno(jTextField2.getText());
+        p.setApellido_materno(jTextField3.getText());
+        p.setDni(jTextField4.getText());
+        p.setSexo("M");
+        
+        int i = PersonaData.create(p);
+        Persona pe = PersonaData.getByPId(i);
+        JdNuevoProveedor.setProveedor(pe);
+        JdNuevoProveedor.jTextField4.setText(pe.getNombre());
+        this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
 
     /**

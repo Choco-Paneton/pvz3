@@ -14,12 +14,11 @@ import java.util.logging.Level;
 
 public class ProveedorData {
     
-    static Connection cn = Coon_sqlite.connectSQLite();
-    static PreparedStatement ps;
     static ErrorLogger log = new ErrorLogger(ProveedorData.class.getName());  
     
     public static int create(Proveedor r){
-        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int rsId_proveedor = 0;
         String[] returns = {"id_proveedor"};
         String sql = "INSERT INTO Proveedor(ruc, email, telefono, persona_id)"
@@ -31,7 +30,6 @@ public class ProveedorData {
             ps.setString(++i, r.getRuc());
             ps.setString(++i, r.getEmail());
             ps.setString(++i, r.getTelefono());
- 
             ps.setInt(++i, r.getPersona_id());
             rsId_proveedor = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -40,15 +38,19 @@ public class ProveedorData {
                 }
                 rs.close();
             }
-            
+            ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "create", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return rsId_proveedor;
     }
     
     
     public static int update(Proveedor r) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "UPDATE Proveedor SET "
                 + "ruc=?, "
@@ -67,11 +69,15 @@ public class ProveedorData {
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
     
     public static int delete(int id_proveedor)  throws Exception{
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "DELETE FROM proveedor WHERE id_proveedor = ?";
         try {
@@ -88,18 +94,22 @@ public class ProveedorData {
             log.log(Level.SEVERE, "delete", ex);
             // System.err.println("NO del " + ex.toString());
             throw new Exception("Persona_id:" + ex.getMessage());
+        } finally{
+            Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
     
     public static List<Proveedor> list(String filter) {
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         String filtert = null;
         if (filter == null) {
             filtert = "";
         } else {
             filtert = filter;
         }
-        System.out.println("list.filtert:" + filtert);
+        //System.out.println("list.filtert:" + filtert);
 
         List<Proveedor> ls = new ArrayList();
 
@@ -130,13 +140,14 @@ public class ProveedorData {
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
         } finally {
-            //Coon_sqlite.closeSQLite(cn);
+            Coon_sqlite.closeSQLite(cn);
         }
         return ls;
     }
     
     public static Proveedor getByPId(int id_preveedor) {
-        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         Proveedor p = new Proveedor();
 
         String sql = "SELECT * FROM Proveedor WHERE id_proveedor = ? ";

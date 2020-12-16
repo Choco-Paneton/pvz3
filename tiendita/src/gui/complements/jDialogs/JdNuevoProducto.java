@@ -5,6 +5,7 @@ import data.ProductoData;
 import entities.Categoria;
 import entities.Producto;
 import gui.complements.jPanels.JpProductos;
+import gui.complements.jPanels.JpProveedor;
 import gui.main.Tiendita;
 import java.awt.Frame;
 import java.awt.Window;
@@ -309,7 +310,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
-        JdCategoria jdCategoria = new JdCategoria(getParent(), true); 
+        JdCategoria jdCategoria = new JdCategoria(getParent(), false); 
         jdCategoria.setVisible(true);
     }//GEN-LAST:event_buttonClass4ActionPerformed
 
@@ -318,7 +319,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonClass3ActionPerformed
     
     public Frame getParent() {
-       JpProductos jpProducts = new JpProductos();
+        JpProductos jpProducts = new JpProductos();
         Window parentWindow = SwingUtilities.windowForComponent(jpProducts); 
         Frame parentFrame = null; 
         if (parentWindow instanceof Tiendita) { 

@@ -95,4 +95,47 @@ public class ProveedorData {
         }
         return comit;
     }
+    
+    public static List<Proveedor> list(String filter) {
+        String filtert = null;
+        if (filter == null) {
+            filtert = "";
+        } else {
+            filtert = filter;
+        }
+        System.out.println("list.filtert:" + filtert);
+
+        List<Proveedor> ls = new ArrayList();
+
+        String sql = "";
+        if (filtert.equals("")) {
+            sql = "SELECT * FROM Proveedor ORDER BY id_proveedor";
+        } else {
+            sql = "SELECT * FROM Proveedor WHERE (id_proveedor LIKE'" + filter + 
+                    "%' OR " + "ruc LIKE'" + filter + 
+                    "%' OR " + "email LIKE'" + filter + 
+                    "%' OR " + "telefono LIKE'" + filter + 
+                    "%' OR " + "persona_id LIKE'" + filter + 
+                    "%') "
+                    + "ORDER BY id_proveedor";
+        }
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Proveedor p = new Proveedor();
+                p.setId_proveedor(rs.getInt("id_proveedor"));
+                p.setRuc(rs.getString("ruc"));
+                p.setEmail(rs.getString("email"));
+                p.setTelefono(rs.getString("telefono"));
+                p.setPersona_id(rs.getInt("persona_id"));
+                ls.add(p);
+            }
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "list", ex);
+        } finally {
+            //Coon_sqlite.closeSQLite(cn);
+        }
+        return ls;
+    }
 }

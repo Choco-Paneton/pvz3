@@ -46,6 +46,9 @@ public class JdProveedor extends javax.swing.JDialog {
             Proveedor filaEncontrada = (Proveedor) proveedorModel.getRow(jTable1.getSelectedRow());
             c = ProveedorData.getByPId(filaEncontrada.getId_proveedor());
             compraNuevo.setProveedor(c);
+            
+            
+            /////sadadwewqeqwewqe
         }
         this.setVisible(false);
     }

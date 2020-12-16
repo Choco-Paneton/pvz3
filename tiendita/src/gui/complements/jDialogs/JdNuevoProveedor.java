@@ -3,6 +3,7 @@ package gui.complements.jDialogs;
 
 import data.ProveedorData;
 import entities.Proveedor;
+import gui.complements.jPanels.JpNuevaPersona;
 import gui.complements.jPanels.JpProveedor;
 import gui.main.Tiendita;
 import java.awt.Frame;
@@ -169,7 +170,7 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarDatosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarDatosButtonActionPerformed
-        ChangePanel change = new ChangePanel(PanelDatos, new JpProveedor());
+        ChangePanel change = new ChangePanel(jPanel2, new JpNuevaPersona());
     }//GEN-LAST:event_AgregarDatosButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

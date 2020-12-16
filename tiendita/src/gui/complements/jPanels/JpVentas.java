@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui.complements.jPanels;
 
+package gui.complements.jPanels;
 
 import data.ClienteData;
 import data.VentaData;
@@ -20,10 +15,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-/**
- *
- * @author Jhoselyn
- */
+
 public class JpVentas extends javax.swing.JPanel {
     private DefaultComboBoxModel clientesComboxModel;
     private  List<Cliente> clientes;

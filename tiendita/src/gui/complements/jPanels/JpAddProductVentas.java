@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.complements.jDialogs;
+package gui.complements.jPanels;
 
 import data.DetalleVentaData;
 import entities.Producto;
@@ -37,7 +37,7 @@ public class JpAddProductVentas extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

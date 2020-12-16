@@ -70,10 +70,7 @@ public class JpVentas extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
-<<<<<<< HEAD
         buttonClassAgregar = new gui.styles.button.ButtonClass();
-=======
->>>>>>> a8540fdef5c4b2343a58f3179e2696b38557163e
         jLabel2 = new javax.swing.JLabel();
         buttonClassVenta = new gui.styles.button.ButtonClass();
         jPanel5 = new javax.swing.JPanel();
@@ -110,7 +107,6 @@ public class JpVentas extends javax.swing.JPanel {
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
-<<<<<<< HEAD
             }
         });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,19 +129,16 @@ public class JpVentas extends javax.swing.JPanel {
         buttonClassAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonClassAgregarActionPerformed(evt);
-=======
             }
         });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
->>>>>>> a8540fdef5c4b2343a58f3179e2696b38557163e
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Cliente");
-<<<<<<< HEAD
 
         buttonClassVenta.setBackground(new java.awt.Color(13, 71, 161));
         buttonClassVenta.setText("Iniciar Venta");
@@ -163,8 +156,6 @@ public class JpVentas extends javax.swing.JPanel {
                 buttonClassVentaActionPerformed(evt);
             }
         });
-=======
->>>>>>> a8540fdef5c4b2343a58f3179e2696b38557163e
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -178,7 +169,6 @@ public class JpVentas extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel2)))
-<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonClassAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(156, 156, 156))
@@ -187,9 +177,7 @@ public class JpVentas extends javax.swing.JPanel {
                     .addContainerGap(694, Short.MAX_VALUE)
                     .addComponent(buttonClassVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)))
-=======
                 .addContainerGap(641, Short.MAX_VALUE))
->>>>>>> a8540fdef5c4b2343a58f3179e2696b38557163e
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,11 +328,8 @@ public class JpVentas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
     private gui.styles.button.ButtonClass buttonClassAgregar;
     private gui.styles.button.ButtonClass buttonClassVenta;
-=======
->>>>>>> a8540fdef5c4b2343a58f3179e2696b38557163e
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

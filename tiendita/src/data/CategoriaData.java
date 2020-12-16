@@ -14,6 +14,8 @@ import util.ErrorLogger;
 public class CategoriaData {
     
     static ErrorLogger log = new ErrorLogger(CategoriaData.class.getName());
+    static Connection cn = Coon_sqlite.connectSQLite();
+    static PreparedStatement ps;
 
     public static int create(Categoria c) {
         Connection cn = Coon_sqlite.connectSQLite();
@@ -42,8 +44,6 @@ public class CategoriaData {
     }
 
     public static int update(Categoria c) {
-        Connection cn = Coon_sqlite.connectSQLite();
-        PreparedStatement ps;
         int comit = 0;
         String sql = "UPDATE Categoria SET "
                 + "nombre_categoria = ? "
@@ -63,8 +63,6 @@ public class CategoriaData {
     }
 
     public static int delete(int id_categoria) throws Exception {
-        Connection cn = Coon_sqlite.connectSQLite();
-        PreparedStatement ps;
         int comit = 0;
         String sql = "DELETE FROM Categoria WHERE id_categoria = ? ";
         try {
@@ -79,16 +77,22 @@ public class CategoriaData {
         }
         return comit;
     }
+    
+    public static List<Categoria> listCombo(String filter){
+        List<Categoria> listCategoria = new ArrayList();
+        listCategoria.add(new Categoria("Seleccione..."));
+        listCategoria.addAll(list(filter));
+        return listCategoria;
+    }
 
     public static List<Categoria> list(String filter) {
-        Connection cn = Coon_sqlite.connectSQLite();
-        PreparedStatement ps;
         String filtert = null;
         if (filter == null) {
             filtert = "";
         } else {
             filtert = filter;
         }
+        System.out.println("list.filtert:" + filtert);
 
         List<Categoria> ls = new ArrayList();
 
@@ -97,7 +101,8 @@ public class CategoriaData {
             sql = "SELECT * FROM Categoria ORDER BY id_categoria";
         } else {
             sql = "SELECT * FROM Categoria WHERE (id_categoria LIKE'" + filter + 
-                    "%' OR nombre_categoria LIKE '" + filter + "%') " + "ORDER BY id_categoria";
+                    "%' OR nombre_categoria LIKE '" + filter + "%') " 
+                    + "ORDER BY id_categoria";
         }
         try {
             Statement st = cn.createStatement();
@@ -110,15 +115,11 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "list", ex);
-        } finally {
-            //Coon_sqlite.closeSQLite(cn);
-        }
+        } 
         return ls;
     }
 
     public static Categoria getByPId(int id_categoria) {
-        Connection cn = Coon_sqlite.connectSQLite();
-        PreparedStatement ps;
         
         Categoria c = new Categoria();
 
@@ -134,15 +135,11 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
-        } finally {
-            //Coon_sqlite.closeSQLite(cn);
         }
         return c;
     }
     
     public static Categoria getNombreById(int id_categoria) {
-        Connection cn = Coon_sqlite.connectSQLite();
-        PreparedStatement ps;
         
         Categoria c = new Categoria();
 
@@ -158,8 +155,6 @@ public class CategoriaData {
             }
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
-        } finally {
-            Coon_sqlite.closeSQLite(cn);
         }
         return c;
     }

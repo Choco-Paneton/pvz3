@@ -28,11 +28,11 @@ public class ProveedorModel extends AbstractTableModel {
         switch (column) {
             case 0:
                 return row + 1;
-            case 2:
+            case 1:
                 return p.getRuc();
-            case 3:
+            case 2:
                 return p.getEmail();
-            case 4:
+            case 3:
                 return p.getTelefono();
             default:
                 return null;

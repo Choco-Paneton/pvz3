@@ -25,11 +25,11 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
         this.setResizable(false);
     }
     
-    public static void setCategoria(Proveedor proveedor) {
+    public static void setProveedor(Proveedor proveedor) {
         JdNuevoProveedor.proveedor = proveedor;
     }
     
-    public static Proveedor getCategoria() {
+    public static Proveedor getProveedor() {
         return proveedor;
     }
     
@@ -57,6 +57,8 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        buttonClass3 = new gui.styles.button.ButtonClass();
+        buttonClass2 = new gui.styles.button.ButtonClass();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,6 +118,29 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField3.setBorder(null);
 
+        buttonClass3.setText("Cancelar");
+        buttonClass3.setColorHover(new java.awt.Color(231, 63, 51));
+        buttonClass3.setColorNormal(new java.awt.Color(244, 67, 54));
+        buttonClass3.setFocusable(false);
+        buttonClass3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
+        buttonClass3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass3ActionPerformed(evt);
+            }
+        });
+
+        buttonClass2.setBackground(new java.awt.Color(30, 136, 229));
+        buttonClass2.setText("Agregar");
+        buttonClass2.setColorHover(new java.awt.Color(27, 122, 206));
+        buttonClass2.setColorNormal(new java.awt.Color(30, 136, 229));
+        buttonClass2.setFocusable(false);
+        buttonClass2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
+        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDatosLayout = new javax.swing.GroupLayout(PanelDatos);
         PanelDatos.setLayout(PanelDatosLayout);
         PanelDatosLayout.setHorizontalGroup(
@@ -125,16 +150,17 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
                 .addComponent(AgregarDatosButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addGap(120, 120, 120))
             .addGroup(PanelDatosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                        .addComponent(jTextField1))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelDatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelDatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelDatosLayout.setVerticalGroup(
@@ -148,7 +174,11 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84))
         );
 
         jPanel6.add(PanelDatos, java.awt.BorderLayout.CENTER);
@@ -176,6 +206,19 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_buttonClass3ActionPerformed
+
+    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
+        Proveedor p = new Proveedor();
+        p.setRuc(jTextField1.getText());
+        p.setEmail(jTextField2.getText());
+        p.setTelefono(jTextField3.getText());
+        ProveedorData.create(p);
+        this.dispose();
+    }//GEN-LAST:event_buttonClass2ActionPerformed
             
     public Frame getParent() {
        JpProveedor jpProvider = new JpProveedor();
@@ -234,6 +277,8 @@ public class JdNuevoProveedor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private gui.styles.button.ButtonClass AgregarDatosButton;
     private javax.swing.JPanel PanelDatos;
+    private gui.styles.button.ButtonClass buttonClass2;
+    private gui.styles.button.ButtonClass buttonClass3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;

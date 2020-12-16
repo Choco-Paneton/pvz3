@@ -1,5 +1,10 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui.complements.jPanels;
+
 
 import data.ClienteData;
 import data.VentaData;
@@ -15,7 +20,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-
+/**
+ *
+ * @author Jhoselyn
+ */
 public class JpVentas extends javax.swing.JPanel {
     private DefaultComboBoxModel clientesComboxModel;
     private  List<Cliente> clientes;
@@ -94,7 +102,7 @@ public class JpVentas extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,11 +137,6 @@ public class JpVentas extends javax.swing.JPanel {
         buttonClassAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonClassAgregarActionPerformed(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -177,7 +180,6 @@ public class JpVentas extends javax.swing.JPanel {
                     .addContainerGap(694, Short.MAX_VALUE)
                     .addComponent(buttonClassVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)))
-                .addContainerGap(641, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

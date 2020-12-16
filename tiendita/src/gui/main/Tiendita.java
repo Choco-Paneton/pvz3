@@ -297,7 +297,7 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
 
       //ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
-
+      ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed

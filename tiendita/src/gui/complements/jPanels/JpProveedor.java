@@ -5,7 +5,6 @@
  */
 package gui.complements.jPanels;
 
-import gui.complements.jDialogs.JdNuevoProveedor;
 import gui.main.Tiendita;
 import gui.model.ProveedorModel;
 import java.awt.Frame;
@@ -334,15 +333,8 @@ public class JpProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass4ActionPerformed
 
     private void buttonClass4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass4MouseClicked
-        // TODO add your handling code here:
-        JpCategorias jpCategorys = new JpCategorias();
-        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
-        Frame parentFrame = null;
-        if (parentWindow instanceof Tiendita) {
-            parentFrame = (Tiendita)parentWindow;
-        }
-        JdNuevoProveedor jpNewjpProvider = new JdNuevoProveedor(parentFrame, true);
-        jpNewjpProvider.setVisible(true);
+        
+       
     }//GEN-LAST:event_buttonClass4MouseClicked
 
 

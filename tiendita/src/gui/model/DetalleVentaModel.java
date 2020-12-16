@@ -7,6 +7,7 @@ package gui.model;
 
 import entities.DetalleVenta;
 import data.DetalleVentaData;
+import entities.Venta;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -18,11 +19,15 @@ import javax.swing.table.AbstractTableModel;
 public class DetalleVentaModel extends AbstractTableModel {
     
     private List<DetalleVenta> list = new ArrayList();
-    private String[] columns = {"Id", "Nombre categoria"};
-    private Class[] columnsType = {Integer.class, String.class};
+    private String[] columns = {"#", "Cantidad", "Precio_unitario", "Precio_total_producto","Acciones"};
+    private Class[] columnsType = {Integer.class, Integer.class, Float.class, Float.class, Object.class};
 
     public DetalleVentaModel() {
-        list = DetalleVentaData.list("");
+        //list = DetalleVentaData.list("");
+    }
+    public DetalleVentaModel(Venta v) {
+        this.list = DetalleVentaData.listByVenta(v.getId_venta());
+        this.list.add(new DetalleVenta());
     }
     public DetalleVentaModel(String filter) {
 
@@ -31,12 +36,19 @@ public class DetalleVentaModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        DetalleVenta p = (DetalleVenta) list.get(row);
+        DetalleVenta v = (DetalleVenta) list.get(row);
         switch (column) {
             case 0:
                 return row + 1;
             case 1:
-                return p.getCantidad();
+                return v.getCantidad();
+            case 2:
+                return v.getPrecio_unitario();
+            case 3:
+                return v.getPrecio_total_producto();
+            case 4:
+                return "Add/delete";
+                
             default:
                 return null;
         }

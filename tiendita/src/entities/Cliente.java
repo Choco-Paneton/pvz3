@@ -16,6 +16,27 @@ public class Cliente extends Persona {
     private String telefono;
     private String email;
     public int persona_id;
+    
+    public Cliente() {}
+    
+    public Cliente(String nombre) {
+        this.setNombre(nombre);
+    }
+    public String toString() {
+        String ap = "";
+        String am = "";
+        if (getApellido_paterno() == null){
+            ap = "";
+        } else {
+            ap = getApellido_paterno();
+        }
+        if (getApellido_materno()== null){
+            am = "";
+        } else {
+            am = getApellido_materno();
+        }
+        return getNombre() + " " + ap + " " + am;
+    }
 
     public int getId_cliente() {
         return id_cliente;

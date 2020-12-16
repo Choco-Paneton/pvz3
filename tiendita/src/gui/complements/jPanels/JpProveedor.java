@@ -5,6 +5,7 @@
  */
 package gui.complements.jPanels;
 
+import gui.complements.jDialogs.JdNuevoProveedor;
 import gui.main.Tiendita;
 import gui.model.ProveedorModel;
 import java.awt.Frame;
@@ -48,6 +49,9 @@ public class JpProveedor extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        buttonClass5 = new gui.styles.button.ButtonClass();
+        buttonClass6 = new gui.styles.button.ButtonClass();
+        buttonClass7 = new gui.styles.button.ButtonClass();
         jPanel12 = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
@@ -81,7 +85,7 @@ public class JpProveedor extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -102,15 +106,67 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
+        buttonClass5.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass5.setText("Modificar proveedor ");
+        buttonClass5.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass5.setFocusable(false);
+        buttonClass5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        buttonClass5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass5.setVerifyInputWhenFocusTarget(false);
+        buttonClass5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass5ActionPerformed(evt);
+            }
+        });
+
+        buttonClass6.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass6.setText("Eliminar proveedor");
+        buttonClass6.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass6.setFocusable(false);
+        buttonClass6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        buttonClass6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass6.setVerifyInputWhenFocusTarget(false);
+
+        buttonClass7.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass7.setText("Nuevo Proveedor");
+        buttonClass7.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass7.setFocusable(false);
+        buttonClass7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        buttonClass7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass7.setVerifyInputWhenFocusTarget(false);
+        buttonClass7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonClass7MouseClicked(evt);
+            }
+        });
+        buttonClass7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         jPanel8.add(jPanel9, "card2");
@@ -251,7 +307,7 @@ public class JpProveedor extends javax.swing.JPanel {
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -279,14 +335,14 @@ public class JpProveedor extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -308,26 +364,6 @@ public class JpProveedor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        ChangePanel change = new ChangePanel(jPanel8, new JpPreveedorButtons());
-    }//GEN-LAST:event_buttonClass3ActionPerformed
-
-    private void buscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarFieldActionPerformed
-
-    private void buscarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarFieldKeyReleased
-
-    }//GEN-LAST:event_buscarFieldKeyReleased
-
-    private void buttonClass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass1MouseClicked
-
-    }//GEN-LAST:event_buttonClass1MouseClicked
-
-    private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-
-    }//GEN-LAST:event_buttonClass1ActionPerformed
-
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonClass4ActionPerformed
@@ -337,12 +373,55 @@ public class JpProveedor extends javax.swing.JPanel {
        
     }//GEN-LAST:event_buttonClass4MouseClicked
 
+    private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
+
+    }//GEN-LAST:event_buttonClass1ActionPerformed
+
+    private void buttonClass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass1MouseClicked
+
+    }//GEN-LAST:event_buttonClass1MouseClicked
+
+    private void buscarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarFieldKeyReleased
+
+    }//GEN-LAST:event_buscarFieldKeyReleased
+
+    private void buscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarFieldActionPerformed
+
+    private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonClass5ActionPerformed
+
+    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
+        ChangePanel change = new ChangePanel(jPanel8, new JpPreveedorButtons());
+    }//GEN-LAST:event_buttonClass3ActionPerformed
+
+    private void buttonClass7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonClass7ActionPerformed
+
+    private void buttonClass7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass7MouseClicked
+        // TODO add your handling code here:
+        JpCategorias jpCategorys = new JpCategorias();
+        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdNuevoProveedor jpNewjpProvider = new JdNuevoProveedor(parentFrame, true);
+        jpNewjpProvider.setVisible(true);
+    }//GEN-LAST:event_buttonClass7MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
     private gui.styles.button.ButtonClass buttonClass3;
     private gui.styles.button.ButtonClass buttonClass4;
+    private gui.styles.button.ButtonClass buttonClass5;
+    private gui.styles.button.ButtonClass buttonClass6;
+    private gui.styles.button.ButtonClass buttonClass7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;

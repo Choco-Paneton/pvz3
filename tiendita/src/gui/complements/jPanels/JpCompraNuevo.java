@@ -1,10 +1,21 @@
 
 package gui.complements.jPanels;
 
+import entities.Categoria;
+import entities.Proveedor;
+import gui.complements.jDialogs.JdCategoria;
+import gui.complements.jDialogs.JdProveedor;
+import gui.main.Tiendita;
+import java.awt.Frame;
+import java.awt.Window;
+import javax.swing.SwingUtilities;
 import util.ChangePanel;
 
 public class JpCompraNuevo extends javax.swing.JPanel {
-
+    
+    Proveedor proveedor;
+    Categoria categoria;
+    
     public JpCompraNuevo() {
         initComponents();
     }
@@ -164,9 +175,7 @@ public class JpCompraNuevo extends javax.swing.JPanel {
                                 .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(2, 2, 2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0))))
+                        .addComponent(buscarField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
@@ -358,9 +367,24 @@ public class JpCompraNuevo extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+    
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    
     private void buttonClass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass1MouseClicked
-
+        
     }//GEN-LAST:event_buttonClass1MouseClicked
 
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
@@ -368,11 +392,13 @@ public class JpCompraNuevo extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        // TODO add your handling code here:
+        JdCategoria jdCategoria = new JdCategoria(getParent(), true); 
+        jdCategoria.setVisible(true);
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
-        // TODO add your handling code here:
+        JdProveedor jdProveedor = new JdProveedor(getParent(), true);
+        jdProveedor.setVisible(true);
     }//GEN-LAST:event_buttonClass4ActionPerformed
 
     private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
@@ -390,7 +416,16 @@ public class JpCompraNuevo extends javax.swing.JPanel {
     private void buttonClass6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonClass6ActionPerformed
-
+    public Frame getParent() {
+       JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts); 
+        Frame parentFrame = null; 
+        if (parentWindow instanceof Tiendita) { 
+            parentFrame = (Tiendita)parentWindow; 
+            return parentFrame;
+        }  
+        return null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
@@ -403,7 +438,7 @@ public class JpCompraNuevo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

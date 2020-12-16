@@ -2,7 +2,6 @@
 package data;
 
 import entities.Proveedor;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -10,11 +9,8 @@ import java.util.List;
 import util.ErrorLogger;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
-import org.sqlite.SQLiteConfig;
 
 public class ProveedorData {
     
@@ -137,5 +133,31 @@ public class ProveedorData {
             //Coon_sqlite.closeSQLite(cn);
         }
         return ls;
+    }
+    
+    public static Proveedor getByPId(int id_preveedor) {
+        
+        Proveedor p = new Proveedor();
+
+        String sql = "SELECT * FROM Proveedor WHERE id_proveedor = ? ";
+        int i = 0;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(++i, id_preveedor);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p.setId_proveedor(rs.getInt("id_proveedor"));
+                p.setRuc(rs.getString("ruc"));
+                p.setEmail(rs.getString("email"));
+                p.setTelefono(rs.getString("telefono"));
+                p.setPersona_id(rs.getInt("persona_id"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPId", ex);
+        } finally {
+            Coon_sqlite.closeSQLite(cn);
+        }
+        return p;
     }
 }

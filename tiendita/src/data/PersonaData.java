@@ -27,8 +27,8 @@ public class PersonaData {
         try {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, d.getNombre());
-            ps.setString(++i, d.getApellido_paterno());
             ps.setString(++i, d.getApellido_materno());
+            ps.setString(++i, d.getApellido_paterno());
             ps.setString(++i, d.getDni());
             ps.setString(++i, d.getSexo());
             rsId_persona  = ps.executeUpdate();

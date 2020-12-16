@@ -4,20 +4,30 @@ package gui.complements.jDialogs;
 import data.CategoriaData;
 import entities.Categoria;
 import gui.model.CategoriaModel;
+import java.awt.event.ItemEvent;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 public class JdEliminarCategoria extends javax.swing.JDialog {
 
-    public CategoriaModel categoriaModel;
+    private DefaultComboBoxModel categoriasComboxModel;
+    private  List<Categoria> categorias;
     
-    public void ElimCat(){
-        jComboBox2.removeAllItems();
-        categoriaModel = new CategoriaModel();
+    private Categoria categoriaSelected;
+    
+    public  Categoria getClienteSelected() {
+        return categoriaSelected;
     }
+    
     
     public JdEliminarCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
+        
+        categorias = CategoriaData.listCombo("");
+        categoriasComboxModel  = new DefaultComboBoxModel(categorias.toArray());
+        jComboBox2.setModel(categoriasComboxModel);
     }
 
     /**
@@ -72,7 +82,7 @@ public class JdEliminarCategoria extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         buttonClass2.setBackground(new java.awt.Color(30, 136, 229));
-        buttonClass2.setText("Agregar");
+        buttonClass2.setText("Eliminar");
         buttonClass2.setColorHover(new java.awt.Color(27, 122, 206));
         buttonClass2.setColorNormal(new java.awt.Color(30, 136, 229));
         buttonClass2.setFocusable(false);
@@ -95,6 +105,16 @@ public class JdEliminarCategoria extends javax.swing.JDialog {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         tfNombre.setText("jTextField1");
 
@@ -144,6 +164,7 @@ public class JdEliminarCategoria extends javax.swing.JDialog {
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,6 +203,21 @@ public class JdEliminarCategoria extends javax.swing.JDialog {
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_buttonClass4ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED){
+            categoriaSelected = (Categoria) jComboBox2.getSelectedItem();
+            int id = categoriaSelected.getId_categoria();
+            if (id == 0){
+                categoriaSelected = null;
+            }
+        }
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     /**
      * @param args the command line arguments

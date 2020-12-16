@@ -5,9 +5,18 @@ public class Categoria {
     
     private int id_categoria;
     private String nombre_categoria;
+    
+    public Categoria() {
+    }
+    public Categoria(String nombre) {
+        this.nombre_categoria=nombre;
+    }
 
     public int getId_categoria() {
         return id_categoria;
+    }
+    public String toString() {
+        return nombre_categoria;
     }
 
     public void setId_categoria(int id_categoria) {

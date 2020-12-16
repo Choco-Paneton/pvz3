@@ -10,7 +10,7 @@ import gui.complements.jPanels.JpCompra;
 import gui.complements.jPanels.JpCompraNuevo;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
-import gui.complements.jPanels.JpProveedor;
+import gui.complements.jPanels.JpVentas;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Window;
@@ -175,7 +175,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpMenuButtons.add(btnCategorias);
 
         btnVenta.setBackground(new java.awt.Color(11, 61, 140));
-        btnVenta.setText("Venta");
+        btnVenta.setText("Ventas");
         btnVenta.setBorderPainted(false);
         btnVenta.setColorHover(new java.awt.Color(12, 67, 152));
         btnVenta.setColorNormal(new java.awt.Color(11, 61, 140));
@@ -270,11 +270,11 @@ public class Tiendita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -301,7 +301,7 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-      
+        ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
@@ -320,7 +320,7 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraActionPerformed
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
-        ChangePanel change = new ChangePanel(jpMainChange, new JpProveedor());
+        
     }//GEN-LAST:event_btnProveedoresActionPerformed
 
     public static void main(String args[]) {

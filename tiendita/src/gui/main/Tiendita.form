@@ -245,7 +245,7 @@
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8c" green="3d" red="b" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Venta"/>
+                    <Property name="text" type="java.lang.String" value="Ventas"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="98" green="43" red="c" type="rgb"/>

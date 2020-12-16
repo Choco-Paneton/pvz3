@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 dic. 15, 2020 3:17:11 P. M. util.ErrorLogger log
 SEVERE: data.ProductoData.create
 java.lang.NullPointerException
@@ -139,4 +140,29 @@ org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no suc
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+=======
+dic. 15, 2020 3:02:48 P. M. util.ErrorLogger log
+SEVERE: data.ClienteData.getByPId
+java.sql.SQLException: no such column: 'id_categoria'
+	at org.sqlite.jdbc3.JDBC3ResultSet.findColumn(JDBC3ResultSet.java:49)
+	at org.sqlite.jdbc3.JDBC3ResultSet.getInt(JDBC3ResultSet.java:408)
+	at data.CountData.getNCategoria(CountData.java:29)
+	at data.CountData.main(CountData.java:39)
+
+dic. 15, 2020 3:04:38 P. M. util.ErrorLogger log
+SEVERE: data.ClienteData.getByPId
+java.sql.SQLException: no such column: 'id_categoria'
+	at org.sqlite.jdbc3.JDBC3ResultSet.findColumn(JDBC3ResultSet.java:49)
+	at org.sqlite.jdbc3.JDBC3ResultSet.getInt(JDBC3ResultSet.java:408)
+	at data.CountData.getNCategoria(CountData.java:30)
+	at data.CountData.main(CountData.java:39)
+
+dic. 15, 2020 3:06:27 P. M. util.ErrorLogger log
+SEVERE: data.ClienteData.getByPId
+java.sql.SQLException: no such column: 'id_categoria'
+	at org.sqlite.jdbc3.JDBC3ResultSet.findColumn(JDBC3ResultSet.java:49)
+	at org.sqlite.jdbc3.JDBC3ResultSet.getInt(JDBC3ResultSet.java:408)
+	at data.CountData.getNCategoria(CountData.java:30)
+	at data.CountData.main(CountData.java:39)
+>>>>>>> cc214f540cf342f7e9c48239382aad736cebdcc0
 

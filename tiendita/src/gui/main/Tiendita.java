@@ -1,6 +1,7 @@
 
 package gui.main;
 
+import gui.complements.jDialogs.JdAcess;
 import gui.complements.jDialogs.JdAsojito;
 import gui.complements.jDialogs.JdNuevoProducto;
 import gui.complements.jPanels.JpCategorias;
@@ -9,6 +10,10 @@ import gui.complements.jPanels.JpCompra;
 import gui.complements.jPanels.JpCompraNuevo;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
+<<<<<<< HEAD
+=======
+import gui.complements.jPanels.JpProveedor;
+>>>>>>> cc214f540cf342f7e9c48239382aad736cebdcc0
 import gui.complements.jPanels.JpVentas;
 import java.awt.Frame;
 import java.awt.Image;
@@ -174,7 +179,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpMenuButtons.add(btnCategorias);
 
         btnVenta.setBackground(new java.awt.Color(11, 61, 140));
-        btnVenta.setText("Venta");
+        btnVenta.setText("Ventas");
         btnVenta.setBorderPainted(false);
         btnVenta.setColorHover(new java.awt.Color(12, 67, 152));
         btnVenta.setColorNormal(new java.awt.Color(11, 61, 140));
@@ -222,6 +227,11 @@ public class Tiendita extends javax.swing.JFrame {
         btnProveedores.setColorNormal(new java.awt.Color(11, 61, 140));
         btnProveedores.setFocusable(false);
         btnProveedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
         jpMenuButtons.add(btnProveedores);
 
         javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
@@ -249,11 +259,11 @@ public class Tiendita extends javax.swing.JFrame {
         jpDefault.setLayout(jpDefaultLayout);
         jpDefaultLayout.setHorizontalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 804, Short.MAX_VALUE)
+            .addGap(0, 836, Short.MAX_VALUE)
         );
         jpDefaultLayout.setVerticalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 513, Short.MAX_VALUE)
         );
 
         jpMainChange.add(jpDefault, "card2");
@@ -295,7 +305,11 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+<<<<<<< HEAD
       ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
+=======
+        ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
+>>>>>>> cc214f540cf342f7e9c48239382aad736cebdcc0
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
@@ -312,6 +326,10 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpCompra());
     }//GEN-LAST:event_btnCompraActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new JpProveedor());
+    }//GEN-LAST:event_btnProveedoresActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

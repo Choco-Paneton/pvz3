@@ -22,7 +22,7 @@ public class ClienteData {
     public static int create(Cliente d) {
         int rsId_cliente = 0;
         String[] returns = {"id_cliente"};
-        String sql = "INSERT INTO clientes(ruc, telefono, email, persona_id) "
+        String sql = "INSERT INTO Cliente(ruc, telefono, email, persona_id) "
                 + "VALUES(?,?,?,?)";
         int i = 0;
         try {
@@ -47,12 +47,13 @@ public class ClienteData {
     }
 
     public static int update(Cliente d) {
-        //System.out.println("actualizar d.getId_cliente(): " + d.getId_cliente());
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
         int comit = 0;
         String sql = "UPDATE Cliente SET "
                 + "ruc=?, "
-                + "telefono=? "
-                + "email=? "
+                + "telefono=?, "
+                + "email=?, "
                 + "persona_id=? "
                 + "WHERE id_cliente=?";
         int i = 0;
@@ -106,12 +107,14 @@ public class ClienteData {
 
         String sql = "";
         if (filtert.equals("")) {
-            sql = "SELECT * FROM Cliente as c INNER JOIN Persona as p ON p.id_persona = c.persona_id ORDER BY id_cliente";
+            sql = "SELECT * FROM Cliente ORDER BY id_cliente";
         } else {
-            sql = "SELECT * FROM Cliente as c INNER JOIN Persona as p ON p.id_persona = c.persona_id "
-                    + "WHERE (id_cliente LIKE'" + filter + "%' OR "
-                    + "nombres LIKE'" + filter + "%' OR info_adic LIKE'" + filter + "%' OR "
-                    + "id_cliente LIKE'" + filter + "%') "
+            sql = "SELECT * FROM Cliente WHERE (id_proveedor LIKE'" + filter +
+                    "%' OR " + "ruc LIKE'" + filter + 
+                    "%' OR " + "telefono LIKE'" + filter + 
+                    "%' OR " + "email LIKE'" + filter + 
+                    "%' OR " + "persona_id LIKE'" + filter + 
+                    "%') "
                     + "ORDER BY id_cliente";
         }
         try {
@@ -119,13 +122,6 @@ public class ClienteData {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 Cliente d = new Cliente();
-                
-                d.setNombre(rs.getString("nombre"));
-                d.setApellido_materno(rs.getString("apellido_materno"));
-                d.setApellido_paterno(rs.getString("apellido_paterno"));
-                d.setDni(rs.getString("dni"));
-                d.setSexo(rs.getString("sexo"));
-                
                 d.setId_cliente(rs.getInt("id_cliente"));
                 d.setRuc(rs.getString("ruc"));
                 d.setTelefono(rs.getString("telefono"));
@@ -142,7 +138,7 @@ public class ClienteData {
     public static Cliente getByPId(int id_cliente) {
         Cliente d = new Cliente();
 
-        String sql = "SELECT * FROM clientes WHERE id_cliente = ? ";
+        String sql = "SELECT * FROM Cliente WHERE id_cliente = ? ";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql);

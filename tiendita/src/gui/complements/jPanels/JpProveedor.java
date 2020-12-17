@@ -1,31 +1,71 @@
-
 package gui.complements.jPanels;
+
+import data.ProveedorData;
+import entities.Proveedor;
 
 import gui.complements.jDialogs.JdNuevoProveedor;
 import gui.main.Tiendita;
 import gui.model.ProveedorModel;
 import java.awt.Frame;
 import java.awt.Window;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 import util.ChangePanel;
 
 public class JpProveedor extends javax.swing.JPanel {
 
-    public ProveedorModel categoriaModel;
+    public ProveedorModel proveedorModel;
     
     public JpProveedor() {
         initComponents();
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        categoriaModel = new ProveedorModel();
-        paintTable(categoriaModel);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        proveedorModel = new ProveedorModel();
+        paintTable(proveedorModel);
+    }
+    private void resetForm() {
+        TextRuc.requestFocus();
+        TextRuc.setText("");
+        TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        TextEmail.requestFocus();
+        TextEmail.setText("");
+        TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        TextTelefono.requestFocus();
+        TextTelefono.setText("");
+        TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        ModificarButton.setText("REGISTRAR");
+        ModificarButton.setToolTipText("REGISTRAR");
     }
     public void paintTable(ProveedorModel tableModel) {
-        this.categoriaModel = tableModel;
-        jTable1.setModel(tableModel);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        this.proveedorModel = tableModel;
+        table.setModel(tableModel);
+        table.getColumnModel().getColumn(0).setMaxWidth(100);
+    }
+    
+    private void paintForm() {
+        if (table.getSelectedRow() != -1) {
+            Proveedor filax = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
+            Proveedor d = ProveedorData.getByPId(filax.getId_proveedor());
+            TextRuc.setText(d.getRuc());
+            TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+
+            TextEmail.setText(d.getEmail());
+            TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            
+            TextTelefono.setText(d.getTelefono());
+            TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_proveedor(), table.getSelectedRow());
+
+            ModificarButton.setText("MODIFICAR");
+            ModificarButton.setToolTipText("MODIFICAR");
+        }
+
     }
 
     
@@ -41,8 +81,8 @@ public class JpProveedor extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        buttonClass5 = new gui.styles.button.ButtonClass();
-        buttonClass6 = new gui.styles.button.ButtonClass();
+        ModificarButton = new gui.styles.button.ButtonClass();
+        EliminarButtom = new gui.styles.button.ButtonClass();
         buttonClass7 = new gui.styles.button.ButtonClass();
         jPanel12 = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
@@ -50,16 +90,16 @@ public class JpProveedor extends javax.swing.JPanel {
         buttonClass1 = new gui.styles.button.ButtonClass();
         jPanel6 = new javax.swing.JPanel();
         buttonClass3 = new gui.styles.button.ButtonClass();
-        jTextField1 = new javax.swing.JTextField();
+        TextRuc = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        TextEmail = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        TextTelefono = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         buttonClass4 = new gui.styles.button.ButtonClass();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
@@ -98,26 +138,31 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonClass5.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass5.setText("Modificar proveedor ");
-        buttonClass5.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass5.setFocusable(false);
-        buttonClass5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        buttonClass5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass5.setVerifyInputWhenFocusTarget(false);
-        buttonClass5.addActionListener(new java.awt.event.ActionListener() {
+        ModificarButton.setBackground(new java.awt.Color(13, 71, 161));
+        ModificarButton.setText("Modificar proveedor ");
+        ModificarButton.setColorNormal(new java.awt.Color(13, 71, 161));
+        ModificarButton.setFocusable(false);
+        ModificarButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        ModificarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ModificarButton.setVerifyInputWhenFocusTarget(false);
+        ModificarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass5ActionPerformed(evt);
+                ModificarButtonActionPerformed(evt);
             }
         });
 
-        buttonClass6.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass6.setText("Eliminar proveedor");
-        buttonClass6.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass6.setFocusable(false);
-        buttonClass6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        buttonClass6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass6.setVerifyInputWhenFocusTarget(false);
+        EliminarButtom.setBackground(new java.awt.Color(13, 71, 161));
+        EliminarButtom.setText("Eliminar proveedor");
+        EliminarButtom.setColorNormal(new java.awt.Color(13, 71, 161));
+        EliminarButtom.setFocusable(false);
+        EliminarButtom.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        EliminarButtom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        EliminarButtom.setVerifyInputWhenFocusTarget(false);
+        EliminarButtom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarButtomActionPerformed(evt);
+            }
+        });
 
         buttonClass7.setBackground(new java.awt.Color(13, 71, 161));
         buttonClass7.setText("Nuevo Proveedor");
@@ -143,20 +188,20 @@ public class JpProveedor extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EliminarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EliminarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
@@ -242,11 +287,26 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setBorder(null);
+        TextRuc.setBorder(null);
+        TextRuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextRucKeyReleased(evt);
+            }
+        });
 
-        jTextField2.setBorder(null);
+        TextEmail.setBorder(null);
+        TextEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextEmailKeyReleased(evt);
+            }
+        });
 
-        jTextField3.setBorder(null);
+        TextTelefono.setBorder(null);
+        TextTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextTelefonoKeyReleased(evt);
+            }
+        });
 
         buttonClass4.setBackground(new java.awt.Color(13, 71, 161));
         buttonClass4.setText("Agregar");
@@ -273,11 +333,11 @@ public class JpProveedor extends javax.swing.JPanel {
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonClass3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
+                    .addComponent(TextRuc)
                     .addComponent(jSeparator1)
-                    .addComponent(jTextField2)
+                    .addComponent(TextEmail)
                     .addComponent(jSeparator2)
-                    .addComponent(jTextField3)
+                    .addComponent(TextTelefono)
                     .addComponent(jSeparator3)
                     .addComponent(buttonClass4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
@@ -288,15 +348,15 @@ public class JpProveedor extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
@@ -308,7 +368,7 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -319,7 +379,17 @@ public class JpProveedor extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -381,9 +451,46 @@ public class JpProveedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarFieldActionPerformed
 
-    private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass5ActionPerformed
+    private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
+        if (TextRuc.getText().trim().isEmpty()) {
+            TextRuc.requestFocus();
+            TextRuc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+
+        } else {
+            Proveedor s = new Proveedor();
+            s.setRuc(TextRuc.getText());
+            s.setEmail(TextEmail.getText());
+            s.setTelefono(TextTelefono.getText());
+            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+                try {
+                    Proveedor fila = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
+                    s.setId_proveedor(fila.getId_proveedor());
+                    System.out.println("id:" + s.getId_proveedor());
+                    if (s.getId_proveedor() > 0) {
+                        int returnId = ProveedorData.update(s);
+                        if (returnId != 0) {
+                            paintTable(new ProveedorModel());
+                            resetForm();
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
+                }
+            } else { // sin seleccionar, insert
+                try {
+                    int returnId = ProveedorData.create(s);
+                    if (returnId != 0) {
+                        paintTable(new ProveedorModel());
+                        // s.setId(returnId);//necesitamos subir el id, ya no
+                        //tableModel.addRow(s);
+                        resetForm();
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede insertar: " + ex.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_ModificarButtonActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
         ChangePanel change = new ChangePanel(jPanel8, new JpPreveedorButtons());
@@ -404,14 +511,72 @@ public class JpProveedor extends javax.swing.JPanel {
     private void buttonClass7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass7MouseClicked
 
     }//GEN-LAST:event_buttonClass7MouseClicked
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        paintForm();
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
+        paintForm();
+    }//GEN-LAST:event_tableKeyReleased
+
+    private void EliminarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtomActionPerformed
+        if (table.getSelectedRow() != -1) {
+            try {
+                int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
+                if (opc == JOptionPane.OK_OPTION) {
+                    Proveedor fila = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
+                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_proveedor(), table.getSelectedRow());
+
+                    int opcion = ProveedorData.delete(fila.getId_proveedor());
+                    if (opcion != 0) {
+                        //tableModel.removeRow(table.getSelectedRow());
+                        paintTable(new ProveedorModel());
+                        resetForm();
+                    }
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar: " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
+        }
+    }//GEN-LAST:event_EliminarButtomActionPerformed
+
+    private void TextRucKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextRucKeyReleased
+        if (!TextRuc.getText().trim().isEmpty()) { //reset
+            TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextRuc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextRucKeyReleased
+
+    private void TextEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEmailKeyReleased
+        if (!TextEmail.getText().trim().isEmpty()) { //reset
+            TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextEmail.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextEmailKeyReleased
+
+    private void TextTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextTelefonoKeyReleased
+        if (!TextTelefono.getText().trim().isEmpty()) { //reset
+            TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextTelefono.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextTelefonoKeyReleased
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private gui.styles.button.ButtonClass EliminarButtom;
+    private gui.styles.button.ButtonClass ModificarButton;
+    private javax.swing.JTextField TextEmail;
+    private javax.swing.JTextField TextRuc;
+    private javax.swing.JTextField TextTelefono;
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
     private gui.styles.button.ButtonClass buttonClass3;
     private gui.styles.button.ButtonClass buttonClass4;
-    private gui.styles.button.ButtonClass buttonClass5;
-    private gui.styles.button.ButtonClass buttonClass6;
     private gui.styles.button.ButtonClass buttonClass7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -429,9 +594,6 @@ public class JpProveedor extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

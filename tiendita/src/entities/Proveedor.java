@@ -8,7 +8,7 @@ public class Proveedor {
     private String email;
     private String telefono;
     public int persona_id;
-
+    
     public int getId_proveedor() {
         return id_proveedor;
     }

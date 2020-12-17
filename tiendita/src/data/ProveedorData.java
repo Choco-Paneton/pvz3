@@ -79,7 +79,7 @@ public class ProveedorData {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
         int comit = 0;
-        String sql = "DELETE FROM proveedor WHERE id_proveedor = ?";
+        String sql = "DELETE FROM Proveedor WHERE id_proveedor = ?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1, id_proveedor);

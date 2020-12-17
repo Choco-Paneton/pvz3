@@ -22,27 +22,34 @@ public class CompraData {
     static Connection cn = Coon_sqlite.connectSQLite();
     static PreparedStatement ps;
     static ErrorLogger log = new ErrorLogger(CompraData.class.getName());
+    
     static SimpleDateFormat sdf = new SimpleDateFormat(SQLiteConfig.DEFAULT_DATE_STRING_FORMAT);
     
     static Date dateNowBuy = new Date();
     static String currentTime = sdf.format(dateNowBuy);
     
-    public static int create(Compra c) {
+    public static int create(Compra o) {
         int rsId_compra = 0;
         String[] returns = {"id_compra"};
-        String sql = "INSERT INTO Compra (fecha_venta, proveedor_id)"
+        String sql = "INSERT INTO Compra (fecha_venta, cliente_id)"
+                + " "
                 + "VALUES(?,?)";
         int i = 0;
         try {
             ps = cn.prepareStatement(sql, returns);
             ps.setString(++i, currentTime);
-            ps.setInt(++i, c.getProveedor_id());
+            ps.setInt(++i, o.getProveedor_id());
             rsId_compra = ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
                     rsId_compra = rs.getInt(1);
                 }
                 rs.close();
+                
+            /*try {
+                    d.setFecha(sdf.parse(rs.getString("fecha")));
+                } catch (Exception e) {
+                }*/
             }
             
         } catch (SQLException ex) {

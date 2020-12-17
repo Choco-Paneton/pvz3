@@ -56,7 +56,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="727" max="32767" attributes="0"/>
+                          <Component id="jLabel1" pref="726" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -138,94 +138,15 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="ModificarButton" min="-2" pref="131" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="EliminarButtom" min="-2" pref="116" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="buttonClass7" min="-2" pref="110" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="378" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="22" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="ModificarButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="EliminarButtom" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="buttonClass7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
-                          <SubComponents>
-                            <Component class="gui.styles.button.ButtonClass" name="ModificarButton">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Modificar proveedor "/>
-                                <Property name="colorNormal" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="focusable" type="boolean" value="false"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Century Gothic" size="12" style="1"/>
-                                </Property>
-                                <Property name="horizontalTextPosition" type="int" value="0"/>
-                                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarButtonActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="gui.styles.button.ButtonClass" name="EliminarButtom">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Eliminar proveedor"/>
-                                <Property name="colorNormal" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="focusable" type="boolean" value="false"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Century Gothic" size="12" style="1"/>
-                                </Property>
-                                <Property name="horizontalTextPosition" type="int" value="0"/>
-                                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarButtomActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="gui.styles.button.ButtonClass" name="buttonClass7">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Nuevo Proveedor"/>
-                                <Property name="colorNormal" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="a1" green="47" red="d" type="rgb"/>
-                                </Property>
-                                <Property name="focusable" type="boolean" value="false"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Century Gothic" size="12" style="1"/>
-                                </Property>
-                                <Property name="horizontalTextPosition" type="int" value="0"/>
-                                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonClass7MouseClicked"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass7ActionPerformed"/>
-                              </Events>
-                            </Component>
-                          </SubComponents>
                         </Container>
                       </SubComponents>
                     </Container>
@@ -274,9 +195,6 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="buscarField">
                           <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Microsoft JhengHei UI" size="24" style="1"/>
                             </Property>
@@ -336,11 +254,11 @@
                               <EmptySpace pref="34" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="buttonClass3" max="32767" attributes="0"/>
-                                  <Component id="TextRuc" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TextEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TextTelefono" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="buttonClass4" alignment="1" pref="186" max="32767" attributes="0"/>
                               </Group>
@@ -354,18 +272,18 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="buttonClass3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TextRuc" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jTextField1" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TextEmail" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jTextField2" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TextTelefono" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jTextField3" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace pref="180" max="32767" attributes="0"/>
+                              <EmptySpace pref="92" max="32767" attributes="0"/>
                               <Component id="buttonClass4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
@@ -390,48 +308,30 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass3ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="TextRuc">
+                    <Component class="javax.swing.JTextField" name="jTextField1">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextRucKeyReleased"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator1">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="TextEmail">
+                    <Component class="javax.swing.JTextField" name="jTextField2">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextEmailKeyReleased"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator2">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="TextTelefono">
+                    <Component class="javax.swing.JTextField" name="jTextField3">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextTelefonoKeyReleased"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator3">
                     </Component>
@@ -472,7 +372,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="487" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="486" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -481,7 +381,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="457" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="381" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -495,7 +395,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="table">
+                        <Component class="javax.swing.JTable" name="jTable1">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
@@ -506,10 +406,6 @@
                               </Table>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableMouseClicked"/>
-                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tableKeyReleased"/>
-                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

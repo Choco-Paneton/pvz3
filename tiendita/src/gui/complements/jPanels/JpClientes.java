@@ -1,8 +1,13 @@
 
 package gui.complements.jPanels;
 
+import data.ClienteData;
+import entities.Cliente;
+
 import gui.model.ClienteModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.LineBorder;
 
 public class JpClientes extends javax.swing.JPanel {
     
@@ -10,14 +15,52 @@ public class JpClientes extends javax.swing.JPanel {
     
     public JpClientes() {
         initComponents();
-        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         clienteModel = new ClienteModel();
         paintTable(clienteModel);
+    }
+    private void resetForm() {
+        ruc.requestFocus();
+        ruc.setText("");
+        ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        telefono.requestFocus();
+        telefono.setText("");
+        telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        email.requestFocus();
+        email.setText("");
+        email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        ModificarButtom.setText("REGISTRAR");
+        ModificarButtom.setToolTipText("REGISTRAR");
     }
 
     private void paintTable(ClienteModel tableModel) {
         this.clienteModel = tableModel;
-        jTable1.setModel(tableModel);
+        table.setModel(tableModel);
+        table.getColumnModel().getColumn(0).setMaxWidth(100);
+    }
+    private void paintForm() {
+        if (table.getSelectedRow() != -1) {
+            Cliente filax = (Cliente) clienteModel.getRow(table.getSelectedRow());
+            Cliente d = ClienteData.getByPId(filax.getId_cliente());
+            ruc.setText(d.getRuc());
+            ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+
+            telefono.setText(d.getTelefono());
+            telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            
+            email.setText(d.getEmail());
+            email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_cliente(), table.getSelectedRow());
+
+            ModificarButtom.setText("MODIFICAR");
+            ModificarButtom.setToolTipText("MODIFICAR");
+        }
+
     }
     
     /**
@@ -35,17 +78,15 @@ public class JpClientes extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         buttonClass5 = new gui.styles.button.ButtonClass();
-        buttonClass6 = new gui.styles.button.ButtonClass();
-        buttonClass7 = new gui.styles.button.ButtonClass();
+        EliminarButtom = new gui.styles.button.ButtonClass();
+        ModificarButtom = new gui.styles.button.ButtonClass();
         buttonClass8 = new gui.styles.button.ButtonClass();
-        jTextField1 = new javax.swing.JTextField();
+        ruc = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField4 = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
@@ -53,7 +94,7 @@ public class JpClientes extends javax.swing.JPanel {
         buttonClass1 = new gui.styles.button.ButtonClass();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         setLayout(new java.awt.CardLayout());
 
@@ -97,27 +138,27 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
-        buttonClass6.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass6.setText("Eliminar cliente");
-        buttonClass6.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass6.setFocusable(false);
-        buttonClass6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass6.setVerifyInputWhenFocusTarget(false);
-        buttonClass6.addActionListener(new java.awt.event.ActionListener() {
+        EliminarButtom.setBackground(new java.awt.Color(13, 71, 161));
+        EliminarButtom.setText("Eliminar cliente");
+        EliminarButtom.setColorNormal(new java.awt.Color(13, 71, 161));
+        EliminarButtom.setFocusable(false);
+        EliminarButtom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        EliminarButtom.setVerifyInputWhenFocusTarget(false);
+        EliminarButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass6ActionPerformed(evt);
+                EliminarButtomActionPerformed(evt);
             }
         });
 
-        buttonClass7.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass7.setText("Modificar cliente");
-        buttonClass7.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass7.setFocusable(false);
-        buttonClass7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass7.setVerifyInputWhenFocusTarget(false);
-        buttonClass7.addActionListener(new java.awt.event.ActionListener() {
+        ModificarButtom.setBackground(new java.awt.Color(13, 71, 161));
+        ModificarButtom.setText("Modificar cliente");
+        ModificarButtom.setColorNormal(new java.awt.Color(13, 71, 161));
+        ModificarButtom.setFocusable(false);
+        ModificarButtom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ModificarButtom.setVerifyInputWhenFocusTarget(false);
+        ModificarButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass7ActionPerformed(evt);
+                ModificarButtomActionPerformed(evt);
             }
         });
 
@@ -133,17 +174,31 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
+        ruc.setBorder(null);
+        ruc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rucKeyReleased(evt);
+            }
+        });
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setBorder(null);
+        telefono.setBorder(null);
+        telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                telefonoKeyReleased(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
-
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setBorder(null);
+        email.setBorder(null);
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+        email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emailKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -156,24 +211,21 @@ public class JpClientes extends javax.swing.JPanel {
                             .addGap(21, 21, 21)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(buttonClass8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ModificarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EliminarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(ruc, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addComponent(jSeparator1))))
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3)
+                            .addComponent(email)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(telefono)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -182,26 +234,22 @@ public class JpClientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EliminarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClass7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ModificarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ruc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(buttonClass8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -214,7 +262,6 @@ public class JpClientes extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        buscarField.setBackground(new java.awt.Color(255, 255, 255));
         buscarField.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         buscarField.setForeground(new java.awt.Color(51, 51, 51));
         buscarField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -275,7 +322,7 @@ public class JpClientes extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -286,7 +333,17 @@ public class JpClientes extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -318,13 +375,69 @@ public class JpClientes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonClass5ActionPerformed
 
-    private void buttonClass6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass6ActionPerformed
+    private void EliminarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtomActionPerformed
+        if (table.getSelectedRow() != -1) {
+            try {
+                int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
+                if (opc == JOptionPane.OK_OPTION) {
+                    Cliente fila = (Cliente) clienteModel.getRow(table.getSelectedRow());
+                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_cliente(), table.getSelectedRow());
 
-    private void buttonClass7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass7ActionPerformed
+                    int opcion = ClienteData.delete(fila.getId_cliente());
+                    if (opcion != 0) {
+                        //tableModel.removeRow(table.getSelectedRow());
+                        paintTable(new ClienteModel());
+                        resetForm();
+                    }
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar: " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
+        }
+    }//GEN-LAST:event_EliminarButtomActionPerformed
+
+    private void ModificarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtomActionPerformed
+        if (ruc.getText().trim().isEmpty()) {
+            ruc.requestFocus();
+            ruc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+
+        } else {
+            Cliente c = new Cliente();
+            c.setRuc(ruc.getText());
+            c.setTelefono(telefono.getText());
+            c.setEmail(email.getText());
+            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+                try {
+                    Cliente fila = (Cliente) clienteModel.getRow(table.getSelectedRow());
+                    c.setId_cliente(fila.getId_cliente());
+                    System.out.println("id:" + c.getId_cliente());
+                    if (c.getId_cliente() > 0) {
+                        int returnId = ClienteData.update(c);
+                        if (returnId != 0) {
+                            paintTable(new ClienteModel());
+                            resetForm();
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
+                }
+            } else { // sin seleccionar, insert
+                try {
+                    int returnId = ClienteData.create(c);
+                    if (returnId != 0) {
+                        paintTable(new ClienteModel());
+                        // s.setId(returnId);//necesitamos subir el id, ya no
+                        //tableModel.addRow(s);
+                        resetForm();
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede insertar: " + ex.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_ModificarButtomActionPerformed
 
     private void buttonClass8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass8ActionPerformed
         // TODO add your handling code here:
@@ -346,14 +459,51 @@ public class JpClientes extends javax.swing.JPanel {
 
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        paintForm();
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
+        paintForm();
+    }//GEN-LAST:event_tableKeyReleased
+
+    private void rucKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rucKeyReleased
+        if (!ruc.getText().trim().isEmpty()) { //reset
+            ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            ruc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_rucKeyReleased
+
+    private void telefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyReleased
+        if (!telefono.getText().trim().isEmpty()) { //reset
+            telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            telefono.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_telefonoKeyReleased
+
+    private void emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyReleased
+        if (!email.getText().trim().isEmpty()) { //reset
+            email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            email.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_emailKeyReleased
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private gui.styles.button.ButtonClass EliminarButtom;
+    private gui.styles.button.ButtonClass ModificarButtom;
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
     private gui.styles.button.ButtonClass buttonClass5;
-    private gui.styles.button.ButtonClass buttonClass6;
-    private gui.styles.button.ButtonClass buttonClass7;
     private gui.styles.button.ButtonClass buttonClass8;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -367,11 +517,8 @@ public class JpClientes extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField ruc;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

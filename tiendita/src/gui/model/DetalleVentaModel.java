@@ -7,6 +7,7 @@ package gui.model;
 
 import entities.DetalleVenta;
 import data.DetalleVentaData;
+import data.VentaData;
 import entities.Venta;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +56,19 @@ public class DetalleVentaModel extends AbstractTableModel {
     }
     
     @Override
+    public void setValueAt(Object valor, int row, int column) {
+        DetalleVenta v = (DetalleVenta) list.get(row);
+        switch (column) {
+        
+            
+        }
+    }
+    
+    
+    @Override
     public boolean isCellEditable(int row, int column) {
-        return false;
+        DetalleVenta d = (DetalleVenta) list.get(row);
+        return true;
     }
 
     @Override
@@ -77,6 +89,17 @@ public class DetalleVentaModel extends AbstractTableModel {
     @Override
     public int getColumnCount() {
         return columns.length;
+    }
+    
+    public void addRow(DetalleVenta d) { // con db no se usa
+        this.list.add(d);
+        //this.fireTableDataChanged();
+        this.fireTableRowsInserted(list.size(), list.size());
+    }
+    
+    public void removeRow(int linha) { // con db no se usa
+        this.list.remove(linha);
+        this.fireTableRowsDeleted(linha, linha);
     }
     
     public Object getRow(int row) {

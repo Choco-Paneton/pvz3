@@ -11,8 +11,8 @@ import javax.swing.table.AbstractTableModel;
 public class ProveedorModel extends AbstractTableModel {
 
     private List<Proveedor> list = new ArrayList();
-    private String[] columns = {"Id", "ruc", "email", "telefono"};
-    private Class[] columnsType = {Integer.class, String.class, String.class, String.class};
+    private String[] columns = {"Id","Id Persona", "ruc", "email", "telefono"};
+    private Class[] columnsType = {Integer.class, Integer.class, String.class, String.class, String.class};
 
     public ProveedorModel() {
         list = ProveedorData.list("");
@@ -29,10 +29,12 @@ public class ProveedorModel extends AbstractTableModel {
             case 0:
                 return row + 1;
             case 1:
-                return p.getRuc();
+                return p.getPersona_id();
             case 2:
-                return p.getEmail();
+                return p.getRuc();
             case 3:
+                return p.getEmail();
+            case 4:
                 return p.getTelefono();
             default:
                 return null;

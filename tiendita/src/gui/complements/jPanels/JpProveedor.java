@@ -212,6 +212,7 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
+        buscarField.setBackground(new java.awt.Color(255, 255, 255));
         buscarField.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         buscarField.setForeground(new java.awt.Color(51, 51, 51));
         buscarField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -287,6 +288,7 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
+        TextRuc.setBackground(new java.awt.Color(255, 255, 255));
         TextRuc.setBorder(null);
         TextRuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -294,6 +296,7 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
+        TextEmail.setBackground(new java.awt.Color(255, 255, 255));
         TextEmail.setBorder(null);
         TextEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -301,6 +304,7 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
+        TextTelefono.setBackground(new java.awt.Color(255, 255, 255));
         TextTelefono.setBorder(null);
         TextTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

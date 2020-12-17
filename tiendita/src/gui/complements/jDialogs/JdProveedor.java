@@ -20,10 +20,8 @@ import javax.swing.SwingUtilities;
 
 public class JdProveedor extends javax.swing.JDialog {
     
-    JpCompraNuevo compraNuevo = new JpCompraNuevo();
     
     private ProveedorModel proveedorModel;
-    JDialog op;
     private Proveedor c;
     
     public JdProveedor(java.awt.Frame parent, boolean modal) {
@@ -40,14 +38,12 @@ public class JdProveedor extends javax.swing.JDialog {
         if (jTable1.getSelectedRow() != -1) {
             Proveedor filaEncontrada = (Proveedor) proveedorModel.getRow(jTable1.getSelectedRow());
             c = ProveedorData.getByPId(filaEncontrada.getId_proveedor());
+
+            Persona pe = PersonaData.getByPId(c.getPersona_id());
+            System.out.println(pe.getNombre());
+            JpCompraNuevo.jTextField1.setText(pe.getNombre() + "");
+            JpCompraNuevo compraNuevo = new JpCompraNuevo();
             compraNuevo.setProveedor(c);
-            Proveedor pr = ProveedorData.getByPId(c.getId_proveedor());
-            Persona pe = PersonaData.getByPId(pr.persona_id);
-            JpCompraNuevo.jLabel5.setText(pe.getNombre());
-            
-            //JpCompraNuevo.jLabel5.setText(c);
-            
-            /////sadadwewqeqwewqe
         }
         this.setVisible(false);
     }

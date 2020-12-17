@@ -42,8 +42,11 @@ public class JdProducto extends javax.swing.JDialog {
             c = ProveedorData.getByPId(filaEncontrada.getId_proveedor());
             compraNuevo.setProveedor(c);
             Proveedor pr = ProveedorData.getByPId(c.getId_proveedor());
-            Persona pe = PersonaData.getByPId(pr.persona_id);
-            JpCompraNuevo.jLabel5.setText(pe.getNombre());
+            System.out.println(c.getId_proveedor());
+            Persona pe = PersonaData.getByPId(pr.getPersona_id());
+            System.out.println(pr.getPersona_id());
+            System.out.println(pe.getNombre());
+            JpCompraNuevo.jTextField1.setText(pe.getNombre());
             
             //JpCompraNuevo.jLabel5.setText(c);
             

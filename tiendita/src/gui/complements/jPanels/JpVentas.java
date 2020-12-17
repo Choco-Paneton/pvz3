@@ -10,16 +10,22 @@ import data.ClienteData;
 import data.VentaData;
 import entities.Cliente;
 import entities.Venta;
+import gui.actions.CeldaActionVentaProducto;
+import gui.actions.CeldaRenderVentaProducto;
 import gui.complements.jDialogs.JdAgregarProductosVenta;
 import gui.main.Tiendita;
 import gui.model.DetalleVentaModel;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.ItemEvent;
+import java.text.DecimalFormat;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import util.Config;
 /**
  *
  * @author Jhoselyn
@@ -52,15 +58,54 @@ public class JpVentas extends javax.swing.JPanel {
            
         dvmodel = new DetalleVentaModel();
         jTable1.setModel(dvmodel);
-        jTable1.setEnabled(false);
+        //jTable1.setEnabled(false);
         paintTable(dvmodel);
     }
     
     public  void paintTable(DetalleVentaModel tableModel){
         this.dvmodel = tableModel;
         jTable1.setModel(dvmodel);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
         jTable1.getColumnModel().getColumn(0);
         jTable1.getColumnModel().getColumn(1);
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(new CeldaRenderVentaProducto(this));
+        jTable1.getColumnModel().getColumn(4).setCellEditor(new CeldaActionVentaProducto(this));
+        
+        setEventTable();
+    }
+    
+    private void setEventTable() {
+        TableModelListener tml = new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                System.out.printf("tableChanged \n");
+                tableHandlerEvent();
+            }
+        };
+        this.jTable1.getModel().addTableModelListener(tml);
+
+    }
+
+    private void tableHandlerEvent() {
+        if (ventaSelected != null) {
+            System.out.printf("ventaSelected \n");
+            double sal = sumRow(this.dvmodel, 4); //CompraDetData.getSaldosByCompId(compraSelected.getId());
+            
+
+        } else {
+            System.out.printf("venta no Selected \n");
+
+        }
+    }
+
+    public double sumRow(DetalleVentaModel mdl, int col) {
+        double total = 0;
+        // iterate over all columns
+        for (int i = 0; i < mdl.getRowCount(); i++) {
+            // null or not Integer will throw exception
+            total += (double) mdl.getValueAt(i, col);
+        }
+        return total;
     }
 
     /**
@@ -210,6 +255,7 @@ public class JpVentas extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);

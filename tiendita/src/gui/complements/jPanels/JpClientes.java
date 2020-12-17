@@ -373,6 +373,7 @@ public class JpClientes extends javax.swing.JPanel {
 
     private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonClass5ActionPerformed
 
     private void EliminarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtomActionPerformed

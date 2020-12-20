@@ -215,6 +215,8 @@ public class JpProductos extends javax.swing.JPanel {
         }
         JdNuevoProducto jdNewProduct = new JdNuevoProducto(parentFrame, true);
         jdNewProduct.setVisible(true);
+        paintTable(new ProductoModel());
+        
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
 

@@ -240,7 +240,15 @@ public class JpCategorias extends javax.swing.JPanel {
     }//GEN-LAST:event_buscarFieldActionPerformed
 
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
-
+        JpCategorias jpCategorys = new JpCategorias();
+        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdNuevoCategoria jpNewCategorys = new JdNuevoCategoria(parentFrame, true);
+        jpNewCategorys.setVisible(true);
+        paintTable(new CategoriaModel());
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
@@ -263,14 +271,7 @@ public class JpCategorias extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass2MouseClicked
 
     private void buttonClass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass1MouseClicked
-        JpCategorias jpCategorys = new JpCategorias();
-        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
-        Frame parentFrame = null;
-        if (parentWindow instanceof Tiendita) {
-            parentFrame = (Tiendita)parentWindow;
-        }
-        JdNuevoCategoria jpNewCategorys = new JdNuevoCategoria(parentFrame, true);
-        jpNewCategorys.setVisible(true);
+        
     }//GEN-LAST:event_buttonClass1MouseClicked
 
 

@@ -510,6 +510,7 @@ public class JpProveedor extends javax.swing.JPanel {
         }
         JdNuevoProveedor jdNewProduct = new JdNuevoProveedor(parentFrame, false);
         jdNewProduct.setVisible(true);
+        paintTable(new ProveedorModel());
     }//GEN-LAST:event_buttonClass7ActionPerformed
 
     private void buttonClass7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass7MouseClicked

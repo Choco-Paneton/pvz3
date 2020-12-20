@@ -124,7 +124,49 @@ public class CountData {
         Connection cn = Coon_sqlite.connectSQLite();
         PreparedStatement ps;
         
-        String sql = "SELECT * FROM Venta";
+        String sql = "SELECT * FROM ventas";
+        
+        try {
+            ps = cn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                intN = rs.getRow();
+            }
+            return intN;
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPId", ex);
+        }
+        return 0;
+    }
+    public static int getNProductoPro() {
+        
+        int intN = 0;
+        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
+        
+        String sql = "SELECT * FROM productos";
+        
+        try {
+            ps = cn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                intN = rs.getRow();
+            }
+            return intN;
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "getByPId", ex);
+        }
+        return 0;
+    }
+    public static int getNClientePro() {
+        
+        int intN = 0;
+        
+        Connection cn = Coon_sqlite.connectSQLite();
+        PreparedStatement ps;
+        
+        String sql = "SELECT * FROM clientes";
         
         try {
             ps = cn.prepareStatement(sql);

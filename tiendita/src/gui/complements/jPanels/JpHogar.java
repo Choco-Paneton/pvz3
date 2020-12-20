@@ -14,6 +14,8 @@ public class JpHogar extends javax.swing.JPanel {
         NProductos.setText(CountData.getNProducto()+ "");
         NProveedores.setText(CountData.getNProveedor()+ "");
         NVenta.setText(CountData.getNVenta()+ "");
+        NProductosPro.setText(CountData.getNProductoPro()+ "");
+        NClientesPro.setText(CountData.getNClientePro() + "");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,12 +62,12 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel14 = new javax.swing.JPanel();
         buttonClass11 = new gui.styles.button.ButtonClass();
         jPanel17 = new javax.swing.JPanel();
-        NProveedores1 = new javax.swing.JLabel();
+        NProductosPro = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         btnProveedores1 = new gui.styles.button.ButtonClass();
         jPanel19 = new javax.swing.JPanel();
-        NProveedores2 = new javax.swing.JLabel();
+        NClientesPro = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         btnProveedores2 = new gui.styles.button.ButtonClass();
@@ -373,11 +375,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel17.setBackground(new java.awt.Color(255, 255, 0));
         jPanel17.setLayout(new java.awt.GridLayout(1, 3));
 
-        NProveedores1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        NProveedores1.setForeground(new java.awt.Color(255, 255, 255));
-        NProveedores1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NProveedores1.setText("0");
-        jPanel17.add(NProveedores1);
+        NProductosPro.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NProductosPro.setForeground(new java.awt.Color(255, 255, 255));
+        NProductosPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NProductosPro.setText("0");
+        jPanel17.add(NProductosPro);
 
         jLabel16.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -418,11 +420,11 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel19.setBackground(new java.awt.Color(255, 255, 0));
         jPanel19.setLayout(new java.awt.GridLayout(1, 3));
 
-        NProveedores2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
-        NProveedores2.setForeground(new java.awt.Color(255, 255, 255));
-        NProveedores2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NProveedores2.setText("0");
-        jPanel19.add(NProveedores2);
+        NClientesPro.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NClientesPro.setForeground(new java.awt.Color(255, 255, 255));
+        NClientesPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NClientesPro.setText("0");
+        jPanel19.add(NClientesPro);
 
         jLabel17.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -486,11 +488,11 @@ public class JpHogar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NCategorias;
     private javax.swing.JLabel NClientes;
+    private javax.swing.JLabel NClientesPro;
     private javax.swing.JLabel NCompra;
     private javax.swing.JLabel NProductos;
+    private javax.swing.JLabel NProductosPro;
     private javax.swing.JLabel NProveedores;
-    private javax.swing.JLabel NProveedores1;
-    private javax.swing.JLabel NProveedores2;
     private javax.swing.JLabel NVenta;
     private gui.styles.button.ButtonClass btnCategorias;
     private gui.styles.button.ButtonClass btnCompra;

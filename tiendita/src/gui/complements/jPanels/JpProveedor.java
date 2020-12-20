@@ -89,14 +89,12 @@ public class JpProveedor extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         buttonClass1 = new gui.styles.button.ButtonClass();
         jPanel6 = new javax.swing.JPanel();
-        buttonClass3 = new gui.styles.button.ButtonClass();
         TextRuc = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         TextEmail = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         TextTelefono = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        buttonClass4 = new gui.styles.button.ButtonClass();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -212,7 +210,6 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
-        buscarField.setBackground(new java.awt.Color(255, 255, 255));
         buscarField.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         buscarField.setForeground(new java.awt.Color(51, 51, 51));
         buscarField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -276,19 +273,6 @@ public class JpProveedor extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonClass3.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass3.setText("Acciones");
-        buttonClass3.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass3.setFocusable(false);
-        buttonClass3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass3.setVerifyInputWhenFocusTarget(false);
-        buttonClass3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass3ActionPerformed(evt);
-            }
-        });
-
-        TextRuc.setBackground(new java.awt.Color(255, 255, 255));
         TextRuc.setBorder(null);
         TextRuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -296,7 +280,6 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
-        TextEmail.setBackground(new java.awt.Color(255, 255, 255));
         TextEmail.setBorder(null);
         TextEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -304,28 +287,10 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         });
 
-        TextTelefono.setBackground(new java.awt.Color(255, 255, 255));
         TextTelefono.setBorder(null);
         TextTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TextTelefonoKeyReleased(evt);
-            }
-        });
-
-        buttonClass4.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass4.setText("Agregar");
-        buttonClass4.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass4.setFocusable(false);
-        buttonClass4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass4.setVerifyInputWhenFocusTarget(false);
-        buttonClass4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonClass4MouseClicked(evt);
-            }
-        });
-        buttonClass4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass4ActionPerformed(evt);
             }
         });
 
@@ -336,22 +301,18 @@ public class JpProveedor extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonClass3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TextRuc)
+                    .addComponent(TextRuc, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
                     .addComponent(TextEmail)
                     .addComponent(jSeparator2)
                     .addComponent(TextTelefono)
-                    .addComponent(jSeparator3)
-                    .addComponent(buttonClass4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                    .addComponent(jSeparator3))
                 .addGap(20, 20, 20))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(66, 66, 66)
                 .addComponent(TextRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,9 +324,7 @@ public class JpProveedor extends javax.swing.JPanel {
                 .addComponent(TextTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel6, java.awt.BorderLayout.LINE_END);
@@ -430,15 +389,6 @@ public class JpProveedor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass4ActionPerformed
-
-    private void buttonClass4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass4MouseClicked
-        
-       
-    }//GEN-LAST:event_buttonClass4MouseClicked
-
     private void buttonClass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass1ActionPerformed
 
     }//GEN-LAST:event_buttonClass1ActionPerformed
@@ -448,11 +398,14 @@ public class JpProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1MouseClicked
 
     private void buscarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarFieldKeyReleased
-
+        ProveedorModel tableModel = new ProveedorModel(buscarField.getText());
+        paintTable(tableModel);
     }//GEN-LAST:event_buscarFieldKeyReleased
 
     private void buscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFieldActionPerformed
         // TODO add your handling code here:
+        ProveedorModel tableModel = new ProveedorModel(buscarField.getText());
+        paintTable(tableModel);
     }//GEN-LAST:event_buscarFieldActionPerformed
 
     private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
@@ -495,10 +448,6 @@ public class JpProveedor extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_ModificarButtonActionPerformed
-
-    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        ChangePanel change = new ChangePanel(jPanel8, new JpPreveedorButtons());
-    }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass7ActionPerformed
 
@@ -580,8 +529,6 @@ public class JpProveedor extends javax.swing.JPanel {
     private javax.swing.JTextField TextTelefono;
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
-    private gui.styles.button.ButtonClass buttonClass3;
-    private gui.styles.button.ButtonClass buttonClass4;
     private gui.styles.button.ButtonClass buttonClass7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

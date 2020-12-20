@@ -1,14 +1,18 @@
 
 package gui.complements.jPanels;
 
+import data.CategoriaData;
+import entities.Categoria;
 import gui.complements.jDialogs.JdEliminarCategoria;
 import gui.complements.jDialogs.JdNuevoCategoria;
 import gui.main.Tiendita;
 import gui.model.CategoriaModel;
 import java.awt.Frame;
 import java.awt.Window;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 
 public class JpCategorias extends javax.swing.JPanel {
      
@@ -18,15 +22,37 @@ public class JpCategorias extends javax.swing.JPanel {
         initComponents();
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         categoriaModel = new CategoriaModel();
         paintTable(categoriaModel);
+    }
+    private void resetForm() {
+        TextNombre.requestFocus();
+        TextNombre.setText("");
+        TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+
+        ModificarButton.setText("REGISTRAR");
+        ModificarButton.setToolTipText("REGISTRAR");
     }
     
     public void paintTable(CategoriaModel tableModel) {
         this.categoriaModel = tableModel;
-        jTable1.setModel(tableModel);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        table.setModel(tableModel);
+        table.getColumnModel().getColumn(0).setMaxWidth(100);
+    }
+    private void paintForm() {
+        if (table.getSelectedRow() != -1) {
+            Categoria filax = (Categoria) categoriaModel.getRow(table.getSelectedRow());
+            Categoria c = CategoriaData.getByPId(filax.getId_categoria());
+            TextNombre.setText(c.getNombre_categoria());
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+
+            System.out.printf("getId:%d getSelectedRow:%d \n", c.getId_categoria(), table.getSelectedRow());
+
+            ModificarButton.setText("MODIFICAR");
+            ModificarButton.setToolTipText("MODIFICAR");
+        }
+
     }
     
     @SuppressWarnings("unchecked")
@@ -41,13 +67,16 @@ public class JpCategorias extends javax.swing.JPanel {
         buttonClass1 = new gui.styles.button.ButtonClass();
         jLabel2 = new javax.swing.JLabel();
         buscarField = new javax.swing.JTextField();
-        buttonClass2 = new gui.styles.button.ButtonClass();
-        buttonClass3 = new gui.styles.button.ButtonClass();
+        EliminarButton = new gui.styles.button.ButtonClass();
+        ModificarButton = new gui.styles.button.ButtonClass();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        TextNombre = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setLayout(new java.awt.CardLayout());
 
@@ -117,32 +146,32 @@ public class JpCategorias extends javax.swing.JPanel {
             }
         });
 
-        buttonClass2.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass2.setText("Eliminar");
-        buttonClass2.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass2.setFocusable(false);
-        buttonClass2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass2.setVerifyInputWhenFocusTarget(false);
-        buttonClass2.addMouseListener(new java.awt.event.MouseAdapter() {
+        EliminarButton.setBackground(new java.awt.Color(13, 71, 161));
+        EliminarButton.setText("Eliminar");
+        EliminarButton.setColorNormal(new java.awt.Color(13, 71, 161));
+        EliminarButton.setFocusable(false);
+        EliminarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        EliminarButton.setVerifyInputWhenFocusTarget(false);
+        EliminarButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonClass2MouseClicked(evt);
+                EliminarButtonMouseClicked(evt);
             }
         });
-        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+        EliminarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass2ActionPerformed(evt);
+                EliminarButtonActionPerformed(evt);
             }
         });
 
-        buttonClass3.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass3.setText("Modificar");
-        buttonClass3.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass3.setFocusable(false);
-        buttonClass3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass3.setVerifyInputWhenFocusTarget(false);
-        buttonClass3.addActionListener(new java.awt.event.ActionListener() {
+        ModificarButton.setBackground(new java.awt.Color(13, 71, 161));
+        ModificarButton.setText("Modificar");
+        ModificarButton.setColorNormal(new java.awt.Color(13, 71, 161));
+        ModificarButton.setFocusable(false);
+        ModificarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ModificarButton.setVerifyInputWhenFocusTarget(false);
+        ModificarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass3ActionPerformed(evt);
+                ModificarButtonActionPerformed(evt);
             }
         });
 
@@ -158,9 +187,9 @@ public class JpCategorias extends javax.swing.JPanel {
                     .addComponent(jSeparator2)
                     .addComponent(buscarField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -171,8 +200,8 @@ public class JpCategorias extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -191,7 +220,7 @@ public class JpCategorias extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -202,7 +231,47 @@ public class JpCategorias extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        TextNombre.setBorder(null);
+        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextNombreKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(jSeparator1))
+                .addGap(20, 20, 20))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -210,15 +279,17 @@ public class JpCategorias extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -231,7 +302,8 @@ public class JpCategorias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarFieldKeyReleased
-
+        CategoriaModel tableModel = new CategoriaModel(buscarField.getText());
+        paintTable(tableModel);
     }//GEN-LAST:event_buscarFieldKeyReleased
 
     private void buscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFieldActionPerformed
@@ -251,35 +323,101 @@ public class JpCategorias extends javax.swing.JPanel {
         paintTable(new CategoriaModel());
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
-    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
+    private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass2ActionPerformed
+        if (table.getSelectedRow() != -1) {
+            try {
+                int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
+                if (opc == JOptionPane.OK_OPTION) {
+                    Categoria fila = (Categoria) categoriaModel.getRow(table.getSelectedRow());
+                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_categoria(), table.getSelectedRow());
 
-    private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass3ActionPerformed
-
-    private void buttonClass2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass2MouseClicked
-        JpCategorias jpCategorys = new JpCategorias();
-        Window parentWindow = SwingUtilities.windowForComponent(jpCategorys);
-        Frame parentFrame = null;
-        if (parentWindow instanceof Tiendita) {
-            parentFrame = (Tiendita)parentWindow;
+                    int opcion = CategoriaData.delete(fila.getId_categoria());
+                    if (opcion != 0) {
+                        //tableModel.removeRow(table.getSelectedRow());
+                        paintTable(new CategoriaModel());
+                        resetForm();
+                    }
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar: " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
         }
-        JdEliminarCategoria jpNewCategorys = new JdEliminarCategoria(parentFrame, true);
-        jpNewCategorys.setVisible(true);
-    }//GEN-LAST:event_buttonClass2MouseClicked
+    }//GEN-LAST:event_EliminarButtonActionPerformed
+
+    private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
+        if (TextNombre.getText().trim().isEmpty()) {
+            TextNombre.requestFocus();
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+
+        } else {
+            Categoria s = new Categoria();
+            s.setNombre_categoria(TextNombre.getText());
+
+            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+                try {
+                    Categoria fila = (Categoria) categoriaModel.getRow(table.getSelectedRow());
+                    s.setId_categoria(fila.getId_categoria());
+                    System.out.println("id:" + s.getId_categoria());
+                    if (s.getId_categoria() > 0) {
+                        int returnId = CategoriaData.update(s);
+                        if (returnId != 0) {
+                            paintTable(new CategoriaModel());
+                            resetForm();
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
+                }
+            } else { // sin seleccionar, insert
+                try {
+                    int returnId = CategoriaData.create(s);
+                    if (returnId != 0) {
+                        paintTable(new CategoriaModel());
+                        // s.setId(returnId);//necesitamos subir el id, ya no
+                        //tableModel.addRow(s);
+                        resetForm();
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede insertar: " + ex.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_ModificarButtonActionPerformed
+
+    private void EliminarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarButtonMouseClicked
+        
+    }//GEN-LAST:event_EliminarButtonMouseClicked
 
     private void buttonClass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonClass1MouseClicked
         
     }//GEN-LAST:event_buttonClass1MouseClicked
 
+    private void TextNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyReleased
+        if (!TextNombre.getText().trim().isEmpty()) { //reset
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextNombreKeyReleased
+
+    private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
+        paintForm();
+    }//GEN-LAST:event_tableKeyReleased
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        paintForm();
+    }//GEN-LAST:event_tableMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private gui.styles.button.ButtonClass EliminarButton;
+    private gui.styles.button.ButtonClass ModificarButton;
+    private javax.swing.JTextField TextNombre;
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
-    private gui.styles.button.ButtonClass buttonClass2;
-    private gui.styles.button.ButtonClass buttonClass3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -288,8 +426,10 @@ public class JpCategorias extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

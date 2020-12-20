@@ -11,6 +11,9 @@ import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
 import gui.complements.jPanels.JpProveedor;
 import gui.complements.jPanels.JpVentas;
+import gui.profe.VentasPanel;
+import gui.profe.clientes.ClientesPanel;
+import gui.profe.productos.ProductosPanel;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Window;
@@ -66,6 +69,8 @@ public class Tiendita extends javax.swing.JFrame {
         btnCompra = new gui.styles.button.ButtonClass();
         btnCliente = new gui.styles.button.ButtonClass();
         btnProveedores = new gui.styles.button.ButtonClass();
+        btnVenta1 = new gui.styles.button.ButtonClass();
+        btnVenta2 = new gui.styles.button.ButtonClass();
         jpMainChange = new javax.swing.JPanel();
         jpDefault = new javax.swing.JPanel();
 
@@ -230,6 +235,34 @@ public class Tiendita extends javax.swing.JFrame {
         });
         jpMenuButtons.add(btnProveedores);
 
+        btnVenta1.setBackground(new java.awt.Color(11, 61, 140));
+        btnVenta1.setText("Clientes Venta PRO ");
+        btnVenta1.setBorderPainted(false);
+        btnVenta1.setColorHover(new java.awt.Color(12, 67, 152));
+        btnVenta1.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnVenta1.setFocusable(false);
+        btnVenta1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnVenta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenta1ActionPerformed(evt);
+            }
+        });
+        jpMenuButtons.add(btnVenta1);
+
+        btnVenta2.setBackground(new java.awt.Color(11, 61, 140));
+        btnVenta2.setText("Productos Venta PRO");
+        btnVenta2.setBorderPainted(false);
+        btnVenta2.setColorHover(new java.awt.Color(12, 67, 152));
+        btnVenta2.setColorNormal(new java.awt.Color(11, 61, 140));
+        btnVenta2.setFocusable(false);
+        btnVenta2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        btnVenta2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenta2ActionPerformed(evt);
+            }
+        });
+        jpMenuButtons.add(btnVenta2);
+
         javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
         jpMenu.setLayout(jpMenuLayout);
         jpMenuLayout.setHorizontalGroup(
@@ -255,7 +288,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpDefault.setLayout(jpDefaultLayout);
         jpDefaultLayout.setHorizontalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         jpDefaultLayout.setVerticalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +336,7 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
 
       //ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
-      ChangePanel change = new ChangePanel(jpMainChange, new JpVentas());
+      ChangePanel change = new ChangePanel(jpMainChange, new VentasPanel());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
@@ -324,6 +357,14 @@ public class Tiendita extends javax.swing.JFrame {
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         ChangePanel change = new ChangePanel(jpMainChange, new JpProveedor());
     }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenta1ActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new ClientesPanel());
+    }//GEN-LAST:event_btnVenta1ActionPerformed
+
+    private void btnVenta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenta2ActionPerformed
+        ChangePanel change = new ChangePanel(jpMainChange, new ProductosPanel());
+    }//GEN-LAST:event_btnVenta2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -367,6 +408,8 @@ public class Tiendita extends javax.swing.JFrame {
     public static gui.styles.button.ButtonClass btnProveedores;
     private gui.styles.button.ButtonClass btnUser;
     public static gui.styles.button.ButtonClass btnVenta;
+    public static gui.styles.button.ButtonClass btnVenta1;
+    public static gui.styles.button.ButtonClass btnVenta2;
     private javax.swing.JPanel jpCliente;
     private javax.swing.JPanel jpDefault;
     private javax.swing.JPanel jpMain;

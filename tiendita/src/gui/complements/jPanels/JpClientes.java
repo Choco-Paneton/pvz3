@@ -5,6 +5,7 @@ import data.ClienteData;
 import entities.Cliente;
 
 import gui.model.ClienteModel;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
@@ -33,9 +34,6 @@ public class JpClientes extends javax.swing.JPanel {
         email.requestFocus();
         email.setText("");
         email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-        
-        ModificarButtom.setText("REGISTRAR");
-        ModificarButtom.setToolTipText("REGISTRAR");
     }
 
     private void paintTable(ClienteModel tableModel) {
@@ -57,8 +55,6 @@ public class JpClientes extends javax.swing.JPanel {
             email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
             System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_cliente(), table.getSelectedRow());
 
-            ModificarButtom.setText("MODIFICAR");
-            ModificarButtom.setToolTipText("MODIFICAR");
         }
 
     }
@@ -87,6 +83,7 @@ public class JpClientes extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         email = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
@@ -200,6 +197,13 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Debes de elegir una fila");
+        jLabel2.setOpaque(true);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -207,18 +211,18 @@ public class JpClientes extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(ruc, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(jSeparator1)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                             .addGap(21, 21, 21)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(buttonClass8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(ModificarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EliminarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(ruc, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(jSeparator1))))
+                                .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(email)
@@ -227,6 +231,7 @@ public class JpClientes extends javax.swing.JPanel {
                             .addComponent(telefono)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +254,9 @@ public class JpClientes extends javax.swing.JPanel {
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(buttonClass8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -372,7 +379,7 @@ public class JpClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
-        // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_buttonClass5ActionPerformed
 
@@ -396,6 +403,7 @@ public class JpClientes extends javax.swing.JPanel {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
+            jLabel2.setBackground(new Color(255,51,51));
         }
     }//GEN-LAST:event_EliminarButtomActionPerformed
 
@@ -425,6 +433,7 @@ public class JpClientes extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
                 }
             } else { // sin seleccionar, insert
+                jLabel2.setBackground(new Color(255,51,51));
                 try {
                     int returnId = ClienteData.create(c);
                     if (returnId != 0) {
@@ -506,6 +515,7 @@ public class JpClientes extends javax.swing.JPanel {
     private gui.styles.button.ButtonClass buttonClass8;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

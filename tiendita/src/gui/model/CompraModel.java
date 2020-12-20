@@ -17,6 +17,9 @@ public class CompraModel extends AbstractTableModel {
     private Class[] columnsType = {Integer.class, Integer.class, String.class};
     static SimpleDateFormat dfIGU = new SimpleDateFormat(Config.DEFAULT_DATE_STRING_FORMAT_PE);
     
+    public CompraModel() {
+        
+    }
     public CompraModel(String filter, Date fi, Date ff) {
         lis = CompraData.list(filter, fi, ff);
     }

@@ -36,7 +36,7 @@ public class JpPreveedorButtons extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.CardLayout());
 
         jPanel2.setBackground(new java.awt.Color(13, 71, 161));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         buttonClass5.setBackground(new java.awt.Color(13, 71, 161));
         buttonClass5.setText("Modificar proveedor ");

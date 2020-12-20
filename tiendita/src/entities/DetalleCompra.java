@@ -15,8 +15,9 @@ public class DetalleCompra {
     private int cantidad;
     private float precio_unitario;
     private float precio_total_producto;
-    public int compra_id;
-    public int producto_id;
+    private int compra_id;
+    private int producto_id;
+    private String producto;
 
     public int getId_detallecompra() {
         return id_detallecompra;
@@ -65,6 +66,13 @@ public class DetalleCompra {
     public void setProducto_id(int producto_id) {
         this.producto_id = producto_id;
     }
-  
+
+    public String getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
 }
 

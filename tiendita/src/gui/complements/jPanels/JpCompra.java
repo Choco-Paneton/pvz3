@@ -1,12 +1,25 @@
 
 package gui.complements.jPanels;
 
+import data.CompraData;
+import entities.Categoria;
+import entities.Compra;
+import entities.Proveedor;
+import gui.complements.jDialogs.JdAcess;
+import gui.complements.jDialogs.JdProveedor;
+import gui.main.Tiendita;
 import gui.model.CompraModel;
+import gui.model.DetalleCompraModel;
+import java.awt.Frame;
+import java.awt.Window;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import util.ChangePanel;
 import util.Config;
 
@@ -14,6 +27,9 @@ public class JpCompra extends javax.swing.JPanel {
     
     CompraModel compraModel;
     static SimpleDateFormat dfIGU = new SimpleDateFormat(Config.DEFAULT_DATE_STRING_FORMAT_PE);
+    private static Proveedor proveedor;
+    private static Categoria categoria;
+    private Compra compraSelected;
     
     public JpCompra() {
         initComponents();
@@ -22,10 +38,35 @@ public class JpCompra extends javax.swing.JPanel {
         jDateChooser1.setDate(new Date());
         System.out.println(jDateChooser1.getCalendar().DATE);
         jDateChooser2.setDate(new Date());
+        //traer datos de hoy
         CompraModel tableModel = new CompraModel("",jDateChooser1.getDate(), jDateChooser2.getDate());
         paintTable(tableModel);
+        
+    }
+
+    public Compra getCompraSelected() {
+        return compraSelected;
+    }
+
+    public void setCompraSelected(Compra compraSelected) {
+        this.compraSelected = compraSelected;
     }
     
+    public static void setProveedor(Proveedor proveedor) {
+        JpCompra.proveedor = proveedor;
+    }
+    public static Proveedor getProveedor() {
+        return proveedor;
+    }
+    
+    public static void setCategoria(Categoria categoria) {
+        JpCompra.categoria = categoria;
+    }
+    
+    public static Categoria getCategoria() {
+        return categoria;
+    }
+   
     private void paintTable(CompraModel tableModel) {
         this.compraModel = tableModel;
         jTable1.setModel(tableModel);
@@ -49,12 +90,16 @@ public class JpCompra extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         buttonClass1 = new gui.styles.button.ButtonClass();
         buttonClass3 = new gui.styles.button.ButtonClass();
-        buttonClass4 = new gui.styles.button.ButtonClass();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        buttonClass6 = new gui.styles.button.ButtonClass();
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         buttonClass5 = new gui.styles.button.ButtonClass();
+        buttonClass4 = new gui.styles.button.ButtonClass();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -119,15 +164,21 @@ public class JpCompra extends javax.swing.JPanel {
             }
         });
 
-        buttonClass4.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass4.setText("Eliminar compra");
-        buttonClass4.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass4.setFocusable(false);
-        buttonClass4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass4.setVerifyInputWhenFocusTarget(false);
-        buttonClass4.addActionListener(new java.awt.event.ActionListener() {
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setForeground(new java.awt.Color(51, 51, 51));
+
+        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser2.setForeground(new java.awt.Color(51, 51, 51));
+
+        buttonClass6.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass6.setText("Eligir proveedor");
+        buttonClass6.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass6.setFocusable(false);
+        buttonClass6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass6.setVerifyInputWhenFocusTarget(false);
+        buttonClass6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass4ActionPerformed(evt);
+                buttonClass6ActionPerformed(evt);
             }
         });
 
@@ -138,9 +189,9 @@ public class JpCompra extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonClass6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +209,7 @@ public class JpCompra extends javax.swing.JPanel {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonClass6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12))
         );
 
@@ -181,19 +232,64 @@ public class JpCompra extends javax.swing.JPanel {
             }
         });
 
+        buttonClass4.setBackground(new java.awt.Color(13, 71, 161));
+        buttonClass4.setText("Eliminar compra");
+        buttonClass4.setColorNormal(new java.awt.Color(13, 71, 161));
+        buttonClass4.setFocusable(false);
+        buttonClass4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonClass4.setVerifyInputWhenFocusTarget(false);
+        buttonClass4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClass4ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Proveedor:");
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setBorder(null);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonClass5, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(buttonClass4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(41, 41, 41))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1)))
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addComponent(buttonClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -269,16 +365,57 @@ public class JpCompra extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        ChangePanel change = new ChangePanel(jPanel1, new JpCompraNuevo());
+                
+        if (proveedor != null) {
+            JpCompraNuevo.setProveedor(proveedor);
+            ChangePanel change = new ChangePanel(jPanel1, new JpCompraNuevo());
+            proveedor = null;
+        } else {
+            JpProductos jpProducts = new JpProductos();
+            Window parentWindow = SwingUtilities.windowForComponent(jpProducts);
+            Frame parentFrame = null;
+            if (parentWindow instanceof Tiendita) {
+                parentFrame = (Tiendita)parentWindow;
+            }
+            JdAcess jdAcess = new JdAcess(parentFrame, false);
+            jdAcess.peligro("Proveedor es necesario", "¡Debes de agregar un proveedor!", "Proveedor");
+            jdAcess.setVisible(true);
+        }
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
-        // TODO add your handling code here:
+        if (jTable1.getSelectedRow() != -1) {
+
+            Compra fila = (Compra) compraModel.getRow(jTable1.getSelectedRow());
+            System.out.println(fila.getId_compra());
+            try {
+                int opcion = CompraData.delete(fila.getId_compra());
+                if (opcion != 0) {
+                    paintTable(new CompraModel(null, jDateChooser1.getDate(), jDateChooser2.getDate()));
+                } else {
+                    System.out.println("no funciona");
+                }
+                
+            } catch (Exception ex) {
+                Logger.getLogger(JpCompra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_buttonClass4ActionPerformed
 
     private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonClass5ActionPerformed
+
+    private void buttonClass6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass6ActionPerformed
+        JpProductos jpProducts = new JpProductos();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdProveedor proveedor = new JdProveedor(parentFrame, true);
+        proveedor.setVisible(true);
+    }//GEN-LAST:event_buttonClass6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -286,9 +423,11 @@ public class JpCompra extends javax.swing.JPanel {
     private gui.styles.button.ButtonClass buttonClass3;
     private gui.styles.button.ButtonClass buttonClass4;
     private gui.styles.button.ButtonClass buttonClass5;
+    private gui.styles.button.ButtonClass buttonClass6;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -298,6 +437,8 @@ public class JpCompra extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    public static javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

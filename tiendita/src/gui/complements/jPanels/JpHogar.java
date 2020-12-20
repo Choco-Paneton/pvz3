@@ -108,7 +108,7 @@ public class JpHogar extends javax.swing.JPanel {
         jPanel11.setBackground(new java.awt.Color(241, 196, 15));
 
         btnProductos.setBackground(new java.awt.Color(241, 196, 15));
-        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconCatego.png"))); // NOI18N
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconProduc.png"))); // NOI18N
         btnProductos.setColorHover(new java.awt.Color(241, 196, 15));
         btnProductos.setColorNormal(new java.awt.Color(241, 196, 15));
         btnProductos.setColorPressed(new java.awt.Color(241, 196, 15));

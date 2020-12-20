@@ -358,19 +358,19 @@ public class Tiendita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private gui.styles.button.ButtonClass btnCategorias;
-    private gui.styles.button.ButtonClass btnCliente;
-    private gui.styles.button.ButtonClass btnCompra;
-    private gui.styles.button.ButtonClass btnHogar;
+    public static gui.styles.button.ButtonClass btnCategorias;
+    public static gui.styles.button.ButtonClass btnCliente;
+    public static gui.styles.button.ButtonClass btnCompra;
+    public static gui.styles.button.ButtonClass btnHogar;
     private gui.styles.button.ButtonClass btnIcon;
-    private gui.styles.button.ButtonClass btnProductos;
-    private gui.styles.button.ButtonClass btnProveedores;
+    public static gui.styles.button.ButtonClass btnProductos;
+    public static gui.styles.button.ButtonClass btnProveedores;
     private gui.styles.button.ButtonClass btnUser;
-    private gui.styles.button.ButtonClass btnVenta;
+    public static gui.styles.button.ButtonClass btnVenta;
     private javax.swing.JPanel jpCliente;
     private javax.swing.JPanel jpDefault;
     private javax.swing.JPanel jpMain;
-    private javax.swing.JPanel jpMainChange;
+    public static javax.swing.JPanel jpMainChange;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpMenuButtons;
     public static javax.swing.JLabel lblCorreo1;

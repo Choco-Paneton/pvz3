@@ -59,6 +59,16 @@ public class JpHogar extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         buttonClass11 = new gui.styles.button.ButtonClass();
+        jPanel17 = new javax.swing.JPanel();
+        NProveedores1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
+        btnProveedores1 = new gui.styles.button.ButtonClass();
+        jPanel19 = new javax.swing.JPanel();
+        NProveedores2 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        btnProveedores2 = new gui.styles.button.ButtonClass();
 
         setLayout(new java.awt.CardLayout());
 
@@ -76,7 +86,7 @@ public class JpHogar extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +132,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +177,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +222,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +267,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +312,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +356,7 @@ public class JpHogar extends javax.swing.JPanel {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(buttonClass11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,13 +370,103 @@ public class JpHogar extends javax.swing.JPanel {
 
         jPanel4.add(jPanel10);
 
+        jPanel17.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel17.setLayout(new java.awt.GridLayout(1, 3));
+
+        NProveedores1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NProveedores1.setForeground(new java.awt.Color(255, 255, 255));
+        NProveedores1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NProveedores1.setText("0");
+        jPanel17.add(NProveedores1);
+
+        jLabel16.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Productos PRO");
+        jPanel17.add(jLabel16);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 0));
+
+        btnProveedores1.setBackground(new java.awt.Color(255, 255, 0));
+        btnProveedores1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ruby.png"))); // NOI18N
+        btnProveedores1.setColorHover(new java.awt.Color(255, 255, 0));
+        btnProveedores1.setColorNormal(new java.awt.Color(255, 255, 0));
+        btnProveedores1.setColorPressed(new java.awt.Color(255, 255, 0));
+        btnProveedores1.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnProveedores1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel17.add(jPanel18);
+
+        jPanel4.add(jPanel17);
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel19.setLayout(new java.awt.GridLayout(1, 3));
+
+        NProveedores2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        NProveedores2.setForeground(new java.awt.Color(255, 255, 255));
+        NProveedores2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NProveedores2.setText("0");
+        jPanel19.add(NProveedores2);
+
+        jLabel17.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Clientes PRO");
+        jPanel19.add(jLabel17);
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 0));
+
+        btnProveedores2.setBackground(new java.awt.Color(255, 255, 0));
+        btnProveedores2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ruby.png"))); // NOI18N
+        btnProveedores2.setColorHover(new java.awt.Color(255, 255, 0));
+        btnProveedores2.setColorNormal(new java.awt.Color(255, 255, 0));
+        btnProveedores2.setColorPressed(new java.awt.Color(255, 255, 0));
+        btnProveedores2.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnProveedores2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnProveedores2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel19.add(jPanel20);
+
+        jPanel4.add(jPanel19);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -389,16 +489,22 @@ public class JpHogar extends javax.swing.JPanel {
     private javax.swing.JLabel NCompra;
     private javax.swing.JLabel NProductos;
     private javax.swing.JLabel NProveedores;
+    private javax.swing.JLabel NProveedores1;
+    private javax.swing.JLabel NProveedores2;
     private javax.swing.JLabel NVenta;
     private gui.styles.button.ButtonClass btnCategorias;
     private gui.styles.button.ButtonClass btnCompra;
     private gui.styles.button.ButtonClass btnProductos;
     private gui.styles.button.ButtonClass btnProveedores;
+    private gui.styles.button.ButtonClass btnProveedores1;
+    private gui.styles.button.ButtonClass btnProveedores2;
     private gui.styles.button.ButtonClass btnVenta;
     private gui.styles.button.ButtonClass buttonClass11;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -411,7 +517,11 @@ public class JpHogar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

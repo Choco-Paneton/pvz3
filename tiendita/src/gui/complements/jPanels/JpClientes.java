@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
+import util.TextPrompt;
 
 public class JpClientes extends javax.swing.JPanel {
     
@@ -21,6 +22,12 @@ public class JpClientes extends javax.swing.JPanel {
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         clienteModel = new ClienteModel();
         paintTable(clienteModel);
+        placeHolder();
+    }
+    private void placeHolder() {
+        TextPrompt textRuc = new TextPrompt("Ruc", ruc);
+        TextPrompt textEmail = new TextPrompt("Telefono", telefono);
+        TextPrompt textTelefono = new TextPrompt("Email", email);
     }
     private void resetForm() {
         ruc.requestFocus();
@@ -171,6 +178,7 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
+        ruc.setBackground(new java.awt.Color(255, 255, 255));
         ruc.setBorder(null);
         ruc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -178,6 +186,7 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
+        telefono.setBackground(new java.awt.Color(255, 255, 255));
         telefono.setBorder(null);
         telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -185,6 +194,7 @@ public class JpClientes extends javax.swing.JPanel {
             }
         });
 
+        email.setBackground(new java.awt.Color(255, 255, 255));
         email.setBorder(null);
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -13,6 +13,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import util.ChangePanel;
+import util.TextPrompt;
 
 public class JpProveedor extends javax.swing.JPanel {
 
@@ -25,6 +26,12 @@ public class JpProveedor extends javax.swing.JPanel {
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         proveedorModel = new ProveedorModel();
         paintTable(proveedorModel);
+        placeHolder();
+    }
+    private void placeHolder() {
+        TextPrompt textRuc = new TextPrompt("Ruc", TextRuc);
+        TextPrompt textEmail = new TextPrompt("Email", TextEmail);
+        TextPrompt textTelefono = new TextPrompt("Telefono", TextTelefono);
     }
     private void resetForm() {
         TextRuc.requestFocus();

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
+import util.TextPrompt;
 
 public class JpCategorias extends javax.swing.JPanel {
      
@@ -26,11 +27,15 @@ public class JpCategorias extends javax.swing.JPanel {
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         categoriaModel = new CategoriaModel();
         paintTable(categoriaModel);
+        placeHolder();
     }
     private void resetForm() {
         TextNombre.requestFocus();
         TextNombre.setText("");
         TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+    }
+    private void placeHolder() {
+        TextPrompt textRuc = new TextPrompt("Nombre categoria", TextNombre);
     }
     
     public void paintTable(CategoriaModel tableModel) {

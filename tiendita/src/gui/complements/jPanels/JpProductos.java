@@ -9,6 +9,7 @@ import java.awt.Frame;
 import java.awt.Window;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import util.TextPrompt;
 
 public class JpProductos extends javax.swing.JPanel {
     
@@ -22,6 +23,11 @@ public class JpProductos extends javax.swing.JPanel {
         //jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
         productoModel = new ProductoModel();
         paintTable(productoModel);
+        placeHolder();
+    }
+    private void placeHolder() {
+        TextPrompt textRuc = new TextPrompt("Nombre producto", TextEmail);
+        TextPrompt textEmail = new TextPrompt("Descripción", TextEmail2);
     }
     
     public void paintTable(ProductoModel tableModel) {

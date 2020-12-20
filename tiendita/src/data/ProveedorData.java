@@ -55,8 +55,7 @@ public class ProveedorData {
         String sql = "UPDATE Proveedor SET "
                 + "ruc=?, "
                 + "email=?, "
-                + "telefono=?, "
-                + "persona_id=? "
+                + "telefono=? "
                 + "WHERE id_proveedor=?";
         int i = 0;
         try {
@@ -64,7 +63,6 @@ public class ProveedorData {
             ps.setString(++i, r.getRuc());
             ps.setString(++i, r.getEmail());
             ps.setString(++i, r.getTelefono());
-            ps.setInt(++i, r.getPersona_id());
             ps.setInt(++i, r.getId_proveedor());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {

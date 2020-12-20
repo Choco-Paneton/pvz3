@@ -7,6 +7,7 @@ import gui.complements.jPanels.JpCategorias;
 import gui.complements.jPanels.JpClientes;
 import gui.complements.jPanels.JpCompra;
 import gui.complements.jPanels.JpCompraNuevo;
+import gui.complements.jPanels.JpCompraProceso;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
 import gui.complements.jPanels.JpProveedor;
@@ -236,7 +237,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpMenuButtons.add(btnProveedores);
 
         btnVenta1.setBackground(new java.awt.Color(11, 61, 140));
-        btnVenta1.setText("Clientes Venta PRO ");
+        btnVenta1.setText("Clientes PRO ");
         btnVenta1.setBorderPainted(false);
         btnVenta1.setColorHover(new java.awt.Color(12, 67, 152));
         btnVenta1.setColorNormal(new java.awt.Color(11, 61, 140));
@@ -250,7 +251,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpMenuButtons.add(btnVenta1);
 
         btnVenta2.setBackground(new java.awt.Color(11, 61, 140));
-        btnVenta2.setText("Productos Venta PRO");
+        btnVenta2.setText("Productos PRO");
         btnVenta2.setBorderPainted(false);
         btnVenta2.setColorHover(new java.awt.Color(12, 67, 152));
         btnVenta2.setColorNormal(new java.awt.Color(11, 61, 140));
@@ -288,7 +289,7 @@ public class Tiendita extends javax.swing.JFrame {
         jpDefault.setLayout(jpDefaultLayout);
         jpDefaultLayout.setHorizontalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
+            .addGap(0, 965, Short.MAX_VALUE)
         );
         jpDefaultLayout.setVerticalGroup(
             jpDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +304,7 @@ public class Tiendita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +352,7 @@ public class Tiendita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserActionPerformed
 
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
-        ChangePanel change = new ChangePanel(jpMainChange, new JpCompra());
+        ChangePanel change = new ChangePanel(jpMainChange, new JpCompraProceso());
     }//GEN-LAST:event_btnCompraActionPerformed
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed

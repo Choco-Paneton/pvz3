@@ -1,7 +1,5 @@
 package gui.profe.productos;
 
-import data.ProductoData;
-import entities.Producto;
 import entities.ProductoProfe;
 import gui.profe.data.ProductoDatas;
 import java.text.SimpleDateFormat;
@@ -11,10 +9,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import util.Config;
 
-/**
- *
- * @author Asullom
- */
 public class ProductosTableModel extends AbstractTableModel {
 
     private List<ProductoProfe> lis = new ArrayList();

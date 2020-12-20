@@ -12,16 +12,12 @@ import java.util.List;
 import util.ErrorLogger;
 import java.util.logging.Level;
 
-/**
- *
- * @author Asullom
- */
 public class ClienteDatas {
 
     static Connection cn = Coon_sqlite.connectSQLite();
     static PreparedStatement ps;
     static ErrorLogger log = new ErrorLogger(ClienteDatas.class.getName());
-
+    
     public static int create(ClienteProfe d) {
         int rsId = 0;
         String[] returns = {"id"};

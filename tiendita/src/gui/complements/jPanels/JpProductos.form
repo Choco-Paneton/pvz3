@@ -138,9 +138,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="buscarField">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Microsoft JhengHei UI" size="24" style="1"/>
                     </Property>
@@ -215,7 +212,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable1">
+                        <Component class="javax.swing.JTable" name="table">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
@@ -226,6 +223,10 @@
                               </Table>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableMouseClicked"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tableKeyReleased"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -249,13 +250,13 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="buttonClass2" alignment="0" pref="173" max="32767" attributes="0"/>
+                                  <Component id="ModificarButton" alignment="0" pref="173" max="32767" attributes="0"/>
                                   <Component id="buttonClass1" max="32767" attributes="0"/>
                                   <Component id="buttonClass3" max="32767" attributes="0"/>
-                                  <Component id="TextEmail" max="32767" attributes="0"/>
+                                  <Component id="TextNombre" max="32767" attributes="0"/>
                                   <Component id="jSeparator4" max="32767" attributes="0"/>
                                   <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TextEmail2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TextDescripcion" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -268,15 +269,15 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="buttonClass1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonClass2" min="-2" max="-2" attributes="0"/>
+                              <Component id="ModificarButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="buttonClass3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TextEmail" min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="TextNombre" min="-2" pref="27" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator4" min="-2" pref="13" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Component id="TextEmail2" min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="TextDescripcion" min="-2" pref="27" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator5" min="-2" pref="13" max="-2" attributes="0"/>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -303,7 +304,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass1ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="gui.styles.button.ButtonClass" name="buttonClass2">
+                    <Component class="gui.styles.button.ButtonClass" name="ModificarButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="a1" green="47" red="d" type="rgb"/>
@@ -317,7 +318,7 @@
                         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarButtonActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="gui.styles.button.ButtonClass" name="buttonClass3">
@@ -337,17 +338,15 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClass3ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="TextEmail">
+                    <Component class="javax.swing.JTextField" name="TextNombre">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextEmailKeyReleased"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextNombreActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextNombreKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator4">
@@ -385,17 +384,14 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="TextEmail2">
+                    <Component class="javax.swing.JTextField" name="TextDescripcion">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextEmail2KeyReleased"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextDescripcionKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>

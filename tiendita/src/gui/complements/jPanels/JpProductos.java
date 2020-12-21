@@ -1,14 +1,18 @@
 
 package gui.complements.jPanels;
 
+import data.ProductoData;
+import entities.Producto;
 import gui.complements.jDialogs.JdNuevoProducto;
 import gui.main.Tiendita;
 import gui.model.ProductoModel;
 import gui.styles.table.StyleTableHeader;
 import java.awt.Frame;
 import java.awt.Window;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 import util.TextPrompt;
 
 public class JpProductos extends javax.swing.JPanel {
@@ -19,28 +23,56 @@ public class JpProductos extends javax.swing.JPanel {
         initComponents();
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        jTable1.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         //jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
         productoModel = new ProductoModel();
         paintTable(productoModel);
         placeHolder();
     }
     private void placeHolder() {
-        TextPrompt textRuc = new TextPrompt("Nombre producto", TextEmail);
-        TextPrompt textEmail = new TextPrompt("Descripción", TextEmail2);
+        TextPrompt textRuc = new TextPrompt("Nombre producto", TextNombre);
+        TextPrompt textEmail = new TextPrompt("Descripción", TextDescripcion);
+    }
+    private void resetForm() {
+        TextNombre.requestFocus();
+        TextNombre.setText("");
+        TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        TextDescripcion.requestFocus();
+        TextDescripcion.setText("");
+        TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
+        ModificarButton.setText("REGISTRAR");
+        ModificarButton.setToolTipText("REGISTRAR");
     }
     
     public void paintTable(ProductoModel tableModel) {
         this.productoModel = tableModel;
-        jTable1.setModel(tableModel);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-        jTable1.getColumnModel().getColumn(1).setMaxWidth(200);
-        jTable1.getColumnModel().getColumn(2).setMaxWidth(500);
-        jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
-        jTable1.getColumnModel().getColumn(4).setMaxWidth(90);
-        jTable1.getColumnModel().getColumn(5).setMaxWidth(90);
-        jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
-        jTable1.getColumnModel().getColumn(7).setMaxWidth(150);
+        table.setModel(tableModel);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(1).setMaxWidth(200);
+        table.getColumnModel().getColumn(2).setMaxWidth(500);
+        table.getColumnModel().getColumn(3).setMaxWidth(70);
+        table.getColumnModel().getColumn(4).setMaxWidth(90);
+        table.getColumnModel().getColumn(5).setMaxWidth(90);
+        table.getColumnModel().getColumn(6).setMaxWidth(150);
+        table.getColumnModel().getColumn(7).setMaxWidth(150);
+    }
+    private void paintForm() {
+        if (table.getSelectedRow() != -1) {
+            Producto filax = (Producto) productoModel.getRow(table.getSelectedRow());
+            Producto d = ProductoData.getByPId(filax.getId_producto());
+            TextNombre.setText(d.getNombre_producto());
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+
+            TextDescripcion.setText(d.getDescripcion());
+            TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            
+            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_producto(), table.getSelectedRow());
+
+            ModificarButton.setText("MODIFICAR");
+            ModificarButton.setToolTipText("MODIFICAR");
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -58,17 +90,17 @@ public class JpProductos extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         buttonClass1 = new gui.styles.button.ButtonClass();
-        buttonClass2 = new gui.styles.button.ButtonClass();
+        ModificarButton = new gui.styles.button.ButtonClass();
         buttonClass3 = new gui.styles.button.ButtonClass();
-        TextEmail = new javax.swing.JTextField();
+        TextNombre = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        TextEmail2 = new javax.swing.JTextField();
+        TextDescripcion = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
 
@@ -106,7 +138,6 @@ public class JpProductos extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("icon");
 
-        buscarField.setBackground(new java.awt.Color(255, 255, 255));
         buscarField.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         buscarField.setForeground(new java.awt.Color(51, 51, 51));
         buscarField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -154,7 +185,7 @@ public class JpProductos extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -165,7 +196,17 @@ public class JpProductos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -200,15 +241,15 @@ public class JpProductos extends javax.swing.JPanel {
             }
         });
 
-        buttonClass2.setBackground(new java.awt.Color(13, 71, 161));
-        buttonClass2.setText("Modificar");
-        buttonClass2.setColorNormal(new java.awt.Color(13, 71, 161));
-        buttonClass2.setFocusable(false);
-        buttonClass2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonClass2.setVerifyInputWhenFocusTarget(false);
-        buttonClass2.addActionListener(new java.awt.event.ActionListener() {
+        ModificarButton.setBackground(new java.awt.Color(13, 71, 161));
+        ModificarButton.setText("Modificar");
+        ModificarButton.setColorNormal(new java.awt.Color(13, 71, 161));
+        ModificarButton.setFocusable(false);
+        ModificarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ModificarButton.setVerifyInputWhenFocusTarget(false);
+        ModificarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClass2ActionPerformed(evt);
+                ModificarButtonActionPerformed(evt);
             }
         });
 
@@ -224,11 +265,15 @@ public class JpProductos extends javax.swing.JPanel {
             }
         });
 
-        TextEmail.setBackground(new java.awt.Color(255, 255, 255));
-        TextEmail.setBorder(null);
-        TextEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextNombre.setBorder(null);
+        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNombreActionPerformed(evt);
+            }
+        });
+        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TextEmailKeyReleased(evt);
+                TextNombreKeyReleased(evt);
             }
         });
 
@@ -249,11 +294,10 @@ public class JpProductos extends javax.swing.JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
         );
 
-        TextEmail2.setBackground(new java.awt.Color(255, 255, 255));
-        TextEmail2.setBorder(null);
-        TextEmail2.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextDescripcion.setBorder(null);
+        TextDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TextEmail2KeyReleased(evt);
+                TextDescripcionKeyReleased(evt);
             }
         });
 
@@ -264,13 +308,13 @@ public class JpProductos extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonClass2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(ModificarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(buttonClass1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonClass3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TextEmail)
+                    .addComponent(TextNombre)
                     .addComponent(jSeparator4)
                     .addComponent(jSeparator5)
-                    .addComponent(TextEmail2))
+                    .addComponent(TextDescripcion))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -280,15 +324,15 @@ public class JpProductos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(buttonClass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonClass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(TextEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
@@ -327,29 +371,104 @@ public class JpProductos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonClass1ActionPerformed
 
-    private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonClass2ActionPerformed
+    private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
+        if (TextNombre.getText().trim().isEmpty()) {
+            TextNombre.requestFocus();
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+
+        } else {
+            Producto s = new Producto();
+            s.setNombre_producto(TextNombre.getText());
+            s.setDescripcion(TextDescripcion.getText());
+            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+                try {
+                    Producto fila = (Producto) productoModel.getRow(table.getSelectedRow());
+                    s.setId_producto(fila.getId_producto());
+                    System.out.println("id:" + s.getId_producto());
+                    if (s.getId_producto() > 0) {
+                        int returnId = ProductoData.update(s);
+                        if (returnId != 0) {
+                            paintTable(new ProductoModel());
+                            resetForm();
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
+                }
+            } else { // sin seleccionar, insert
+                try {
+                    int returnId = ProductoData.create(s);
+                    if (returnId != 0) {
+                        paintTable(new ProductoModel());
+                        // s.setId(returnId);//necesitamos subir el id, ya no
+                        //tableModel.addRow(s);
+                        resetForm();
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede insertar: " + ex.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_ModificarButtonActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
-        // TODO add your handling code here:
+        if (table.getSelectedRow() != -1) {
+            try {
+                int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
+                if (opc == JOptionPane.OK_OPTION) {
+                    Producto fila = (Producto) productoModel.getRow(table.getSelectedRow());
+                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_producto(), table.getSelectedRow());
+
+                    int opcion = ProductoData.delete(fila.getId_producto());
+                    if (opcion != 0) {
+                        //tableModel.removeRow(table.getSelectedRow());
+                        paintTable(new ProductoModel());
+                        resetForm();
+                    }
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar: " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
+        }
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
-    private void TextEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEmailKeyReleased
+    private void TextNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyReleased
+        if (!TextNombre.getText().trim().isEmpty()) { //reset
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextNombreKeyReleased
 
-    }//GEN-LAST:event_TextEmailKeyReleased
+    private void TextDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextDescripcionKeyReleased
+        if (!TextDescripcion.getText().trim().isEmpty()) { //reset
+            TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        } else {
+            TextDescripcion.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+        }
+    }//GEN-LAST:event_TextDescripcionKeyReleased
 
-    private void TextEmail2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEmail2KeyReleased
+    private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
+        paintForm();
+    }//GEN-LAST:event_tableKeyReleased
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        paintForm();
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextEmail2KeyReleased
+    }//GEN-LAST:event_TextNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TextEmail;
-    private javax.swing.JTextField TextEmail2;
+    private gui.styles.button.ButtonClass ModificarButton;
+    private javax.swing.JTextField TextDescripcion;
+    private javax.swing.JTextField TextNombre;
     private javax.swing.JTextField buscarField;
     private gui.styles.button.ButtonClass buttonClass1;
-    private gui.styles.button.ButtonClass buttonClass2;
     private gui.styles.button.ButtonClass buttonClass3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -366,6 +485,6 @@ public class JpProductos extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

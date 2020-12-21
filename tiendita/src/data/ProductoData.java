@@ -91,12 +91,12 @@ public class ProductoData {
             ps = cn.prepareStatement(sql);
             ps.setInt(1, id_producto);
             comit = ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "delete", ex);
             throw new Exception("Detalle:" + ex.getMessage());
         } finally {
-            Coon_sqlite.closeSQLite(cn);
+            //Coon_sqlite.closeSQLite(cn);
         }
         return comit;
     }
@@ -166,11 +166,11 @@ public class ProductoData {
                 p.setPrecio_unitario(rs.getFloat("precio_unitario"));
                 p.setPrecio_sub_total(rs.getFloat("precio_sub_total"));
             }
-            ps.close();
+            //ps.close();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "getByPId", ex);
         } finally {
-            Coon_sqlite.closeSQLite(cn);
+            //Coon_sqlite.closeSQLite(cn);
         }
         return p;
     }

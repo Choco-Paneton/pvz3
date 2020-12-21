@@ -131,6 +131,11 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         jCheckBox1.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox1.setText("Status");
         jCheckBox1.setFocusable(false);
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
@@ -171,6 +176,11 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField5.setBorder(null);
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jSeparator5.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -281,7 +291,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,14 +308,22 @@ public class JdNuevoProducto extends javax.swing.JDialog {
         p.setCantidad(Integer.parseInt(jTextField3.getText()));
         p.setPrecio_unitario(Float.parseFloat(jTextField4.getText()));
         p.setCategoria_id(getCategoria().getId_categoria());
-        p.setStatus(false);
-        p.setIgv(true);
+        if (jCheckBox1.isSelected()) {
+            p.setStatus(true);
+            p.setIgv(false);
+        } else {
+            p.setIgv(true);
+            p.setStatus(false);
+        }
         ProductoData.create(p);
         this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
     
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox2.isSelected()) {
+            jCheckBox1.setSelected(false);
+            jCheckBox2.setSelected(true);
+        }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void buttonClass4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass4ActionPerformed
@@ -316,6 +334,17 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_buttonClass3ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()) {
+            jCheckBox1.setSelected(true);
+            jCheckBox2.setSelected(false);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
     
     public Frame getParent() {
        JpProductos jpProducts = new JpProductos();
@@ -378,7 +407,7 @@ public class JdNuevoProducto extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    public javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;

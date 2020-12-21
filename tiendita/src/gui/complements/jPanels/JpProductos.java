@@ -36,14 +36,11 @@ public class JpProductos extends javax.swing.JPanel {
     private void resetForm() {
         TextNombre.requestFocus();
         TextNombre.setText("");
-        TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+        
         
         TextDescripcion.requestFocus();
         TextDescripcion.setText("");
-        TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
-        ModificarButton.setText("REGISTRAR");
-        ModificarButton.setToolTipText("REGISTRAR");
     }
     
     public void paintTable(ProductoModel tableModel) {
@@ -63,15 +60,7 @@ public class JpProductos extends javax.swing.JPanel {
             Producto filax = (Producto) productoModel.getRow(table.getSelectedRow());
             Producto d = ProductoData.getByPId(filax.getId_producto());
             TextNombre.setText(d.getNombre_producto());
-            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-
             TextDescripcion.setText(d.getDescripcion());
-            TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-            
-            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_producto(), table.getSelectedRow());
-
-            ModificarButton.setText("MODIFICAR");
-            ModificarButton.setToolTipText("MODIFICAR");
         }
     }
     
@@ -374,17 +363,14 @@ public class JpProductos extends javax.swing.JPanel {
     private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
         if (TextNombre.getText().trim().isEmpty()) {
             TextNombre.requestFocus();
-            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-
         } else {
             Producto s = new Producto();
             s.setNombre_producto(TextNombre.getText());
             s.setDescripcion(TextDescripcion.getText());
-            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+            if (table.getSelectedRow() != -1) {
                 try {
                     Producto fila = (Producto) productoModel.getRow(table.getSelectedRow());
                     s.setId_producto(fila.getId_producto());
-                    System.out.println("id:" + s.getId_producto());
                     if (s.getId_producto() > 0) {
                         int returnId = ProductoData.update(s);
                         if (returnId != 0) {
@@ -395,13 +381,11 @@ public class JpProductos extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
                 }
-            } else { // sin seleccionar, insert
+            } else {
                 try {
                     int returnId = ProductoData.create(s);
                     if (returnId != 0) {
                         paintTable(new ProductoModel());
-                        // s.setId(returnId);//necesitamos subir el id, ya no
-                        //tableModel.addRow(s);
                         resetForm();
                     }
                 } catch (Exception ex) {
@@ -417,11 +401,8 @@ public class JpProductos extends javax.swing.JPanel {
                 int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
                 if (opc == JOptionPane.OK_OPTION) {
                     Producto fila = (Producto) productoModel.getRow(table.getSelectedRow());
-                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_producto(), table.getSelectedRow());
-
                     int opcion = ProductoData.delete(fila.getId_producto());
                     if (opcion != 0) {
-                        //tableModel.removeRow(table.getSelectedRow());
                         paintTable(new ProductoModel());
                         resetForm();
                     }
@@ -435,19 +416,19 @@ public class JpProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void TextNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyReleased
-        if (!TextNombre.getText().trim().isEmpty()) { //reset
+       /* if (!TextNombre.getText().trim().isEmpty()) { //reset
             TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextNombreKeyReleased
 
     private void TextDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextDescripcionKeyReleased
-        if (!TextDescripcion.getText().trim().isEmpty()) { //reset
+        /*if (!TextDescripcion.getText().trim().isEmpty()) { //reset
             TextDescripcion.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextDescripcion.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextDescripcionKeyReleased
 
     private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased

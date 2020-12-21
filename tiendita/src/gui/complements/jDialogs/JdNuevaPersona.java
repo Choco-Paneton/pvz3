@@ -119,10 +119,20 @@ public class JdNuevaPersona extends javax.swing.JDialog {
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox1.setText("Mujer");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setForeground(new java.awt.Color(51, 51, 51));
         jCheckBox2.setText("Varón");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         buttonClass3.setText("Cancelar");
         buttonClass3.setColorHover(new java.awt.Color(231, 63, 51));
@@ -232,7 +242,11 @@ public class JdNuevaPersona extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            jTextField5.setText("Mujer");
+        } else {
+            jTextField5.setText("Varón");
+        }
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void buttonClass3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass3ActionPerformed
@@ -246,14 +260,35 @@ public class JdNuevaPersona extends javax.swing.JDialog {
         p.setApellido_paterno(jTextField2.getText());
         p.setApellido_materno(jTextField3.getText());
         p.setDni(jTextField4.getText());
-        p.setSexo("M");
+        if (jCheckBox1.isSelected()) {
+            p.setSexo("Mujer");
+        } else {
+            p.setSexo("Varón");
+        }
         
         int i = PersonaData.create(p);
         Persona pe = PersonaData.getByPId(i);
         JdNuevoProveedor.setProveedor(pe);
+        JdNuevoCliente.setProveedor(pe);
         JdNuevoProveedor.jTextField4.setText(pe.getNombre());
         this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if (jCheckBox2.isSelected()) {
+            jCheckBox1.setSelected(false);
+            jCheckBox2.setSelected(true);
+            jTextField5.setText("Varón");
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()) {
+            jCheckBox2.setSelected(false);
+            jCheckBox1.setSelected(true);
+            jTextField5.setText("Mujer");
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments

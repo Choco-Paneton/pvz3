@@ -1,7 +1,9 @@
 
 package gui.complements.jDialogs;
 
+import data.ClienteData;
 import data.ProveedorData;
+import entities.Cliente;
 import entities.Persona;
 import entities.Proveedor;
 import gui.complements.jPanels.JpProveedor;
@@ -77,7 +79,7 @@ public class JdNuevoCliente extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nuevo Preveedor");
+        jLabel2.setText("Nuevo Cliente");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -240,12 +242,12 @@ public class JdNuevoCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonClass3ActionPerformed
 
     private void buttonClass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass2ActionPerformed
-        Proveedor p = new Proveedor();
+        Cliente p = new Cliente();
         p.setRuc(jTextField5.getText());
         p.setEmail(jTextField6.getText());
         p.setTelefono(jTextField7.getText());
         p.setPersona_id(JdNuevoCliente.getProveedor().getId_persona());
-        ProveedorData.create(p);
+        ClienteData.create(p);
         this.dispose();
     }//GEN-LAST:event_buttonClass2ActionPerformed
 

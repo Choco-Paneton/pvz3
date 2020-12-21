@@ -287,6 +287,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Mujer"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox2">
                   <Properties>
@@ -298,6 +301,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Var&#xf3;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="gui.styles.button.ButtonClass" name="buttonClass3">
                   <Properties>

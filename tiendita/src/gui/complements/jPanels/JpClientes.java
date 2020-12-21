@@ -3,6 +3,7 @@ package gui.complements.jPanels;
 
 import data.ClienteData;
 import entities.Cliente;
+import gui.complements.jDialogs.JdAcess;
 import gui.complements.jDialogs.JdNuevoCliente;
 import gui.main.Tiendita;
 
@@ -37,15 +38,12 @@ public class JpClientes extends javax.swing.JPanel {
     private void resetForm() {
         ruc.requestFocus();
         ruc.setText("");
-        ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
         telefono.requestFocus();
         telefono.setText("");
-        telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
         email.requestFocus();
         email.setText("");
-        email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
     }
 
     private void paintTable(ClienteModel tableModel) {
@@ -58,15 +56,8 @@ public class JpClientes extends javax.swing.JPanel {
             Cliente filax = (Cliente) clienteModel.getRow(table.getSelectedRow());
             Cliente d = ClienteData.getByPId(filax.getId_cliente());
             ruc.setText(d.getRuc());
-            ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-
             telefono.setText(d.getTelefono());
-            telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-            
             email.setText(d.getEmail());
-            email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_cliente(), table.getSelectedRow());
-
         }
 
     }
@@ -412,11 +403,8 @@ public class JpClientes extends javax.swing.JPanel {
                 int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
                 if (opc == JOptionPane.OK_OPTION) {
                     Cliente fila = (Cliente) clienteModel.getRow(table.getSelectedRow());
-                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_cliente(), table.getSelectedRow());
-
                     int opcion = ClienteData.delete(fila.getId_cliente());
                     if (opcion != 0) {
-                        //tableModel.removeRow(table.getSelectedRow());
                         paintTable(new ClienteModel());
                         resetForm();
                     }
@@ -432,19 +420,17 @@ public class JpClientes extends javax.swing.JPanel {
 
     private void ModificarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtomActionPerformed
         if (ruc.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
             ruc.requestFocus();
-            ruc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-
         } else {
             Cliente c = new Cliente();
             c.setRuc(ruc.getText());
             c.setTelefono(telefono.getText());
             c.setEmail(email.getText());
-            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+            if (table.getSelectedRow() != -1) {
                 try {
                     Cliente fila = (Cliente) clienteModel.getRow(table.getSelectedRow());
                     c.setId_cliente(fila.getId_cliente());
-                    System.out.println("id:" + c.getId_cliente());
                     if (c.getId_cliente() > 0) {
                         int returnId = ClienteData.update(c);
                         if (returnId != 0) {
@@ -455,14 +441,12 @@ public class JpClientes extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
                 }
-            } else { // sin seleccionar, insert
+            } else {
                 jLabel2.setBackground(new Color(255,51,51));
                 try {
                     int returnId = ClienteData.create(c);
                     if (returnId != 0) {
                         paintTable(new ClienteModel());
-                        // s.setId(returnId);//necesitamos subir el id, ya no
-                        //tableModel.addRow(s);
                         resetForm();
                     }
                 } catch (Exception ex) {
@@ -503,27 +487,27 @@ public class JpClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_tableKeyReleased
 
     private void rucKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rucKeyReleased
-        if (!ruc.getText().trim().isEmpty()) { //reset
+        /*if (!ruc.getText().trim().isEmpty()) { //reset
             ruc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             ruc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_rucKeyReleased
 
     private void telefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyReleased
-        if (!telefono.getText().trim().isEmpty()) { //reset
+        /*if (!telefono.getText().trim().isEmpty()) { //reset
             telefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             telefono.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_telefonoKeyReleased
 
     private void emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyReleased
-        if (!email.getText().trim().isEmpty()) { //reset
+       /* if (!email.getText().trim().isEmpty()) { //reset
             email.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             email.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_emailKeyReleased
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed

@@ -36,18 +36,13 @@ public class JpProveedor extends javax.swing.JPanel {
     private void resetForm() {
         TextRuc.requestFocus();
         TextRuc.setText("");
-        TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
         TextEmail.requestFocus();
         TextEmail.setText("");
-        TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
         TextTelefono.requestFocus();
         TextTelefono.setText("");
-        TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         
-        ModificarButton.setText("REGISTRAR");
-        ModificarButton.setToolTipText("REGISTRAR");
     }
     public void paintTable(ProveedorModel tableModel) {
         this.proveedorModel = tableModel;
@@ -60,17 +55,10 @@ public class JpProveedor extends javax.swing.JPanel {
             Proveedor filax = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
             Proveedor d = ProveedorData.getByPId(filax.getId_proveedor());
             TextRuc.setText(d.getRuc());
-            TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
 
             TextEmail.setText(d.getEmail());
-            TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
             
             TextTelefono.setText(d.getTelefono());
-            TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-            System.out.printf("getId:%d getSelectedRow:%d \n", d.getId_proveedor(), table.getSelectedRow());
-
-            ModificarButton.setText("MODIFICAR");
-            ModificarButton.setToolTipText("MODIFICAR");
         }
 
     }
@@ -472,11 +460,10 @@ public class JpProveedor extends javax.swing.JPanel {
             s.setRuc(TextRuc.getText());
             s.setEmail(TextEmail.getText());
             s.setTelefono(TextTelefono.getText());
-            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+            if (table.getSelectedRow() != -1) {
                 try {
                     Proveedor fila = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
                     s.setId_proveedor(fila.getId_proveedor());
-                    System.out.println("id:" + s.getId_proveedor());
                     if (s.getId_proveedor() > 0) {
                         int returnId = ProveedorData.update(s);
                         if (returnId != 0) {
@@ -487,13 +474,11 @@ public class JpProveedor extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
                 }
-            } else { // sin seleccionar, insert
+            } else { 
                 try {
                     int returnId = ProveedorData.create(s);
                     if (returnId != 0) {
                         paintTable(new ProveedorModel());
-                        // s.setId(returnId);//necesitamos subir el id, ya no
-                        //tableModel.addRow(s);
                         resetForm();
                     }
                 } catch (Exception ex) {
@@ -538,11 +523,8 @@ public class JpProveedor extends javax.swing.JPanel {
                 int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
                 if (opc == JOptionPane.OK_OPTION) {
                     Proveedor fila = (Proveedor) proveedorModel.getRow(table.getSelectedRow());
-                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_proveedor(), table.getSelectedRow());
-
                     int opcion = ProveedorData.delete(fila.getId_proveedor());
                     if (opcion != 0) {
-                        //tableModel.removeRow(table.getSelectedRow());
                         paintTable(new ProveedorModel());
                         resetForm();
                     }
@@ -556,27 +538,27 @@ public class JpProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_EliminarButtomActionPerformed
 
     private void TextRucKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextRucKeyReleased
-        if (!TextRuc.getText().trim().isEmpty()) { //reset
+      /*  if (!TextRuc.getText().trim().isEmpty()) { //reset
             TextRuc.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextRuc.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextRucKeyReleased
 
     private void TextEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEmailKeyReleased
-        if (!TextEmail.getText().trim().isEmpty()) { //reset
+        /*if (!TextEmail.getText().trim().isEmpty()) { //reset
             TextEmail.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextEmail.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextEmailKeyReleased
 
     private void TextTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextTelefonoKeyReleased
-        if (!TextTelefono.getText().trim().isEmpty()) { //reset
+        /*if (!TextTelefono.getText().trim().isEmpty()) { //reset
             TextTelefono.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextTelefono.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextTelefonoKeyReleased
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,7 +9,6 @@ import gui.complements.jPanels.JpProductos;
 import gui.main.Tiendita;
 import gui.model.CategoriaModel;
 import gui.model.ProductoModel;
-import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.KeyEvent;

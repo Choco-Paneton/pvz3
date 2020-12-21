@@ -2,16 +2,12 @@
 package gui.main;
 
 import gui.complements.jDialogs.JdAsojito;
-import gui.complements.jDialogs.JdNuevoProducto;
 import gui.complements.jPanels.JpCategorias;
 import gui.complements.jPanels.JpClientes;
-import gui.complements.jPanels.JpCompra;
-import gui.complements.jPanels.JpCompraNuevo;
 import gui.complements.jPanels.JpCompraProceso;
 import gui.complements.jPanels.JpHogar;
 import gui.complements.jPanels.JpProductos;
 import gui.complements.jPanels.JpProveedor;
-import gui.complements.jPanels.JpVentas;
 import gui.profe.VentasPanel;
 import gui.profe.clientes.ClientesPanel;
 import gui.profe.productos.ProductosPanel;

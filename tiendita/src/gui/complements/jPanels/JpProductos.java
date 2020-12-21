@@ -24,7 +24,6 @@ public class JpProductos extends javax.swing.JPanel {
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //jTable1.getTableHeader().setDefaultRenderer(new StyleTableHeader());
         productoModel = new ProductoModel();
         paintTable(productoModel);
         placeHolder();

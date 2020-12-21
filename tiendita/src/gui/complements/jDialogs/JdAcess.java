@@ -16,6 +16,11 @@ public class JdAcess extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         //400 l, 160 a
     }
+
+    public JdAcess(String palabra1, String palabra2, String titulo) {
+        peligro(palabra1, palabra2, titulo);
+    }
+    
     public Icon imageIcon(String url, JButton button) {
           ImageIcon icono = new ImageIcon(getClass().getResource(url));
           int ancho = button.getWidth();
@@ -34,7 +39,10 @@ public class JdAcess extends javax.swing.JDialog {
     
     public void errorA(String palabra1, String palabra2, String titulo) {
         btnIcon.setIcon(imageIcon("/icons/error.png", btnIcon));
-        //btnIcon.setPressedIcon(imageIconPressed("/icons/peligro.png", btnIcon, 3, 3));
+        this.palabra1.setText(palabra1);
+        this.palabra2.setText(palabra2);
+        this.titulo.setText(titulo);
+        PanelColor.setBackground(new Color(221,83,71));
     }
     public void peligro(String palabra1, String palabra2, String titulo) {
         btnIcon.setIcon(imageIcon("/icons/peligro.png", btnIcon));
@@ -42,7 +50,6 @@ public class JdAcess extends javax.swing.JDialog {
         this.palabra2.setText(palabra2);
         this.titulo.setText(titulo);
         PanelColor.setBackground(new Color(255, 51, 0));
-        //btnIcon.setPressedIcon(imageIconPressed("/icons/peligro.png", btnIcon, 3, 3));
     }
    
     /**
@@ -219,13 +226,13 @@ public class JdAcess extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelColor;
-    private gui.styles.button.ButtonClass btnAceptar;
-    private gui.styles.button.ButtonClass btnIcon;
+    private static javax.swing.JPanel PanelColor;
+    private static gui.styles.button.ButtonClass btnAceptar;
+    private static gui.styles.button.ButtonClass btnIcon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel palabra1;
-    private javax.swing.JLabel palabra2;
-    private javax.swing.JLabel titulo;
+    private static javax.swing.JLabel palabra1;
+    private static javax.swing.JLabel palabra2;
+    private static javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

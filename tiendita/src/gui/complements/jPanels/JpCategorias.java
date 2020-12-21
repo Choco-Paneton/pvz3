@@ -32,7 +32,6 @@ public class JpCategorias extends javax.swing.JPanel {
     private void resetForm() {
         TextNombre.requestFocus();
         TextNombre.setText("");
-        TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
     }
     private void placeHolder() {
         TextPrompt textRuc = new TextPrompt("Nombre categoria", TextNombre);
@@ -48,10 +47,6 @@ public class JpCategorias extends javax.swing.JPanel {
             Categoria filax = (Categoria) categoriaModel.getRow(table.getSelectedRow());
             Categoria c = CategoriaData.getByPId(filax.getId_categoria());
             TextNombre.setText(c.getNombre_categoria());
-            TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
-
-            System.out.printf("getId:%d getSelectedRow:%d \n", c.getId_categoria(), table.getSelectedRow());
-
         }
 
     }
@@ -343,11 +338,8 @@ public class JpCategorias extends javax.swing.JPanel {
                 int opc = JOptionPane.showConfirmDialog(this, "¿Realmente desea eliminar?", "Quitar", JOptionPane.YES_NO_OPTION);
                 if (opc == JOptionPane.OK_OPTION) {
                     Categoria fila = (Categoria) categoriaModel.getRow(table.getSelectedRow());
-                    System.out.printf("EliminarButtomActionPerformed getId:%d getSelectedRow:%d \n", fila.getId_categoria(), table.getSelectedRow());
-
                     int opcion = CategoriaData.delete(fila.getId_categoria());
                     if (opcion != 0) {
-                        //tableModel.removeRow(table.getSelectedRow());
                         paintTable(new CategoriaModel());
                         resetForm();
                     }
@@ -364,17 +356,15 @@ public class JpCategorias extends javax.swing.JPanel {
     private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
         if (TextNombre.getText().trim().isEmpty()) {
             TextNombre.requestFocus();
-            TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registo de la tabla");
         } else {
             Categoria s = new Categoria();
             s.setNombre_categoria(TextNombre.getText());
 
-            if (table.getSelectedRow() != -1) {// ha seleccionado, update
+            if (table.getSelectedRow() != -1) {
                 try {
                     Categoria fila = (Categoria) categoriaModel.getRow(table.getSelectedRow());
                     s.setId_categoria(fila.getId_categoria());
-                    System.out.println("id:" + s.getId_categoria());
                     if (s.getId_categoria() > 0) {
                         int returnId = CategoriaData.update(s);
                         if (returnId != 0) {
@@ -385,13 +375,11 @@ public class JpCategorias extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "No se puede editar: " + ex.getMessage());
                 }
-            } else { // sin seleccionar, insert
+            } else {
                 try {
                     int returnId = CategoriaData.create(s);
                     if (returnId != 0) {
                         paintTable(new CategoriaModel());
-                        // s.setId(returnId);//necesitamos subir el id, ya no
-                        //tableModel.addRow(s);
                         resetForm();
                     }
                 } catch (Exception ex) {
@@ -410,11 +398,11 @@ public class JpCategorias extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClass1MouseClicked
 
     private void TextNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyReleased
-        if (!TextNombre.getText().trim().isEmpty()) { //reset
+      /*  if (!TextNombre.getText().trim().isEmpty()) { //reset
             TextNombre.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
         } else {
             TextNombre.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
-        }
+        }*/
     }//GEN-LAST:event_TextNombreKeyReleased
 
     private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased

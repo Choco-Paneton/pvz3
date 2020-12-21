@@ -3,11 +3,16 @@ package gui.complements.jPanels;
 
 import data.ClienteData;
 import entities.Cliente;
+import gui.complements.jDialogs.JdNuevoCliente;
+import gui.main.Tiendita;
 
 import gui.model.ClienteModel;
 import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Window;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import util.TextPrompt;
 
@@ -389,7 +394,15 @@ public class JpClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonClass5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass5ActionPerformed
-        
+        JpProveedor jpProducts = new JpProveedor();
+        Window parentWindow = SwingUtilities.windowForComponent(jpProducts);
+        Frame parentFrame = null;
+        if (parentWindow instanceof Tiendita) {
+            parentFrame = (Tiendita)parentWindow;
+        }
+        JdNuevoCliente jdNewProduct = new JdNuevoCliente(parentFrame, false);
+        jdNewProduct.setVisible(true);
+        paintTable(new ClienteModel());
         
     }//GEN-LAST:event_buttonClass5ActionPerformed
 
@@ -460,11 +473,13 @@ public class JpClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_ModificarButtomActionPerformed
 
     private void buttonClass8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClass8ActionPerformed
-        // TODO add your handling code here:
+        ClienteModel tableModel = new ClienteModel(buscarField.getText());
+        paintTable(tableModel);
     }//GEN-LAST:event_buttonClass8ActionPerformed
 
     private void buscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFieldActionPerformed
-        // TODO add your handling code here:
+        ClienteModel tableModel = new ClienteModel(buscarField.getText());
+        paintTable(tableModel);
     }//GEN-LAST:event_buscarFieldActionPerformed
 
     private void buscarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarFieldKeyReleased

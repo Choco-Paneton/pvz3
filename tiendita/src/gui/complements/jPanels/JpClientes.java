@@ -3,10 +3,8 @@ package gui.complements.jPanels;
 
 import data.ClienteData;
 import entities.Cliente;
-import gui.complements.jDialogs.JdAcess;
 import gui.complements.jDialogs.JdNuevoCliente;
 import gui.main.Tiendita;
-
 import gui.model.ClienteModel;
 import java.awt.Color;
 import java.awt.Frame;
@@ -14,7 +12,6 @@ import java.awt.Window;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 import util.TextPrompt;
 
 public class JpClientes extends javax.swing.JPanel {
